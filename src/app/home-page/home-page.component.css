@@ -2,3 +2,24 @@
   max-width: 600px;
   margin: 0 auto;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.field-input {
+  display: block;
+  width: 100%;
+  padding: .4rem;
+  font-size: 1.2rem;
+  border: 1px solid #CCC;
+  margin-bottom: 1rem;
+}
+
+/* .form-control {
+  display: block;
+  margin-top: .3rem;
+  margin-bottom: .5rem;
+} */
+
+/* color: #8b0000; */
