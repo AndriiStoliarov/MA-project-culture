@@ -1,0 +1,80 @@
+<div class="box">
+  <h2 class="title">Створення події</h2>
+
+  <form [formGroup]="eventForm">
+
+    <div class="field">
+      <label class="label">Назва події</label>
+      <div class="control">
+        <input (input)="eventTitle = $event.target.value" class="input" formControlName="title">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Категорія</label>
+      <div class="control">
+        <div class="select">
+          <select formControlName="category">
+            <option *ngFor="let category of categoriesList" [ngValue]="category">
+              {{ category }}
+            </option>
+
+            <!--            <option value="">Обрати категорію</option>-->
+            <!--            <option *ngFor="let category of categoriesList" [ngValue]="category.name">-->
+            <!--              {{ category.name }}-->
+            <!--            </option>-->
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Потреби</label>
+      <div class="control">
+        <textarea (input)="eventRequirement = $event.target.value" class="textarea"
+                  formControlName="requirement"></textarea>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Дата</label>
+      <div class="control">
+        <input class="input" formControlName="date" type="date">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Час</label>
+      <div class="control">
+        <input class="input" formControlName="time">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Місце</label>
+      <div class="control">
+        <input class="input" formControlName="place">
+      </div>
+    </div>
+
+    <div class="file">
+      <label class="file-label">
+        <input class="file-input" formControlName="file" name="resume" type="file">
+        <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Додати файл…
+      </span>
+    </span>
+      </label>
+    </div>
+
+    <div class="buttons is-centered">
+      <button [disabled]="eventForm.invalid" class="button is-primary" type="submit">Створити</button>
+      <button (click)="onResetClick()" class="button is-warning" type="button">Скасувати</button>
+    </div>
+
+  </form>
+</div>
