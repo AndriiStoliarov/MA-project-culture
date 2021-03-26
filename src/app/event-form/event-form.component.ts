@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {EventService} from '../services/event.service';
 
 @Component({
   selector: 'app-event-form',
@@ -7,9 +8,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./event-form.component.css']
 })
 export class EventFormComponent implements OnInit {
-  eventTitle: string;
-  eventCategory: string;
-  eventRequirement: string;
 
   categoriesList = ['Виставка', 'Концерт', 'Вистава', 'Навчання', 'Зустріч', 'Свято', 'Інше'];
 
@@ -23,7 +21,7 @@ export class EventFormComponent implements OnInit {
     file: new FormControl('')
   });
 
-  constructor() {
+  constructor(private eventService: EventService) {
   }
 
   ngOnInit(): void {
@@ -31,6 +29,12 @@ export class EventFormComponent implements OnInit {
 
   onResetClick(): void {
     this.eventForm.reset();
+  }
+
+  onSubmit(value): void {
+    this.eventService.postData(value).subscribe(() => {
+      console.log('sending...');
+    });
   }
 
 }
