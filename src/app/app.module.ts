@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
+import { MainLayoutComponent } from './shared/components';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PosterPageComponent } from './poster-page/poster-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
-import { PostComponent } from './shared/components/post/post.component';
+import { PostComponent } from './shared/components';
+import { RegistrationPageComponent } from './shared/components';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import { PostComponent } from './shared/components/post/post.component';
     PosterPageComponent,
     AboutPageComponent,
     PostPageComponent,
-    PostComponent
+    PostComponent,
+    RegistrationPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
