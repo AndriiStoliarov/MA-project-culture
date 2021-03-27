@@ -50,6 +50,9 @@
   outline: none;
 }
 
+.logo-font {
+  font-family: 'Amatic SC', cursive;
+}
 /* .btn-link {
   background: none;
   padding: 0;
