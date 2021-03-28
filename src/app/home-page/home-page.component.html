@@ -1,0 +1,12 @@
+<div class="posts" *ngIf="true; else loading">
+  <input class="field-input" type="text" placeholder="Знайти подію...">
+  <app-post></app-post>
+  <app-post></app-post>
+  <app-post></app-post>
+  <app-post></app-post>
+  <app-post></app-post>
+</div>
+
+<ng-template #loading>
+  <p class="text-center">Триває завантаження...</p>
+</ng-template>
