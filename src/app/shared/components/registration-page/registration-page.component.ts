@@ -14,7 +14,7 @@ export class RegistrationPageComponent implements OnInit {
   registrationForm: any;
 
   constructor(
-    private registrationService: RegistrationService,
+    // private registrationService: RegistrationService,
     private fb: FormBuilder,
     private router: Router
   ) { }
@@ -57,19 +57,19 @@ export class RegistrationPageComponent implements OnInit {
       return;
     }
 
-    const data: User = {
-      name: this.registrationForm.value.name,
-      phone: this.registrationForm.value.phone,
-      email: this.registrationForm.value.email,
-      password: this.registrationForm.value.password
-    };
+    // const data: User = {
+    //   name: this.registrationForm.value.name,
+    //   phone: this.registrationForm.value.phone,
+    //   email: this.registrationForm.value.email,
+    //   password: this.registrationForm.value.password
+    // };
 
-    // tslint:disable-next-line: deprecation
-    this.registrationService.createUser(data).subscribe(() => {
-      console.log('Registration successfully.');
-      this.registrationForm.reset();
-      this.router.navigate(['/home']);
-    });
+    // // tslint:disable-next-line: deprecation
+    // this.registrationService.createUser(data).subscribe(() => {
+    //   console.log('Registration successfully.');
+    //   this.registrationForm.reset();
+    //   this.router.navigate(['/home']);
+    // });
   }
 
 }

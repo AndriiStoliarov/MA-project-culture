@@ -6,10 +6,10 @@ import { User } from '../types';
 @Injectable()
 export class RegistrationService {
 
-  constructor(private http: HttpClient) {}
+  // constructor(private http: HttpClient) {}
 
-  createUser(data: User): Observable<User> {
-    const body = JSON.stringify(data);
-    return this.http.post<User>('', body);
-  }
+  // createUser(data: User): Observable<User> {
+  //   const body = JSON.stringify(data);
+  //   return this.http.post<User>('', body);
+  // }
 }

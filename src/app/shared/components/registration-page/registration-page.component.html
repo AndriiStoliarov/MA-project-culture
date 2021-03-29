@@ -1,8 +1,8 @@
 <form class="form-container" [formGroup]="registrationForm" (ngSubmit)="submit()">
   <h2>Створити користувача</h2>
   <div class="form-control">
-    <label for="nameCaption">Name: </label>
-    <input id="nameCaption" class="field-input" type="name" placeholder="enter name" formControlName="name">
+    <label for="nameCaption"></label>
+    <input id="nameCaption" class="field-input" type="text" placeholder="Ім'я" formControlName="name">
     <div
       *ngIf="isControlInvalid('name')"
       class="validation"
@@ -12,8 +12,8 @@
   </div>
 
   <div class="form-control">
-    <label for="phoneCaption">Phone: </label>
-    <input id="phoneCaption" class="field-input" type="password" placeholder="enter phone" formControlName="phone">
+    <label for="phoneCaption"></label>
+    <input id="phoneCaption" class="field-input" type="text" placeholder="Номер мобільного телефону" formControlName="phone">
     <div
       *ngIf="isControlInvalid('phone')"
       class="validation"
@@ -23,8 +23,8 @@
   </div>
 
   <div class="form-control">
-    <label for="emailCaption">Email: </label>
-    <input id="emailCaption" class="field-input" type="text" placeholder="enter email" formControlName="email">
+    <label for="emailCaption"></label>
+    <input id="emailCaption" class="field-input" type="text" placeholder="Електронна пошта" formControlName="email">
     <div
       *ngIf="isControlInvalid('email')"
       class="validation"
@@ -34,8 +34,8 @@
   </div>
 
   <div class="form-control">
-    <label for="passwordCaption">Password: </label>
-    <input id="passwordCaption" class="field-input" type="password" placeholder="enter password" formControlName="password">
+    <label for="passwordCaption"></label>
+    <input id="passwordCaption" class="field-input" type="password" placeholder="Новий пароль" formControlName="password">
     <div
       *ngIf="isControlInvalid('password')"
       class="validation"

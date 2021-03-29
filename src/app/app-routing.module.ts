@@ -15,8 +15,8 @@ const routes: Routes = [
       {path: 'post/:id', component: PostPageComponent},
       {path: 'poster', component: PosterPageComponent},
       {path: 'about', component: AboutPageComponent},
-      // {path: 'registration', component: RegistrationPageComponent},
-      {path: '**', redirectTo: 'home'}
+      {path: 'registration', component: RegistrationPageComponent},
+      // {path: '**', redirectTo: 'home'}
     ]
   }
 ];
