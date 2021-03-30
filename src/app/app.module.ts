@@ -12,6 +12,7 @@ import { PostPageComponent } from './post-page/post-page.component';
 import { MainLayoutComponent } from './shared/components';
 import { PostComponent } from './shared/components';
 import { EventFormComponent } from './event-form/event-form.component';
+import { RegistrationPageComponent } from './shared/components';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EventFormComponent } from './event-form/event-form.component';
     AboutPageComponent,
     PostPageComponent,
     PostComponent,
-    EventFormComponent
+    EventFormComponent,
+    RegistrationPageComponent
   ],
   imports: [
     BrowserModule,
