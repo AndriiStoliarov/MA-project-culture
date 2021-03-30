@@ -1,0 +1,52 @@
+<form class="form-container" [formGroup]="registrationForm" (ngSubmit)="submit()">
+  <h2>Створити користувача</h2>
+  <div class="form-control">
+    <label for="nameCaption"></label>
+    <input id="nameCaption" class="field-input" type="text" placeholder="Ім'я" formControlName="name">
+    <div
+      *ngIf="isControlInvalid('name')"
+      class="validation"
+    >
+      <small>{{ getContolError('name') }}</small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label for="phoneCaption"></label>
+    <input id="phoneCaption" class="field-input" type="text" placeholder="Номер мобільного телефону" formControlName="phone">
+    <div
+      *ngIf="isControlInvalid('phone')"
+      class="validation"
+    >
+      <small>{{ getContolError('phone') }}</small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label for="emailCaption"></label>
+    <input id="emailCaption" class="field-input" type="text" placeholder="Електронна пошта" formControlName="email">
+    <div
+      *ngIf="isControlInvalid('email')"
+      class="validation"
+    >
+      <small>{{ getContolError('email') }}</small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label for="passwordCaption"></label>
+    <input id="passwordCaption" class="field-input" type="password" placeholder="Новий пароль" formControlName="password">
+    <div
+      *ngIf="isControlInvalid('password')"
+      class="validation"
+    >
+      <small>{{ getContolError('password') }}</small>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="registrationForm.invalid"
+  >Зареєструватися</button>
+</form>
