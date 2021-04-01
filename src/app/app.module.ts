@@ -13,6 +13,7 @@ import { MainLayoutComponent } from './shared/components';
 import { PostComponent } from './shared/components';
 import { EventFormComponent } from './event-form/event-form.component';
 import { RegistrationPageComponent } from './shared/components';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RegistrationPageComponent } from './shared/components';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

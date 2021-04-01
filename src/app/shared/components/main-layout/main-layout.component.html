@@ -1,16 +1,16 @@
-<header>
+<!-- <header>
   <nav class="navbar">
     <h1 class="logo-font">
-      Cheevent
+      Cheevent -->
       <!-- <a class="caption-link" routerLink="/">Cheevent</a> -->
-    </h1>
+    <!-- </h1>
     <ul class="navigation-list">
       <li><a class="navigation-link" routerLink="/">Головна</a></li>
       <li><a class="navigation-link" routerLink="/poster">Афіша</a></li>
       <li><a class="navigation-link" routerLink="/about">О нас</a></li>
-    </ul>
+    </ul> -->
     <!-- <button class="btn">додати подію</button> -->
-    <ul class="navigation-list">
+    <!-- <ul class="navigation-list">
       <li><a class="navigation-link" routerLink="/event">+ додати подію</a></li>
     </ul>
     <ul class="navigation-list">
@@ -18,8 +18,57 @@
       <li><a class="navigation-link" routerLink="/registration">Реєстрація</a></li>
     </ul>
   </nav>
+</header> -->
+
+<header>
+  <!--Navbar-->
+  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false">
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand logo-font" href="#">ЧІВЕНТ</a></mdb-navbar-brand>
+    <!-- Collapsible content -->
+    <links>
+          <!-- Links -->
+
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link waves-light" routerLink="/" mdbWavesEffect>Головна<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-light" routerLink="/poster" mdbWavesEffect>Афіша</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-light" routerLink="/about" mdbWavesEffect>О нас</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link waves-light" routerLink="/event" mdbWavesEffect>додати подію<span class="sr-only"></span></a>
+          </li>
+        </ul>
+
+      <!-- Links -->
+
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+          <li class="nav-item">
+            <a class="nav-link">
+              <mdb-icon fas icon="sign-in-alt fa-2x"></mdb-icon>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/registration">
+              <mdb-icon fas icon="address-card fa-2x"></mdb-icon>
+            </a>
+          </li>
+        </ul>
+
+      </links>
+
+      <!-- Collapsible content -->
+  </mdb-navbar>
+  <!--/.Navbar-->
 </header>
 
-<div class="container">
+<div class="wrapper">
   <router-outlet></router-outlet>
 </div>
