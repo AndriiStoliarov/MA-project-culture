@@ -11,16 +11,15 @@
   margin-bottom: .8rem;
 }
 
-/* &.invalid {
+  /* &.invalid {
   color: #dc3545;
   input {
     border-color: #dc3545;
-  }
-}
+  } */
 
 .validation {
   color: #dc3545;
-} */
+}
 
 .validation {
   color: #F00;

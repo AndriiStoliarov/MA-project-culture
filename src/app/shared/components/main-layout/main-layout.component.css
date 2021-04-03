@@ -1,4 +1,4 @@
-.container {
+.wrapper {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
@@ -7,7 +7,7 @@
   padding: 1rem;
 }
 
-.navbar {
+/* .navbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -17,7 +17,7 @@
   opacity: 0.9;
   margin-bottom: 1rem;
   border-bottom: 1px solid #333333;
-}
+} */
 
 .caption-link {
   text-decoration: none;
@@ -52,7 +52,13 @@
 
 .logo-font {
   font-family: 'Amatic SC', cursive;
+  font-size: 32px;
 }
+
+/* .font-size-menu {
+  font-size: 18px;
+} */
+
 /* .btn-link {
   background: none;
   padding: 0;
