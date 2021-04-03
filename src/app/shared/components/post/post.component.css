@@ -1,9 +1,11 @@
 .card {
   padding: 1rem;
-  border: #ccc 1px dotted;
-  margin: 0.7rem 0;
+  /* border: #ccc 1px dotted; */
+  margin: .5rem .5rem;
+  /* display: block; */
+  max-width: 400px;
 }
-
+/*
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -30,4 +32,4 @@
 .btn-dark {
   background: #333333;
   color: #fff;
-}
+} */
