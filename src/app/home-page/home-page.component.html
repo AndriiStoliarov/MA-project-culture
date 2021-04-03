@@ -1,12 +1,22 @@
 <div class="posts" *ngIf="true; else loading">
-  <input class="field-input" type="text" placeholder="Знайти подію...">
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
+  <div class="justify-center">
+    <div class="md-form">
+      <mdb-icon fas icon="search" class="prefix"></mdb-icon>
+      <input mdbInput type="text" id="searchCaption" class="form-control field-input">
+      <label for="searchCaption">пошук по назві</label>
+    </div>
+  </div>
+  <div class="regular">
+    <app-post></app-post>
+    <app-post></app-post>
+    <app-post></app-post>
+    <app-post></app-post>
+    <app-post></app-post>
+  </div>
 </div>
 
 <ng-template #loading>
   <p class="text-center">Триває завантаження...</p>
 </ng-template>
+
+<!-- <input class="field-input center" type="text" placeholder="Знайти подію..."> -->
