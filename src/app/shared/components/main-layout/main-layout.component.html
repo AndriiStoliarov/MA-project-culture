@@ -49,7 +49,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/registration">
+            <a class="nav-link" (click)="frame.show()">
               <mdb-icon fas icon="address-card fa-lg"></mdb-icon>
             </a>
           </li>
@@ -62,14 +62,59 @@
   <router-outlet></router-outlet>
 </div>
 
-<!-- Footer -->
-<!-- <footer class="page-footer font-small indigo"> -->
-
-  <!-- Copyright -->
-  <!-- <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/">MDBootstrap.com</a>
-  </div> -->
-  <!-- Copyright -->
-
-<!-- </footer> -->
-<!-- Footer -->
+<div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Створити користувача</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+          <input type="text" id="nameCaption" class="form-control" [formControl]="getControlName('name')"
+                 mdbInput mdbValidate>
+          <label for="nameCaption">Ім'я</label>
+          <mdb-error *ngIf="isControlInvalid('name')">
+            {{ getContolError('name') }}
+          </mdb-error>
+        </div>
+        <div class="md-form mb-5">
+          <mdb-icon fas icon="mobile" class="prefix grey-text"></mdb-icon>
+          <input type="text" id="phoneCaption" class="form-control" [formControl]="getControlName('phone')"
+                 mdbInput mdbValidate>
+          <label for="phoneCaption">Номер мобільного телефону</label>
+          <mdb-error *ngIf="isControlInvalid('phone')">
+            {{ getContolError('phone') }}
+          </mdb-error>
+        </div>
+        <div class="md-form mb-5">
+          <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+          <input type="email" id="emailCaption" class="form-control" [formControl]="getControlName('email')"
+                 mdbInput mdbValidate>
+          <label for="emailCaption">Електронна пошта</label>
+          <mdb-error
+            *ngIf="isControlInvalid('email')">
+            {{ getContolError('email') }}
+          </mdb-error>
+        </div>
+        <div class="md-form mb-4">
+          <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon>
+          <input type="password" id="passwordCaption" class="form-control" [formControl]="getControlName('password')"
+                 mdbInput mdbValidate>
+          <label for="passwordCaption">Новий пароль</label>
+          <mdb-error
+            *ngIf="isControlInvalid('password')">
+            {{ getContolError('password') }}
+          </mdb-error>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button mdbBtn color="deep-orange" class="waves-light" mdbWavesEffect>Зареєструватися</button>
+      </div>
+    </div>
+  </div>
+</div>

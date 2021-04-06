@@ -19,25 +19,25 @@
   border-bottom: 1px solid #333333;
 } */
 
-.caption-link {
+/* .caption-link {
   text-decoration: none;
-}
+} */
 
-.navigation-list {
+/* .navigation-list {
   list-style: none;
   display: flex;
-}
+} */
 
-.navigation-link {
+/* .navigation-link {
   text-decoration: none;
   padding-right: 15px;
-}
+} */
 
-.navigation-link:hover {
+/* .navigation-link:hover {
   color: #666;
-}
+} */
 
-.btn {
+/* .btn {
   display: inline-block;
   background: #f4f4f4;
   color: #333;
@@ -48,13 +48,16 @@
   margin-right: 0.5rem;
   transition: opacity 0.2s ease-in;
   outline: none;
-}
+} */
 
 .logo-font {
   font-family: 'Amatic SC', cursive;
   font-size: 32px;
 }
 
+.grey-text-color {
+  color: grey;
+}
 /* .font-size-menu {
   font-size: 18px;
 } */
