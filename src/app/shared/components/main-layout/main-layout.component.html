@@ -24,15 +24,40 @@
   <p>
     <mat-toolbar color="primary">
       <span>ЧІВЕНТ</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>exit_to_app</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>person_add</mat-icon>
-      </button>
+      <section>
+        <mat-nav-list>
+          <mat-list-item><a mat-button routerLink="/">Головна</a></mat-list-item>
+          <mat-list-item><a mat-button routerLink="/poster">Афіша</a></mat-list-item>
+          <mat-list-item><a mat-button routerLink="/about">О нас</a></mat-list-item>
+        </mat-nav-list>
+      </section>
+
+       <span class="example-spacer"></span>
+       <mat-nav-list>
+        <a mat-list-item mat-button routerLink="/">
+          <mat-icon>exit_to_app</mat-icon>
+        </a>
+        <a mat-list-item mat-button routerLink="/registration">
+          <mat-icon>person_add</mat-icon>
+        </a>
+       </mat-nav-list>
+
+
+
+
+       <!-- <mat-list dense>
+        <mat-list-item> <a mat-icon-button aria-label="exit-to-app">
+          <mat-icon>exit_to_app</mat-icon>
+        </a> </mat-list-item>
+        <mat-list-item>
+          <a mat-icon-button aria-label="person-add" routerLink="/registration">
+            <mat-icon>person_add</mat-icon>
+          </a>
+        </mat-list-item>
+       </mat-list> -->
     </mat-toolbar>
   </p>
+
 </header>
 
 <div class="wrapper">
