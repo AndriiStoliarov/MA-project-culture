@@ -7,63 +7,27 @@
   padding: 1rem;
 }
 
-/* .navbar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0.7rem 2rem;
-  z-index: 1;
-  width: 100%;
-  opacity: 0.9;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #333333;
-} */
+.navigation-link:hover {
+  color: whitesmoke;
+}
 
-/* .caption-link {
-  text-decoration: none;
-} */
+.spacer {
+  flex: 1 1 auto;
+}
 
-/* .navigation-list {
-  list-style: none;
-  display: flex;
-} */
+.button-container {
+  right: 10%;
+  bottom: 10%;
+  left: auto;
+  position: absolute;
+}
 
-/* .navigation-link {
-  text-decoration: none;
-  padding-right: 15px;
-} */
-
-/* .navigation-link:hover {
-  color: #666;
-} */
-
-/* .btn {
-  display: inline-block;
-  background: #f4f4f4;
-  color: #333;
-  padding: 0.4rem 1.3rem;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  transition: opacity 0.2s ease-in;
-  outline: none;
-} */
-
-.logo-font {
+/* .logo-font {
   font-family: 'Amatic SC', cursive;
   font-size: 32px;
-}
-
-.grey-text-color {
-  color: grey;
-}
-/* .font-size-menu {
-  font-size: 18px;
 } */
 
-/* .btn-link {
-  background: none;
-  padding: 0;
-  margin: 0;
+/* .flex-container {
+  display: flex;
+  justify-content: space-around;
 } */

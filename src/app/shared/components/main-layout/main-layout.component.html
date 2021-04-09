@@ -1,120 +1,57 @@
-<!-- <header>
-  <nav class="navbar">
-    <h1 class="logo-font">
-      Cheevent -->
-      <!-- <a class="caption-link" routerLink="/">Cheevent</a> -->
-    <!-- </h1>
-    <ul class="navigation-list">
-      <li><a class="navigation-link" routerLink="/">Головна</a></li>
-      <li><a class="navigation-link" routerLink="/poster">Афіша</a></li>
-      <li><a class="navigation-link" routerLink="/about">О нас</a></li>
-    </ul> -->
-    <!-- <button class="btn">додати подію</button> -->
-    <!-- <ul class="navigation-list">
-      <li><a class="navigation-link" routerLink="/event">+ додати подію</a></li>
-    </ul>
-    <ul class="navigation-list">
-      <li><a class="navigation-link" href="#">Вхід</a></li>
-      <li><a class="navigation-link" routerLink="/registration">Реєстрація</a></li>
-    </ul>
-  </nav>
-</header> -->
-
 <header>
-  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false">
-    <mdb-navbar-brand><a class="navbar-brand logo-font" href="#">ЧІВЕНТ</a></mdb-navbar-brand>
-    <links>
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link waves-light" routerLink="/" mdbWavesEffect>Головна<span class="sr-only"></span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-light" routerLink="/poster" mdbWavesEffect>Афіша</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-light" routerLink="/about" mdbWavesEffect>О нас</a>
-          </li>
-        </ul>
+  <mat-toolbar color="primary">
 
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link waves-light" routerLink="/event" mdbWavesEffect>додати подію<span class="sr-only"></span></a>
-          </li>
-        </ul>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
 
-        <ul class="navbar-nav ml-auto nav-flex-icons">
-          <li class="nav-item">
-            <a class="nav-link">
-              <mdb-icon fas icon="sign-in-alt fa-lg"></mdb-icon>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" (click)="frame.show()">
-              <mdb-icon fas icon="address-card fa-lg"></mdb-icon>
-            </a>
-          </li>
-        </ul>
-      </links>
-  </mdb-navbar>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="/">Головна</a>
+      <a mat-menu-item routerLink="/poster">Афіша</a>
+      <a mat-menu-item routerLink="/about">О нас</a>
+    </mat-menu>
+
+    <span>Чівент</span>
+
+    <span class="spacer"></span>
+
+    <!-- <mat-form-field class="example-full-width">
+      <mat-label for="serchCaption"></mat-label>
+      <mat-icon matSuffix>search</mat-icon>
+      <input id="serchCaption" type="search" matInput placeholder="пошук за назвою"
+        aria-label="Search through site content">
+    </mat-form-field> -->
+
+    <!-- <section>
+      <mat-nav-list>
+        <mat-list-item><a mat-button class="navigation-link" routerLink="/">Головна</a></mat-list-item>
+        <mat-list-item><a mat-button class="navigation-link" routerLink="/poster">Афіша</a></mat-list-item>
+        <mat-list-item><a mat-button class="navigation-link" routerLink="/about">О нас</a></mat-list-item>
+      </mat-nav-list>
+    </section> -->
+
+    <mat-list>
+      <mat-list-item>
+        <a mat-icon-button class="navigation-link" aria-label="exit-to-app">
+          <mat-icon>exit_to_app</mat-icon>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+        <a mat-icon-button class="navigation-link" aria-label="person-add" routerLink="/registration">
+          <mat-icon>person_add</mat-icon>
+        </a>
+      </mat-list-item>
+    </mat-list>
+
+  </mat-toolbar>
 </header>
+
+<div class="button-container">
+  <a mat-fab color="primary" routerLink="/event" aria-label="add new event">
+    <mat-icon>add</mat-icon>
+  </a>
+</div>
 
 <div class="wrapper">
   <router-outlet></router-outlet>
-</div>
-
-<div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Створити користувача</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
-          <input type="text" id="nameCaption" class="form-control" [formControl]="getControlName('name')"
-                 mdbInput mdbValidate>
-          <label for="nameCaption">Ім'я</label>
-          <mdb-error *ngIf="isControlInvalid('name')">
-            {{ getContolError('name') }}
-          </mdb-error>
-        </div>
-        <div class="md-form mb-5">
-          <mdb-icon fas icon="mobile" class="prefix grey-text"></mdb-icon>
-          <input type="text" id="phoneCaption" class="form-control" [formControl]="getControlName('phone')"
-                 mdbInput mdbValidate>
-          <label for="phoneCaption">Номер мобільного телефону</label>
-          <mdb-error *ngIf="isControlInvalid('phone')">
-            {{ getContolError('phone') }}
-          </mdb-error>
-        </div>
-        <div class="md-form mb-5">
-          <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
-          <input type="email" id="emailCaption" class="form-control" [formControl]="getControlName('email')"
-                 mdbInput mdbValidate>
-          <label for="emailCaption">Електронна пошта</label>
-          <mdb-error
-            *ngIf="isControlInvalid('email')">
-            {{ getContolError('email') }}
-          </mdb-error>
-        </div>
-        <div class="md-form mb-4">
-          <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon>
-          <input type="password" id="passwordCaption" class="form-control" [formControl]="getControlName('password')"
-                 mdbInput mdbValidate>
-          <label for="passwordCaption">Новий пароль</label>
-          <mdb-error
-            *ngIf="isControlInvalid('password')">
-            {{ getContolError('password') }}
-          </mdb-error>
-        </div>
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <button mdbBtn color="deep-orange" class="waves-light" mdbWavesEffect>Зареєструватися</button>
-      </div>
-    </div>
-  </div>
 </div>
