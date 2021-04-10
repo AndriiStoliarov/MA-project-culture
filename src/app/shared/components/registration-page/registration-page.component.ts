@@ -12,6 +12,7 @@ import { User } from '../../types';
 export class RegistrationPageComponent implements OnInit {
 
   registrationForm: any;
+  hide = true;
 
   constructor(
     // private registrationService: RegistrationService,
@@ -20,12 +21,13 @@ export class RegistrationPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.registrationForm = this.fb.group({
+    this.registrationForm = this.fb.group ({
       name: new FormControl('', [
         Validators.required
       ]),
       phone: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern(/^\d{10}$/)
       ]),
       email: new FormControl('', [
         Validators.required,
@@ -38,7 +40,13 @@ export class RegistrationPageComponent implements OnInit {
   }
 
   isControlInvalid(fieldName: string): boolean {
-    return (this.registrationForm.get(fieldName).invalid && this.registrationForm.get(fieldName).touched);
+    return (this.registrationForm.get(fieldName).invalid
+      && (this.registrationForm.get(fieldName).dirty
+      || this.registrationForm.get(fieldName).touched));
+  }
+
+  getControlName(controlName: string): boolean {
+    return this.registrationForm.get(controlName);
   }
 
   getContolError(controlName: string): string | null {
@@ -48,6 +56,9 @@ export class RegistrationPageComponent implements OnInit {
     }
     if (control.errors.email) {
       return 'Enter correct email';
+    }
+    if (control.errors.patter !== /^\d{10}$/) {
+      return 'Enter the 10-digit number';
     }
     return null;
   }

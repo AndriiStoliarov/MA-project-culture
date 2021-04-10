@@ -1,67 +1,17 @@
-.form-container {
-  max-width: 600px;
+.wrapper {
+  max-width: 480px;
   padding: 1rem;
-  border: #ccc 1px dotted;
   margin: 0 auto;
 }
 
-.form-control {
-  display: block;
-  color: #888;
-  margin-bottom: .8rem;
+.mat-stepper-vertical {
+  margin-top: 8px;
 }
 
-  /* &.invalid {
-  color: #dc3545;
-  input {
-    border-color: #dc3545;
-  } */
-
-.validation {
-  color: #dc3545;
+.mat-form-field {
+  margin-top: 16px;
 }
 
 .validation {
   color: #F00;
-}
-
-.btn {
-  display: inline-block;
-  background: #f4f4f4;
-  color: #333;
-  padding: 0.4rem 1.3rem;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  transition: opacity 0.2s ease-in;
-  outline: none;
-}
-
-.btn:disabled {
-    cursor: not-allowed;
-    background: #f4f4f4;
-    color: #111;
-  }
-
-.btn-primary {
-  background: #dc3545;
-  color: #fff;
-}
-
-.field-input {
-  display: block;
-  width: 100%;
-  padding: .4rem;
-  font-size: 1.2rem;
-  border: 1px solid #CCC;
-  margin-bottom: 1rem;
-}
-
-.field-input.ng-invalid.ng-touched {
-  border: 1px solid #F00;
-}
-
-.field-input.ng-valid.ng-touched {
-  border: 1px solid #008000;
 }
