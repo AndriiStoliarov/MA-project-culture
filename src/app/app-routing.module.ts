@@ -20,6 +20,10 @@ const routes: Routes = [
       {path: 'event', component: EventFormComponent},
       // {path: '**', redirectTo: 'home'}
     ]
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./user').then(m => m.UserModule)
   }
 ];
 

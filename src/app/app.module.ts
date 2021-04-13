@@ -1,7 +1,7 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +14,6 @@ import { PostComponent } from './shared/components';
 import { EventFormComponent } from './event-form/event-form.component';
 import { RegistrationPageComponent } from './shared/components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -25,6 +24,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
+
+const matModules = [
+  MatSliderModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatMenuModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatStepperModule,
+  MatInputModule
+];
 
 @NgModule({
   declarations: [
@@ -44,15 +55,7 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSliderModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatStepperModule,
-    MatInputModule
+    ...matModules
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
