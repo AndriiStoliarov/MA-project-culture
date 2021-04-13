@@ -13,3 +13,7 @@
 .text-center {
   text-align: center;
 }
+
+.loader-margin {
+  margin: 0 auto;
+}

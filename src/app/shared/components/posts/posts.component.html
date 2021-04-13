@@ -1,7 +1,4 @@
 <div class="posts" *ngIf="true; else loading">
-  <!-- <div class="justify-center">
-    <input class="field-input center" type="text" placeholder="Знайти подію...">
-  </div> -->
   <div class="flex-container">
     <app-post></app-post>
     <app-post></app-post>
@@ -12,7 +9,5 @@
 </div>
 
 <ng-template #loading>
-  <p class="text-center">Триває завантаження...</p>
+  <mat-spinner class="loader-margin"></mat-spinner>
 </ng-template>
-
-<!-- <mat-spinner></mat-spinner> -->
