@@ -1,0 +1,15 @@
+.posts {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.text-center {
+  text-align: center;
+}
