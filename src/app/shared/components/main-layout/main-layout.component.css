@@ -15,14 +15,6 @@
   flex: 1 1 auto;
 }
 
-.button-container {
-  right: 5%;
-  bottom: 10%;
-  left: auto;
-  position: fixed;
-  z-index: 1;
-}
-
 /* .logo-font {
   font-family: 'Amatic SC', cursive;
   font-size: 32px;

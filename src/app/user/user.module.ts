@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { UserPostsPageComponent } from './user-posts-page/user-posts-page.component';
 
 const matModules = [
   MatSliderModule,
@@ -32,7 +33,8 @@ const matModules = [
 @NgModule({
   declarations: [
     UserLayoutComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    UserPostsPageComponent
   ],
   imports: [
     CommonModule,
