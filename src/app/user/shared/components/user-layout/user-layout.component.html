@@ -14,7 +14,6 @@
 
     <span class="spacer"></span>
 
-
     <mat-form-field>
       <mat-label for="serchCaption">пошук за назвою</mat-label>
       <input matInput id="serchCaption" placeholder="">
@@ -42,7 +41,7 @@
 </header>
 
 <div class="button-container">
-  <a mat-fab color="primary" aria-label="add new event">
+  <a mat-fab color="primary" routerLink="event" aria-label="add new event">
     <mat-icon>add</mat-icon>
   </a>
 </div>
@@ -50,5 +49,3 @@
 <div class="wrapper">
   <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>
