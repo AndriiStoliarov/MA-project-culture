@@ -11,8 +11,8 @@ import { RegistrationPageComponent } from './shared/components';
 const routes: Routes = [
   {
     path: '', component: MainLayoutComponent, children: [
-      {path: '', redirectTo: 'home', pathMatch: 'full'},
-      {path: 'home', component: HomePageComponent},
+      {path: '', redirectTo: 'posts', pathMatch: 'full'},
+      {path: 'posts', component: HomePageComponent},
       {path: 'post/:id', component: PostPageComponent},
       {path: 'poster', component: PosterPageComponent},
       {path: 'about', component: AboutPageComponent},
