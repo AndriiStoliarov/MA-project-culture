@@ -1,0 +1,19 @@
+.wrapper {
+  max-width: 1024px;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.flex-card {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.align-card-content {
+  text-align: justify;
+}
+
+.line-height-content {
+  line-height: 2.5;
+}
