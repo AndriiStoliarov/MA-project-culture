@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <h1 mat-dialog-title>Поміняти напрямок руху дороги в центрі.</h1>
+  <hr>
+  <form [formGroup]="needForm" class="flex-form" #form>
+    <mat-form-field class="full-width-field" appearance="legacy">
+      <mat-label>Опишіть вашу пропозицію</mat-label>
+      <input matInput formControlName="message" required>
+      <mat-icon matSuffix>mode_edit</mat-icon>
+      <mat-error *ngIf="isControlInvalid('message')" class="validation">
+        {{ getContolError('message') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Ціна</mat-label>
+      <input matInput type="number" formControlName="price" required>
+      <mat-icon matSuffix>attach_money</mat-icon>
+      <mat-error *ngIf="isControlInvalid('price')" class="validation">
+        {{ getContolError('price') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>№ мобільного телефону</mat-label>
+      <input matInput formControlName="phone" required pattern>
+      <mat-hint>номер для зворотнього зв'зку</mat-hint>
+      <mat-icon matSuffix>phone_iphone</mat-icon>
+      <mat-error *ngIf="isControlInvalid('phone')" class="validation">
+        {{ getContolError('phone') }}
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  <div mat-dialog-actions class="flex-button">
+    <button mat-button mat-dialog-close>Закрити</button>
+    <button mat-button (click)="form.reset()">Скинути</button>
+    <button mat-button (click)="needForm.submit()" [disabled]="needForm.invalid">Надіслати</button>
+  </div>
+</div>

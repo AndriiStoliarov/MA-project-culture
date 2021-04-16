@@ -26,6 +26,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
 import { PostsComponent } from './shared/components/posts/posts.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NeedFormComponent } from './shared/components/need-form/need-form.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const matModules = [
   MatSliderModule,
@@ -37,7 +39,8 @@ const matModules = [
   MatFormFieldModule,
   MatStepperModule,
   MatInputModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatDialogModule
 ];
 
 @NgModule({
@@ -51,7 +54,8 @@ const matModules = [
     PostComponent,
     EventFormComponent,
     RegistrationPageComponent,
-    PostsComponent
+    PostsComponent,
+    NeedFormComponent
   ],
   imports: [
     BrowserModule,
