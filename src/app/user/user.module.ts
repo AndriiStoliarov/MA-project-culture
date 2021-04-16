@@ -16,6 +16,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UserPostsPageComponent } from './user-posts-page/user-posts-page.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const matModules = [
   MatSliderModule,
@@ -27,7 +28,8 @@ const matModules = [
   MatFormFieldModule,
   MatStepperModule,
   MatInputModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatDialogModule
 ];
 
 @NgModule({
