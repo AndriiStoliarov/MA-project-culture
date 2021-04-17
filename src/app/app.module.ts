@@ -28,7 +28,6 @@ import { PostsComponent } from './shared/components/posts/posts.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NeedFormComponent } from './shared/components/need-form/need-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { NeedPostComponent } from './shared/components/need-post/need-post.component';
 
 const matModules = [
   MatSliderModule,
@@ -56,8 +55,7 @@ const matModules = [
     EventFormComponent,
     RegistrationPageComponent,
     PostsComponent,
-    NeedFormComponent,
-    NeedPostComponent
+    NeedFormComponent
   ],
   imports: [
     BrowserModule,

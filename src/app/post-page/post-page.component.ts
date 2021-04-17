@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NeedFormComponent } from '../shared/components';
 
 @Component({
   selector: 'app-post-page',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog(): void {
+    this.dialog.open(NeedFormComponent);
   }
 
 }
