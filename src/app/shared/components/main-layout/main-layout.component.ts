@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { RegistrationPageComponent } from '../registration-page/registration-page.component';
 
 @Component({
   selector: 'app-main-layout',
@@ -8,10 +10,14 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 })
 export class MainLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
+  }
+
+  openDialog(): void {
+    this.dialog.open(RegistrationPageComponent);
   }
 
 }

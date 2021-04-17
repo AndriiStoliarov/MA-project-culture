@@ -1,11 +1,22 @@
 .wrapper {
   max-width: 480px;
   padding: 1rem;
-  margin: 0 auto;
 }
 
-.mat-stepper-vertical {
-  margin-top: 8px;
+.flex-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-button {
+  display: flex;
+  justify-content: center;
+}
+
+.full-width-field {
+  width: 100%;
 }
 
 .mat-form-field {
@@ -14,4 +25,8 @@
 
 .validation {
   color: #F00;
+}
+
+.align-center {
+  text-align: center;
 }
