@@ -35,10 +35,6 @@ export class NeedFormComponent implements OnInit {
       || this.needForm.get(fieldName).touched));
   }
 
-  getControlName(controlName: string): boolean {
-    return this.needForm.get(controlName);
-  }
-
   getContolError(controlName: string): string | null {
     const control = this.needForm.get(controlName);
     if (control.errors.required) {

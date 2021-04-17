@@ -6,7 +6,6 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { PosterPageComponent } from './poster-page/poster-page.component';
 import { MainLayoutComponent } from './shared/components';
-import { RegistrationPageComponent } from './shared/components';
 
 const routes: Routes = [
   {
@@ -16,7 +15,6 @@ const routes: Routes = [
       {path: 'post/:id', component: PostPageComponent},
       {path: 'poster', component: PosterPageComponent},
       {path: 'about', component: AboutPageComponent},
-      {path: 'registration', component: RegistrationPageComponent},
       {path: 'event', component: EventFormComponent},
       // {path: '**', redirectTo: 'home'}
     ]

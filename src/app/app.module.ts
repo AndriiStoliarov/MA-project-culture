@@ -25,7 +25,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
 import { PostsComponent } from './shared/components/posts/posts.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NeedFormComponent } from './shared/components/need-form/need-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
@@ -39,7 +38,6 @@ const matModules = [
   MatFormFieldModule,
   MatStepperModule,
   MatInputModule,
-  MatProgressSpinnerModule,
   MatDialogModule
 ];
 

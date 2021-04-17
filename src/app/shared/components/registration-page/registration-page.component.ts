@@ -45,20 +45,16 @@ export class RegistrationPageComponent implements OnInit {
       || this.registrationForm.get(fieldName).touched));
   }
 
-  getControlName(controlName: string): boolean {
-    return this.registrationForm.get(controlName);
-  }
-
   getContolError(controlName: string): string | null {
     const control = this.registrationForm.get(controlName);
     if (control.errors.required) {
-      return 'The field cannot be empty';
+      return 'Поле не може бути порожнім';
     }
     if (control.errors.email) {
-      return 'Enter correct email';
+      return 'Введіть правильну ел. адресу';
     }
     if (control.errors.patter !== /^\d{10}$/) {
-      return 'Enter the 10-digit number';
+      return 'Введіть 10-значний номер';
     }
     return null;
   }

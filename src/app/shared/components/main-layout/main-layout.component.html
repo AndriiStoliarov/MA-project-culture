@@ -25,12 +25,21 @@
 
     <mat-list>
       <mat-list-item>
-        <a mat-icon-button class="navigation-link" aria-label="exit-to-app">
+        <a
+          mat-icon-button
+          class="navigation-link"
+          aria-label="exit-to-app"
+        >
           <mat-icon>login</mat-icon>
         </a>
       </mat-list-item>
       <mat-list-item>
-        <a mat-icon-button class="navigation-link" aria-label="person-add" routerLink="/registration">
+        <a
+          mat-icon-button
+          class="navigation-link"
+          aria-label="person-add"
+          (click)="openDialog()"
+        >
           <mat-icon>person_add</mat-icon>
         </a>
       </mat-list-item>
