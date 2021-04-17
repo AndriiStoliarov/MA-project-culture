@@ -7,20 +7,6 @@
   padding: 1rem;
 }
 
-.navigation-link:hover {
-  color: whitesmoke;
-}
-
 .spacer {
   flex: 1 1 auto;
 }
-
-/* .logo-font {
-  font-family: 'Amatic SC', cursive;
-  font-size: 32px;
-} */
-
-/* .flex-container {
-  display: flex;
-  justify-content: space-around;
-} */

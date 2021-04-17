@@ -15,9 +15,9 @@
 
     <span class="spacer"></span>
 
-    <mat-form-field>
+    <mat-form-field floatLabel="never">
       <mat-label for="serchCaption">пошук за назвою</mat-label>
-      <input matInput id="serchCaption" placeholder="">
+      <input matInput id="serchCaption">
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
 
@@ -27,7 +27,6 @@
       <mat-list-item>
         <a
           mat-icon-button
-          class="navigation-link"
           aria-label="exit-to-app"
         >
           <mat-icon>login</mat-icon>
@@ -36,7 +35,6 @@
       <mat-list-item>
         <a
           mat-icon-button
-          class="navigation-link"
           aria-label="person-add"
           (click)="openDialog()"
         >
@@ -44,6 +42,7 @@
         </a>
       </mat-list-item>
     </mat-list>
+
   </mat-toolbar>
 </header>
 
