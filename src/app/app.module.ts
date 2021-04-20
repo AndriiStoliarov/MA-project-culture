@@ -27,6 +27,7 @@ import { MatInputModule } from '@angular/material/input';
 import { PostsComponent } from './shared/components/posts/posts.component';
 import { NeedFormComponent } from './shared/components/need-form/need-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const matModules = [
   MatSliderModule,
@@ -38,7 +39,8 @@ const matModules = [
   MatFormFieldModule,
   MatStepperModule,
   MatInputModule,
-  MatDialogModule
+  MatDialogModule,
+  MatPaginatorModule
 ];
 
 @NgModule({

@@ -1,12 +1,19 @@
-<div class="posts" *ngIf="true; else loading">
+<div class="wrapper" *ngIf="true; else loading">
   <div class="flex-container">
-    <app-post></app-post>
-    <app-post></app-post>
-    <app-post></app-post>
-    <app-post></app-post>
-    <app-post></app-post>
+    <div *ngFor="let item of pageSlice">
+      <app-post></app-post>
+    </div>
   </div>
 </div>
+
+<mat-paginator
+    (page)="handlePageEvent($event)"
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [showFirstLastButtons]="showFirstLastButtons"
+    [pageIndex]="pageIndex">
+</mat-paginator>
 
 <ng-template #loading>
   <mat-spinner class="loader-margin"></mat-spinner>
