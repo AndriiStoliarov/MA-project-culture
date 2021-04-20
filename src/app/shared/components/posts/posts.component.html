@@ -4,16 +4,15 @@
       <app-post></app-post>
     </div>
   </div>
-</div>
-
-<mat-paginator
+  <mat-paginator
     (page)="handlePageEvent($event)"
     [length]="length"
     [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
     [showFirstLastButtons]="showFirstLastButtons"
     [pageIndex]="pageIndex">
-</mat-paginator>
+  </mat-paginator>
+</div>
 
 <ng-template #loading>
   <mat-spinner class="loader-margin"></mat-spinner>
