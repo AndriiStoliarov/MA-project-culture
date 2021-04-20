@@ -8,6 +8,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin-top: -13px;
 }
 
 .text-center {

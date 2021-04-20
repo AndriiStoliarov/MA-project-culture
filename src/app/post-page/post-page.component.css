@@ -13,3 +13,11 @@
 .margin-card {
   margin-bottom: 7px;
 }
+
+.flex-button {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+
+}
