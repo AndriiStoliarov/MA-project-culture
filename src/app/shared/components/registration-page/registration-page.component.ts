@@ -25,10 +25,6 @@ export class RegistrationPageComponent implements OnInit {
       name: new FormControl('', [
         Validators.required
       ]),
-      phone: new FormControl('', [
-        Validators.required,
-        Validators.pattern(/^\d{10}$/)
-      ]),
       email: new FormControl('', [
         Validators.required,
         Validators.email
@@ -52,9 +48,6 @@ export class RegistrationPageComponent implements OnInit {
     }
     if (control.errors.email) {
       return 'Введіть правильну ел. адресу';
-    }
-    if (control.errors.patter !== /^\d{10}$/) {
-      return 'Введіть 10-значний номер';
     }
     return null;
   }

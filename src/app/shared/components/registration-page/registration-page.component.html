@@ -12,16 +12,6 @@
     </mat-form-field>
 
     <mat-form-field appearance="legacy">
-      <mat-label>№ мобільного телефону</mat-label>
-      <input matInput formControlName="phone" required pattern>
-      <mat-hint>номер для зворотнього зв'зку</mat-hint>
-      <mat-icon matSuffix>phone_iphone</mat-icon>
-      <mat-error *ngIf="isControlInvalid('phone')" class="validation">
-        {{ getContolError('phone') }}
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="legacy">
       <mat-label>Електронна пошта</mat-label>
       <input matInput formControlName="email" required email>
       <mat-icon matSuffix>alternate_email</mat-icon>

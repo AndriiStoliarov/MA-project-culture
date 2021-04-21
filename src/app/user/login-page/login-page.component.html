@@ -1,1 +1,33 @@
-<p>login-page works!</p>
+<div class="wrapper">
+  <mat-card class="card">
+    <h1 class="align-center">Вхід в особистий кабінет</h1>
+    <hr>
+
+    <form [formGroup]="loginForm" class="flex-form" #form>
+      <mat-form-field appearance="legacy">
+        <mat-label>Електронна пошта</mat-label>
+        <input matInput formControlName="email" required email>
+        <mat-icon matSuffix>alternate_email</mat-icon>
+        <mat-error *ngIf="isControlInvalid('email')" class="validation">
+          {{ getContolError('email') }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Пароль</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="isControlInvalid('password')" class="validation">
+          {{ getContolError('password') }}
+        </mat-error>
+      </mat-form-field>
+    </form>
+
+    <mat-card-actions class="flex-button">
+      <button mat-button (click)="form.reset()">Скинути</button>
+      <button mat-button (click)="loginForm.submit()" [disabled]="loginForm.invalid">Увійти</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

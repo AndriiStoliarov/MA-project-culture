@@ -16,7 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { UserPostsPageComponent } from './user-posts-page/user-posts-page.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const matModules = [
   MatSliderModule,
@@ -40,6 +41,7 @@ const matModules = [
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ...matModules,
     RouterModule.forChild(userRouting)
   ],
