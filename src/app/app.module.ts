@@ -11,7 +11,6 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { MainLayoutComponent } from './shared/components';
 import { PostComponent } from './shared/components';
-import { EventFormComponent } from './event-form/event-form.component';
 import { RegistrationPageComponent } from './shared/components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -28,6 +27,7 @@ import { NeedFormComponent } from './shared/components/need-form/need-form.compo
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
 
 const matModules = [
   MatSliderModule,
@@ -40,7 +40,8 @@ const matModules = [
   MatInputModule,
   MatDialogModule,
   MatPaginatorModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatSelectModule
 ];
 
 @NgModule({
@@ -52,7 +53,6 @@ const matModules = [
     AboutPageComponent,
     PostPageComponent,
     PostComponent,
-    EventFormComponent,
     RegistrationPageComponent,
     PostsComponent,
     NeedFormComponent

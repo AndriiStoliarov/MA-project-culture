@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { EventFormComponent } from '../event-form/event-form.component';
+import { EventFormComponent } from './shared/components';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { UserLayoutComponent } from './shared/components/user-layout/user-layout.component';
 import { UserPostsPageComponent } from './user-posts-page/user-posts-page.component';

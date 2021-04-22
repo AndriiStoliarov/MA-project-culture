@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutPageComponent } from './about-page/about-page.component';
-import { EventFormComponent } from './event-form/event-form.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { PosterPageComponent } from './poster-page/poster-page.component';
@@ -14,8 +13,7 @@ const routes: Routes = [
       {path: 'home', component: HomePageComponent},
       {path: 'post/:id', component: PostPageComponent},
       {path: 'poster', component: PosterPageComponent},
-      {path: 'about', component: AboutPageComponent},
-      {path: 'event', component: EventFormComponent},
+      {path: 'about', component: AboutPageComponent}
       // {path: '**', redirectTo: 'home'}
     ]
   },

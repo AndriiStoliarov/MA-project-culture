@@ -1,0 +1,128 @@
+<div class="wrapper">
+  <mat-card class="card">
+    <h1 class="align-center">Створення події</h1>
+    <hr>
+    <!-- (ngSubmit)="onSubmit(eventForm.value)" -->
+    <form
+      [formGroup]="eventForm"
+      class="flex-form"
+      #form
+    >
+      <mat-form-field
+        class="width-field"
+        appearance="legacy"
+      >
+        <mat-label>Назва події</mat-label>
+        <input
+          matInput
+          formControlName="title"
+          required>
+        <mat-error
+          *ngIf="isControlInvalid('title')"
+          class="validation"
+        >
+          {{ getContolError('title') }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Категорія</mat-label>
+        <mat-select formControlName="category" required>
+          <mat-option
+            *ngFor="let category of categories"
+            [value]="category.value"
+          >
+            {{category.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="isControlInvalid('category')"
+          class="validation"
+        >
+          {{ getContolError('category') }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field
+        class="width-field"
+        appearance="legacy"
+      >
+        <mat-label>Опис</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          required
+        ></textarea>
+        <mat-error
+         *ngIf="isControlInvalid('description')"
+         class="validation"
+        >
+          {{ getContolError('description') }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field
+        class="width-field"
+        appearance="legacy"
+      >
+        <mat-label>Потреба</mat-label>
+        <input
+          matInput
+          formControlName="requirement"
+          required
+        >
+        <mat-error
+          *ngIf="isControlInvalid('requirement')"
+          class="validation"
+        >
+          {{ getContolError('requirement') }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Дата та час</mat-label>
+        <input
+         matInput
+         type="datetime-local"
+        >
+      </mat-form-field>
+
+      <mat-form-field
+        class="width-field"
+        appearance="legacy"
+      >
+        <mat-label>Місце проведення</mat-label>
+        <textarea
+          matInput
+          formControlName="place"
+        ></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Додати</mat-label>
+        <input
+          matInput
+          type="text"
+        >
+        <mat-icon matSuffix>upload_file</mat-icon>
+      </mat-form-field>
+    </form>
+
+    <mat-card-actions class="flex-button">
+      <button
+        mat-button
+        (click)="form.reset()"
+      >
+      Скинути
+      </button>
+      <button
+        mat-button
+        (click)="eventForm.submit()"
+        [disabled]="eventForm.invalid"
+        routerLink="/user/posts"
+      >
+      Створити
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -2,7 +2,7 @@
   <h1 mat-dialog-title>Поміняти напрямок руху дороги в центрі.</h1>
   <hr>
   <form [formGroup]="needForm" class="flex-form" #form>
-    <mat-form-field class="full-width-field" appearance="legacy">
+    <mat-form-field class="width-field" appearance="legacy">
       <mat-label>Опишіть вашу пропозицію</mat-label>
       <input matInput formControlName="message" required>
       <mat-icon matSuffix>mode_edit</mat-icon>
@@ -13,9 +13,15 @@
 
     <mat-form-field appearance="legacy">
       <mat-label>Ціна</mat-label>
-      <input matInput type="number" formControlName="price" required>
-      <mat-icon matSuffix>attach_money</mat-icon>
-      <mat-error *ngIf="isControlInvalid('price')" class="validation">
+      <input
+        matInput
+        type="number"
+        formControlName="price"
+        required
+      >
+      <span matPrefix>₴&nbsp;</span>
+      <mat-icon matSuffix>money</mat-icon>
+      <mat-error *ngIf="isControlInvalid('price')" class="validation" required pattern>
         {{ getContolError('price') }}
       </mat-error>
     </mat-form-field>

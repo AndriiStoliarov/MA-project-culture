@@ -1,6 +1,12 @@
 .wrapper {
   max-width: 480px;
   padding: 1rem;
+  margin: 0 auto;
+}
+
+.card {
+  padding: 1rem;
+  max-width: 400px;
 }
 
 .flex-form {
@@ -8,6 +14,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.mat-form-field {
+  margin-top: 16px;
 }
 
 .flex-button {
@@ -19,10 +29,10 @@
   width: 75%;
 }
 
-.mat-form-field {
-  margin-top: 16px;
-}
-
 .validation {
   color: #F00;
+}
+
+.align-center {
+  text-align: center;
 }

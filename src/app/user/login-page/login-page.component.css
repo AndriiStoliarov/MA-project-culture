@@ -16,6 +16,10 @@
   justify-content: center;
 }
 
+.mat-form-field {
+  margin-top: 16px;
+}
+
 .flex-button {
   display: flex;
   justify-content: center;
