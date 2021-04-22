@@ -4,6 +4,9 @@ import { RouterModule } from '@angular/router';
 import { UserLayoutComponent } from './shared/components/user-layout/user-layout.component';
 import { userRouting } from './user-routing.module';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { UserPostsPageComponent } from './user-posts-page/user-posts-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EventFormComponent } from './shared/components';
 
 import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -13,11 +16,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { UserPostsPageComponent } from './user-posts-page/user-posts-page.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 const matModules = [
   MatSliderModule,
@@ -30,16 +32,21 @@ const matModules = [
   MatInputModule,
   MatDialogModule,
   MatPaginatorModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatSelectModule
 ];
 
 @NgModule({
   declarations: [
     UserLayoutComponent,
     LoginPageComponent,
-    UserPostsPageComponent
+    UserPostsPageComponent,
+    EventFormComponent
   ],
   imports: [
+
+
+
     CommonModule,
     ReactiveFormsModule,
     ...matModules,

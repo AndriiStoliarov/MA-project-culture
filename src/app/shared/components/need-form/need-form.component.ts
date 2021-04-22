@@ -40,10 +40,8 @@ export class NeedFormComponent implements OnInit {
     if (control.errors.required) {
       return 'Поле не може бути порожнім';
     }
-    if (control.errors.email) {
-      return 'Введіть правильну ел. адресу';
-    }
-    if (control.errors.patter !== /^\d{10}$/) {
+
+    if (control.errors.pattern !== /^\d{10}$/) {
       return 'Введіть 10-значний номер';
     }
     return null;
