@@ -11,7 +11,6 @@ import { Category } from '../../types';
 export class EventFormComponent implements OnInit {
 
   eventForm: any;
-  uploadFile: FileReader;
   categories: Category[] = [
     {value: 'Exhibition', viewValue: 'Виставка'},
     {value: 'Concert', viewValue: 'Концерт'},
@@ -61,28 +60,13 @@ export class EventFormComponent implements OnInit {
     return null;
   }
 
-  // onFileSelected(): void {
-  //   const inputNode: any = document.querySelector('#file');
-
-  //   if (typeof (FileReader) !== 'undefined') {
-  //     const reader = new FileReader();
-
-  //     reader.onload = (e: any) => {
-  //       this.uploadFile = e.target.result;
-  //     };
-
-  //     reader.readAsArrayBuffer(inputNode.files[0]);
-  //   }
-  // }
-
   submit(): void {
     if (this.eventForm.invalid) {
       return;
     }
     console.log('sending...');
 
-    // console.log(this.eventForm.value);
-    console.log(this.uploadFile);
+    console.log(this.eventForm.value);
 
     // tslint:disable-next-line: deprecation
     this.eventService.postData(this.eventForm.value).subscribe(
@@ -91,10 +75,4 @@ export class EventFormComponent implements OnInit {
     });
   }
 
-  // onSubmit(value): void {
-  //   // tslint:disable-next-line: deprecation
-  //   this.eventService.postData(value).subscribe(() => {
-  //     console.log('sending...');
-  //   });
-  // }
 }

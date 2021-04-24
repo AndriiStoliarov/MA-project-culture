@@ -5,5 +5,5 @@ export interface Event {
   requirement: string;
   datetime?: string;
   place?: string;
-  file?: string;
+  file?: File;
 }

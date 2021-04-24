@@ -99,12 +99,11 @@
         ></textarea>
       </mat-form-field>
 
-      <!-- <button
-        mat-raised-button
-        (click)="fileInput.click()"
-      >
-      Choose File
-      </button> -->
+      <mat-form-field appearance="legacy">
+        <mat-label>Додайте ілюстрацію</mat-label>
+        <ngx-mat-file-input formControlName="file">
+        </ngx-mat-file-input>
+      </mat-form-field>
     </form>
 
     <mat-card-actions class="flex-button">
@@ -125,11 +124,4 @@
   </mat-card>
 </div>
 
-<!-- <input
-  hidden
-  (change)="onFileSelected()"
-  #fileInput
-  type="file"
-  id="file"
-> -->
 <!-- routerLink="/user/posts" -->
