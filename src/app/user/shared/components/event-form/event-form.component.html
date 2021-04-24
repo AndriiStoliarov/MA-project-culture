@@ -2,7 +2,7 @@
   <mat-card class="card">
     <h1 class="align-center">Створення події</h1>
     <hr>
-    <!-- (ngSubmit)="onSubmit(eventForm.value)" -->
+
     <form
       [formGroup]="eventForm"
       class="flex-form"
@@ -83,6 +83,7 @@
         <mat-label>Дата та час</mat-label>
         <input
          matInput
+         formControlName="datetime"
          type="datetime-local"
         >
       </mat-form-field>
@@ -98,14 +99,12 @@
         ></textarea>
       </mat-form-field>
 
-      <mat-form-field appearance="legacy">
-        <mat-label>Додати</mat-label>
-        <input
-          matInput
-          type="text"
-        >
-        <mat-icon matSuffix>upload_file</mat-icon>
-      </mat-form-field>
+      <!-- <button
+        mat-raised-button
+        (click)="fileInput.click()"
+      >
+      Choose File
+      </button> -->
     </form>
 
     <mat-card-actions class="flex-button">
@@ -117,12 +116,20 @@
       </button>
       <button
         mat-button
-        (click)="eventForm.submit()"
+        (click)="submit()"
         [disabled]="eventForm.invalid"
-        routerLink="/user/posts"
       >
       Створити
       </button>
     </mat-card-actions>
   </mat-card>
 </div>
+
+<!-- <input
+  hidden
+  (change)="onFileSelected()"
+  #fileInput
+  type="file"
+  id="file"
+> -->
+<!-- routerLink="/user/posts" -->

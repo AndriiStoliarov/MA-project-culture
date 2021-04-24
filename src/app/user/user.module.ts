@@ -7,6 +7,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { UserPostsPageComponent } from './user-posts-page/user-posts-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EventFormComponent } from './shared/components';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -44,11 +45,9 @@ const matModules = [
     EventFormComponent
   ],
   imports: [
-
-
-
     CommonModule,
     ReactiveFormsModule,
+    HttpClientModule,
     ...matModules,
     RouterModule.forChild(userRouting)
   ],
