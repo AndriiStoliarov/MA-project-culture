@@ -3,7 +3,7 @@ export interface Event {
   category: string;
   description: string;
   requirement: string;
-  datetime?: string;
+  starts_at?: string;
   place?: string;
   file?: File;
 }

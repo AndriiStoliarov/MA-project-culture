@@ -6,7 +6,7 @@ import { Event } from '../types';
 
 @Injectable({providedIn: 'root'})
 export class EventService {
-  ROOT_URL = 'http://52.57.253.240:3000/api/swagger_doc.json';
+  ROOT_URL = 'http://52.57.253.240:3000/api/events';
 
   constructor(private http: HttpClient) {
   }

@@ -31,18 +31,16 @@ export class EventFormComponent implements OnInit {
       title: new FormControl('',
         [Validators.required]
       ),
-      category: new FormControl('',
+      category_id: new FormControl('',
         [Validators.required]
       ),
-      description: new FormControl('',
+      body: new FormControl('',
         [Validators.required]
       ),
-      requirement: new FormControl('',
-        [Validators.required]
-      ),
-      datetime: new FormControl(''),
-      place: new FormControl(''),
-      file: new FormControl('')
+      // requirement: new FormControl(''),
+      starts_at: new FormControl(''),
+      // place: new FormControl(''),
+      // file: new FormControl('')
     });
   }
 
