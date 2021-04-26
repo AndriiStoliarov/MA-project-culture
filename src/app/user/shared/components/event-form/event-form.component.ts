@@ -31,18 +31,16 @@ export class EventFormComponent implements OnInit {
       title: new FormControl('',
         [Validators.required]
       ),
-      category: new FormControl('',
+      category_id: new FormControl('',
         [Validators.required]
       ),
-      description: new FormControl('',
+      body: new FormControl('',
         [Validators.required]
       ),
-      requirement: new FormControl('',
-        [Validators.required]
-      ),
-      datetime: new FormControl(''),
-      place: new FormControl(''),
-      file: new FormControl('')
+      // requirement: new FormControl(''),
+      starts_at: new FormControl(''),
+      // place: new FormControl(''),
+      // file: new FormControl('')
     });
   }
 
@@ -64,18 +62,15 @@ export class EventFormComponent implements OnInit {
     if (this.eventForm.invalid) {
       return;
     }
+    console.log('sending...');
+
+    console.log(this.eventForm.value);
 
     // tslint:disable-next-line: deprecation
-    this.eventService.postData(this.eventForm.value).subscribe(() => {
-      console.log('sending...');
+    this.eventService.postData(this.eventForm.value).subscribe(
+      (response: any) => {
+      console.log('created Event', response);
     });
   }
-
-  // onSubmit(value): void {
-  //   // tslint:disable-next-line: deprecation
-  //   this.eventService.postData(value).subscribe(() => {
-  //     console.log('sending...');
-  //   });
-  // }
 
 }

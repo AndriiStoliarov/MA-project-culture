@@ -7,6 +7,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { UserPostsPageComponent } from './user-posts-page/user-posts-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EventFormComponent } from './shared/components';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -20,6 +21,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+
 
 const matModules = [
   MatSliderModule,
@@ -33,7 +36,8 @@ const matModules = [
   MatDialogModule,
   MatPaginatorModule,
   MatProgressSpinnerModule,
-  MatSelectModule
+  MatSelectModule,
+  NgxMatFileInputModule
 ];
 
 @NgModule({
@@ -44,11 +48,9 @@ const matModules = [
     EventFormComponent
   ],
   imports: [
-
-
-
     CommonModule,
     ReactiveFormsModule,
+    HttpClientModule,
     ...matModules,
     RouterModule.forChild(userRouting)
   ],

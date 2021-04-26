@@ -28,6 +28,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
 const matModules = [
   MatSliderModule,
@@ -41,7 +42,8 @@ const matModules = [
   MatDialogModule,
   MatPaginatorModule,
   MatProgressSpinnerModule,
-  MatSelectModule
+  MatSelectModule,
+  NgxMatFileInputModule
 ];
 
 @NgModule({
