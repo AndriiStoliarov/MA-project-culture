@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventService } from '../../services';
 import { Category } from '../../types';
 
@@ -12,13 +12,13 @@ export class EventFormComponent implements OnInit {
 
   eventForm: any;
   categories: Category[] = [
-    {value: 'Exhibition', viewValue: 'Виставка'},
-    {value: 'Concert', viewValue: 'Концерт'},
-    {value: 'Performance', viewValue: 'Вистава'},
-    {value: 'Teaching', viewValue: 'Навчання'},
-    {value: 'Meeting', viewValue: 'Зустріч'},
-    {value: 'Holiday', viewValue: 'Свято'},
-    {value: 'Other', viewValue: 'Інше'}
+    {value: 1, viewValue: 'Виставка'},
+    {value: 2, viewValue: 'Концерт'},
+    {value: 3, viewValue: 'Вистава'},
+    {value: 4, viewValue: 'Навчання'},
+    {value: 5, viewValue: 'Зустріч'},
+    {value: 6, viewValue: 'Свято'},
+    {value: 7, viewValue: 'Інше'}
   ];
 
   constructor(
@@ -31,17 +31,35 @@ export class EventFormComponent implements OnInit {
       title: new FormControl('',
         [Validators.required]
       ),
-      category_id: new FormControl('',
-        [Validators.required]
-      ),
       body: new FormControl('',
         [Validators.required]
       ),
-      // requirement: new FormControl(''),
-      starts_at: new FormControl(''),
-      // place: new FormControl(''),
-      // file: new FormControl('')
+      category_id: new FormControl('',
+        [Validators.required]
+      ),
+      starts_at: new FormControl('',
+        [Validators.required]
+      ),
+      location: new FormControl(''),
+      requests_attributes: this.fb.array([]),
+      image: new FormControl('')
     });
+  }
+
+  requests_attributes(): FormArray {
+    return this.eventForm.get('requests_attributes') as FormArray;
+  }
+
+  newRequirement(): FormControl {
+    return new FormControl('');
+  }
+
+  addRequirement(): void {
+    this.requests_attributes().push(this.newRequirement());
+  }
+
+  removeRequirement(i: number): void {
+    this.requests_attributes().removeAt(i);
   }
 
   isControlInvalid(fieldName: string): boolean {
