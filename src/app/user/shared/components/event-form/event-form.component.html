@@ -25,24 +25,6 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="legacy">
-        <mat-label>Категорія</mat-label>
-        <mat-select formControlName="category_id" required>
-          <mat-option
-            *ngFor="let category of categories"
-            [value]="category.value"
-          >
-            {{category.viewValue}}
-          </mat-option>
-        </mat-select>
-        <mat-error
-          *ngIf="isControlInvalid('category_id')"
-          class="validation"
-        >
-          {{ getContolError('category_id') }}
-        </mat-error>
-      </mat-form-field>
-
       <mat-form-field
         class="width-field"
         appearance="legacy"
@@ -61,48 +43,88 @@
         </mat-error>
       </mat-form-field>
 
-      <!-- <mat-form-field
-        class="width-field"
-        appearance="legacy"
-      >
-        <mat-label>Потреба</mat-label>
-        <input
-          matInput
-          formControlName="requirement"
+      <mat-form-field appearance="legacy">
+        <mat-label>Категорія</mat-label>
+        <mat-select
+          formControlName="category_id"
+          required
         >
+          <mat-option
+            *ngFor="let category of categories"
+            [value]="category.value"
+          >
+            {{ category.viewValue }}
+          </mat-option>
+        </mat-select>
         <mat-error
-          *ngIf="isControlInvalid('requirement')"
+          *ngIf="isControlInvalid('category_id')"
           class="validation"
         >
-          {{ getContolError('requirement') }}
+          {{ getContolError('category_id') }}
         </mat-error>
-      </mat-form-field> -->
+      </mat-form-field>
 
       <mat-form-field appearance="legacy">
         <mat-label>Дата та час</mat-label>
         <input
-         matInput
-         formControlName="starts_at"
-         type="datetime-local"
+          matInput
+          formControlName="starts_at"
+          type="datetime-local"
+          required
         >
+        <mat-error
+          *ngIf="isControlInvalid('starts_at')"
+          class="validation"
+        >
+          {{ getContolError('starts_at') }}
+        </mat-error>
       </mat-form-field>
 
-      <!-- <mat-form-field
+      <mat-form-field
         class="width-field"
         appearance="legacy"
       >
         <mat-label>Місце проведення</mat-label>
         <textarea
           matInput
-          formControlName="place"
+          formControlName="location"
         ></textarea>
-      </mat-form-field> -->
+      </mat-form-field>
 
-      <!-- <mat-form-field appearance="legacy">
+      <div formArrayName="requests_attributes">
+        <button
+          mat-raised-button
+          (click)="addRequirement()"
+        >
+        Додати потребу
+        </button>
+        <div *ngFor="let requirement of requests_attributes().controls; let i=index"
+          [formGroupName]="i"
+        >
+        <mat-form-field
+          appearance="legacy"
+        >
+          <mat-label>Потреба</mat-label>
+          <input
+            matInput
+            [formControl]="requirement"
+          >
+        </mat-form-field>
+          <button
+            mat-button
+            color="warn"
+            (click)="removeRequirement(i)"
+          >
+          Видалити
+          </button>
+        </div>
+      </div>
+
+      <mat-form-field appearance="legacy">
         <mat-label>Додайте ілюстрацію</mat-label>
-        <ngx-mat-file-input formControlName="file">
+        <ngx-mat-file-input formControlName="image">
         </ngx-mat-file-input>
-      </mat-form-field> -->
+      </mat-form-field>
     </form>
 
     <mat-card-actions class="flex-button">

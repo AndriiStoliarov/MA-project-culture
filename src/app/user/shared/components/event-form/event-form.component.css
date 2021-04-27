@@ -4,11 +4,6 @@
   margin: 0 auto;
 }
 
-.card {
-  padding: 1rem;
-  max-width: 400px;
-}
-
 .flex-form {
   display: flex;
   flex-direction: column;
@@ -23,6 +18,10 @@
 .flex-button {
   display: flex;
   justify-content: center;
+}
+
+.button-center {
+  margin: 0 auto;
 }
 
 .width-field {

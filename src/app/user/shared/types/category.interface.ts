@@ -1,4 +1,4 @@
 export interface Category {
-  value: string;
+  value: number;
   viewValue: string;
 }
