@@ -8,13 +8,16 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-top: -13px;
+}
+
+.left-margin {
+  margin-left: .5rem;
 }
 
 .text-center {
   text-align: center;
 }
 
-.loader-margin {
+.center-margin {
   margin: 0 auto;
 }

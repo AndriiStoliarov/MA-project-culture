@@ -1,4 +1,14 @@
 <div class="wrapper" *ngIf="true; else loading">
+
+  <mat-form-field
+    appearance="legacy"
+    class="left-margin"
+  >
+    <mat-label for="serchCaption">пошук за назвою</mat-label>
+    <input matInput id="serchCaption">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
   <div class="flex-container">
     <div *ngFor="let item of pageSlice">
       <app-post></app-post>
@@ -16,5 +26,5 @@
 </div>
 
 <ng-template #loading>
-  <mat-spinner class="loader-margin"></mat-spinner>
+  <mat-spinner class="center-margin"></mat-spinner>
 </ng-template>
