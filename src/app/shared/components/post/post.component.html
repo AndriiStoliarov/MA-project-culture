@@ -1,8 +1,8 @@
 <mat-card class="card">
   <mat-card-header>
     <div mat-card-avatar></div>
-    <mat-card-title>Назва події</mat-card-title>
-    <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    <mat-card-title>{{ post.title }}</mat-card-title>
+    <mat-card-subtitle><span>ID: </span>{{ post.id }}</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image src="../../../../assets/images/post-placeholder.jpg" alt="Photo of a event">
   <!-- <mat-card-content>
@@ -13,7 +13,7 @@
     </p>
   </mat-card-content> -->
   <mat-card-actions>
-    <button mat-button>Категорія</button>
-    <button mat-button [routerLink]="['/post', 12312]">Детальніше</button>
+    <button mat-button>{{ post.category_id }}</button>
+    <button mat-button [routerLink]="['/post', post.id]">Детальніше</button>
   </mat-card-actions>
 </mat-card>
