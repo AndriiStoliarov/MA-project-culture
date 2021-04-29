@@ -1,7 +1,19 @@
 export interface Post {
-  id?: string;
+  id: number;
   title: string;
-  category: string;
-  text: string;
-  date: Date;
+  body: string;
+  starts_at?: number;
+  location?: string;
+  category_id: number;
+  image_url?: string;
+  requests: [
+    {
+      id: number,
+      description: string
+    },
+    {
+      id: number,
+      description: string
+    }
+  ];
 }

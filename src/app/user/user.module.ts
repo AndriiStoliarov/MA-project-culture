@@ -1,44 +1,12 @@
-import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { UserLayoutComponent } from './shared/components/user-layout/user-layout.component';
+
 import { userRouting } from './user-routing.module';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { UserPostsPageComponent } from './user-posts-page/user-posts-page.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { EventFormComponent } from './shared/components';
-import { HttpClientModule } from '@angular/common/http';
-
-import { MatSliderModule } from '@angular/material/slider';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSelectModule } from '@angular/material/select';
-import { NgxMatFileInputModule } from '@angular-material-components/file-input';
-
-
-const matModules = [
-  MatSliderModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatButtonModule,
-  MatMenuModule,
-  MatCardModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatDialogModule,
-  MatPaginatorModule,
-  MatProgressSpinnerModule,
-  MatSelectModule,
-  NgxMatFileInputModule
-];
+import { UserLayoutComponent } from './shared/components';
+import { SharedModule } from '../shared';
 
 @NgModule({
   declarations: [
@@ -48,15 +16,10 @@ const matModules = [
     EventFormComponent
   ],
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ...matModules,
+    SharedModule,
     RouterModule.forChild(userRouting)
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [RouterModule]
 })
-export class UserModule {
-
-}
+export class UserModule { }
