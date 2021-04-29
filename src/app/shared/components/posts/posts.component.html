@@ -5,7 +5,11 @@
     class="left-margin"
   >
     <mat-label for="serchCaption">пошук за назвою</mat-label>
-    <input matInput id="serchCaption">
+    <input
+      matInput
+      id="serchCaption"
+      [(ngModel)]="searchStr"
+    >
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
 
@@ -17,7 +21,7 @@
 
   <div class="flex-container">
     <app-post
-      *ngFor="let post of posts"
+      *ngFor="let post of posts | searchPosts:searchStr"
       [post]="post"
     ></app-post>
   </div>

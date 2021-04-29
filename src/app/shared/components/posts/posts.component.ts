@@ -3,7 +3,6 @@ import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
 import { Post } from '../../types';
 import { PostsService } from '../../services';
-import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-posts',
@@ -18,12 +17,10 @@ export class PostsComponent implements OnInit, OnDestroy{
   pageSizeOptions = [3, 6, 12, 48];
   showFirstLastButtons = true;
 
-  // private id = 1;
-
   posts: Post[] = [];
   loading = false;
   private subscription: Subscription = new Subscription();
-
+  searchStr = '';
   public events = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
     11, 12, 13, 14, 15, 16, 17, 18, 19, 20
@@ -39,6 +36,7 @@ export class PostsComponent implements OnInit, OnDestroy{
     });
     this.length = this.events.length;
   }
+
   // ngOnInit(): void {
   //   this.subscription.add(this.getPosts());
   //   this.length = this.events.length;
@@ -49,7 +47,7 @@ export class PostsComponent implements OnInit, OnDestroy{
     return this.postsService.getPosts(id).subscribe((post: Post) => {
     this.posts.push(post);
     this.loading = true;
-    console.log('!!!');
+
     console.log(this.posts);
   });
 }
