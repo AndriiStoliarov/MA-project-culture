@@ -8,12 +8,13 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PosterPageComponent } from './poster-page/poster-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
+import { SharedModule } from './shared';
 import { MainLayoutComponent } from './shared/components';
 import { PostComponent } from './shared/components';
 import { RegistrationPageComponent } from './shared/components';
 import { PostsComponent } from './shared/components';
 import { NeedFormComponent } from './shared/components';
-import { SharedModule } from './shared';
+import { SearchPipe } from './shared/pipes';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SharedModule } from './shared';
     PostComponent,
     RegistrationPageComponent,
     PostsComponent,
-    NeedFormComponent
+    NeedFormComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

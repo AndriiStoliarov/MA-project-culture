@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -36,12 +36,14 @@ const matModules = [
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     ...matModules
   ],
   exports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     ...matModules
