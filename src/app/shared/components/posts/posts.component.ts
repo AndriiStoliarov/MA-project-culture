@@ -48,7 +48,7 @@ export class PostsComponent implements OnInit, OnDestroy{
     this.posts.push(post);
     this.loading = true;
 
-    console.log(this.posts);
+    // console.log(this.posts);
   });
 }
 
