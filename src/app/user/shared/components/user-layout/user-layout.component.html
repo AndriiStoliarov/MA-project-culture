@@ -1,10 +1,22 @@
 <header>
   <mat-toolbar color="primary">
-    <span>Ім'я користувача</span>
+    <button mat-button *ngIf="!hiding" [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="/">Головна</a>
+      <a mat-menu-item routerLink="/poster">Афіша</a>
+      <a mat-menu-item routerLink="/about">О нас</a>
+    </mat-menu>
+
+    <span *ngIf="!hiding">Чівент</span>
+
+    <span *ngIf="hiding">Ім'я користувача</span>
 
     <span class="spacer"></span>
 
-    <mat-list>
+    <mat-list *ngIf="hiding">
       <mat-list-item>
         <a
           mat-icon-button
@@ -19,7 +31,10 @@
   </mat-toolbar>
 </header>
 
-<div class="button-container">
+<div
+  class="button-container"
+  *ngIf="hiding"
+>
   <a
     mat-fab
     color="primary"

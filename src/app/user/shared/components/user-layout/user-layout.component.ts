@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-layout',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLayoutComponent implements OnInit {
 
-  constructor() { }
+  hiding = false;
 
-  ngOnInit(): void {
+  constructor(private router: Router) {
+    // tslint:disable-next-line: deprecation
+    this.router.events.subscribe(() => {
+      this.hiding = this.router.url !== '/user/login';
+    });
   }
+
+  ngOnInit(): void { }
 
 }
