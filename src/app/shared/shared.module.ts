@@ -17,6 +17,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
+import { PostComponent, PostsComponent } from './components';
+import { SearchPipe } from './pipes';
+
 const matModules = [
   MatSliderModule,
   MatToolbarModule,
@@ -41,11 +44,19 @@ const matModules = [
     HttpClientModule,
     ...matModules
   ],
+  declarations: [
+    PostComponent,
+    PostsComponent,
+    SearchPipe
+  ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    PostComponent,
+    PostsComponent,
+    SearchPipe,
     ...matModules
   ]
  })
