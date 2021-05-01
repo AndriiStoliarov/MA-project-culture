@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { EventService } from '../../services';
 import { Category } from '../../types';
 
