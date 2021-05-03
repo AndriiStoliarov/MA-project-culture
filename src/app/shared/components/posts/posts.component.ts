@@ -1,7 +1,7 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
-import { Post } from '../../types';
+import { Records, Post } from '../../types';
 import { PostsService } from '../../services';
 
 @Component({
@@ -11,60 +11,50 @@ import { PostsService } from '../../services';
 })
 export class PostsComponent implements OnInit, OnDestroy{
 
-  length = 0;
-  pageSize = 6;
-  pageIndex = 0;
-  pageSizeOptions = [3, 6, 12, 48];
-  showFirstLastButtons = true;
+  public length = 0;
+  public pageSize = 6;
+  public pageIndex = 0;
+  public pageSizeOptions = [3, 6, 12, 48];
+  public showFirstLastButtons = true;
 
-  posts: Post[] = [];
-  loading = false;
+  public posts: Post[] = [];
+  private records: Records[] = [];
   private subscription: Subscription = new Subscription();
-  searchStr = '';
-  public events = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-    11, 12, 13, 14, 15, 16, 17, 18, 19, 20
-  ];
-
-  public pageSlice = this.events.slice(0, this.pageSize);
+  public loading = false;
+  public searchStr = '';
+  public paginationPosts: Post[] = [];
 
   constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
-    this.events.forEach((item) => {
-      this.subscription.add(this.getPosts(item));
-    });
-    this.length = this.events.length;
+    this.subscription.add(this.getPosts());
   }
 
-  // ngOnInit(): void {
-  //   this.subscription.add(this.getPosts());
-  //   this.length = this.events.length;
-  // }
-
-  getPosts(id: number): any {
+  private getPosts(): Subscription {
     // tslint:disable-next-line: deprecation
-    return this.postsService.getPosts(id).subscribe((post: Post) => {
-    this.posts.push(post);
-    this.loading = true;
-
-    // console.log(this.posts);
+    return this.postsService.getPosts().subscribe((record: Records) => {
+      this.records.push(record);
+      this.posts = this.records[0].records;
+      this.paginationPosts = this.posts.slice(0, this.pageSize);
+      this.length = this.posts.length;
+      this.loading = true;
   });
 }
 
-  handlePageEvent(event: PageEvent): void {
+  public handlePageEvent(event: PageEvent): void {
     this.length = event.length;
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
 
     const startIndex = event.pageIndex * event.pageSize;
+
     let endIndex = startIndex + event.pageSize;
 
-    if (endIndex > this.events.length) {
-      endIndex = this.events.length;
+    if (endIndex > this.posts.length) {
+      endIndex = this.posts.length;
     }
 
-    this.pageSlice = this.events.slice(startIndex, endIndex);
+    this.paginationPosts = this.posts.slice(startIndex, endIndex);
   }
 
   ngOnDestroy(): void {

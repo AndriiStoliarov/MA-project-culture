@@ -4,7 +4,7 @@ import { Post } from '../types';
 @Pipe({
   name: 'searchPosts'
 })
-export class SearchPipe implements PipeTransform {
+export class SearchTitlePipe implements PipeTransform {
   transform(posts: Post[], search = ''): Post[] {
     if (!search.trim()) {
       return posts;

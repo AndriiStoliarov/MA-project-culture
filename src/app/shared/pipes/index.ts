@@ -1,1 +1,1 @@
-export { SearchPipe } from './search.pipe';
+export { SearchTitlePipe } from './search-title.pipe';
