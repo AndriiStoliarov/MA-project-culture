@@ -1,44 +1,60 @@
 <div class="wrapper">
-  <mat-card class="margin-card">
-    <mat-card-header class="flex-card">
+  <div *ngIf="post$ | async as post; else loader">
+    <mat-card class="margin-card">
+      <mat-card-header class="flex-card">
 
-      <mat-card-title>Назва події</mat-card-title>
+        <!-- <mat-card-title>Назва події</mat-card-title> -->
+        <mat-card-title>{{ post.title }}</mat-card-title>
 
-      <mat-card-actions>
-        <button
-          mat-stroked-button
-          routerLink="/"
-          color="primary"
-        >
-        Назад
-      </button>
-      </mat-card-actions>
+        <mat-card-actions>
+          <button
+            mat-stroked-button
+            routerLink="/"
+            color="primary"
+          >
+          Назад
+        </button>
+        </mat-card-actions>
 
-    </mat-card-header>
+      </mat-card-header>
 
-    <img mat-card-image src="../../../../assets/images/post-placeholder.jpg" alt="Photo of a event">
+      <img
+        mat-card-image
+        src="../../../../assets/images/post-placeholder.jpg"
+        alt="Photo of a event"
+      >
 
-    <mat-card-subtitle>Дата та час</mat-card-subtitle>
+      <!-- <mat-card-subtitle>Дата та час</mat-card-subtitle> -->
+      <mat-card-subtitle>{{ post.starts_at }}</mat-card-subtitle>
 
-    <mat-card-content>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium ducimus mollitia praesentium adipisci esse ad ipsa voluptatem repellendus assumenda qui, perspiciatis, quod quidem possimus. Magni commodi impedit nobis eos voluptatum!
-      Nobis reprehenderit odit assumenda porro, voluptates quae ipsa quidem nam? In sit tenetur, corporis veniam obcaecati assumenda fugiat impedit modi perspiciatis consequatur, autem molestias ullam asperiores iure aperiam accusantium repellendus.
-      Adipisci, et! Non suscipit nobis excepturi dignissimos, ut necessitatibus ullam quidem vel quos at vero illum libero! Voluptatem iusto ipsam inventore totam odit tempore eius reiciendis optio eveniet, delectus eos.
-      Vitae ipsa saepe soluta autem consequatur quaerat cumque quas exercitationem quia amet molestias veniam culpa in iusto aliquam, officia at laboriosam odit ullam dignissimos. Laudantium, quidem eum. Tenetur, ducimus necessitatibus!
-      Nihil maiores tempora culpa sint natus obcaecati numquam consequuntur, porro exercitationem animi impedit assumenda ab omnis laudantium blanditiis eos est, voluptate rem ex placeat alias. Delectus totam accusamus fugiat repudiandae.
-      </p>
-    </mat-card-content>
-  </mat-card>
+      <!-- <mat-card-content>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium ducimus mollitia praesentium adipisci esse ad ipsa voluptatem repellendus assumenda qui, perspiciatis, quod quidem possimus. Magni commodi impedit nobis eos voluptatum!
+        Nobis reprehenderit odit assumenda porro, voluptates quae ipsa quidem nam? In sit tenetur, corporis veniam obcaecati assumenda fugiat impedit modi perspiciatis consequatur, autem molestias ullam asperiores iure aperiam accusantium repellendus.
+        Adipisci, et! Non suscipit nobis excepturi dignissimos, ut necessitatibus ullam quidem vel quos at vero illum libero! Voluptatem iusto ipsam inventore totam odit tempore eius reiciendis optio eveniet, delectus eos.
+        Vitae ipsa saepe soluta autem consequatur quaerat cumque quas exercitationem quia amet molestias veniam culpa in iusto aliquam, officia at laboriosam odit ullam dignissimos. Laudantium, quidem eum. Tenetur, ducimus necessitatibus!
+        Nihil maiores tempora culpa sint natus obcaecati numquam consequuntur, porro exercitationem animi impedit assumenda ab omnis laudantium blanditiis eos est, voluptate rem ex placeat alias. Delectus totam accusamus fugiat repudiandae.
+        </p>
+      </mat-card-content> -->
 
-  <mat-card class="flex-card margin-card">
-    <span>Поміняти напрямок руху дороги в центрі.</span>
-    <button
-      mat-flat-button
-      (click)="openDialog()"
-      color="primary"
-    >Запропонувати</button>
-  </mat-card>
+      <mat-card-content>
+        <p>
+          {{ post.body }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="flex-card margin-card">
+      <!-- <span>Поміняти напрямок руху дороги в центрі.</span> -->
+      <!-- <span>{{ post.requests[0].description }}</span> -->
+      <span>{{ post.requests }}</span>
+      <button
+        mat-flat-button
+        (click)="openDialog()"
+        color="primary"
+      >Запропонувати</button>
+    </mat-card>
+  </div>
 
   <mat-card class="margin-card">
     <span>Поміняти напрямок руху дороги в центрі.</span>
@@ -67,3 +83,7 @@
     </mat-card>
   </mat-card>
 </div>
+
+<ng-template #loader>
+  <mat-spinner class="center-margin"></mat-spinner>
+</ng-template>

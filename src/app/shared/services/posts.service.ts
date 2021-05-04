@@ -25,4 +25,24 @@ export class PostsService {
       delay(500)
     );
   }
+
+  // getById(id: number): Observable<Post> {
+  //   return this.http.get<Post>(`http://52.57.253.240:3000/api/events/${id}.json`).pipe(
+  //     map((post: Post) => {
+  //       return {
+  //         ...post, id,
+  //         date: new Date(post.starts_at)
+  //       };
+  //     }),
+  //     delay(500)
+  //   );
+  // }
+
+  getById(id: number): Observable<Post> {
+    return this.http.get<Post>(`http://52.57.253.240:3000/api/events/${id}.json`).pipe(
+      map((post: Post) => post),
+      delay(500)
+    );
+  }
+
 }
