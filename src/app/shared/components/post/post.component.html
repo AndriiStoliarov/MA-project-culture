@@ -12,9 +12,27 @@
       bred for hunting.
     </p>
   </mat-card-content> -->
-  <mat-card-actions>
-    <button mat-button>{{ post.category_id }}</button>
+  <mat-card-actions class="flex-button">
+    <button
+      mat-button
+      color="primary"
+    >
+      <ng-container [ngSwitch]="post.category_id">
+        <ng-container *ngSwitchCase="1">Виставка</ng-container>
+        <ng-container *ngSwitchCase="2">Концерт</ng-container>
+        <ng-container *ngSwitchCase="3">Навчання</ng-container>
+        <ng-container *ngSwitchCase="4">Навчання</ng-container>
+        <ng-container *ngSwitchCase="5">Зустріч</ng-container>
+        <ng-container *ngSwitchCase="6">Свято</ng-container>
+        <ng-container *ngSwitchCase="7">Інше</ng-container>
+        <ng-container *ngSwitchDefault>Категорія не вказана</ng-container>
+      </ng-container>
+    </button>
     <!-- <button mat-button [routerLink]="['/post', post.id]">Детальніше</button> -->
-    <button mat-button>Детальніше</button>
+    <button
+      mat-flat-button
+      [routerLink]="['/post', 12312]"
+      color="primary"
+    >Детальніше</button>
   </mat-card-actions>
 </mat-card>

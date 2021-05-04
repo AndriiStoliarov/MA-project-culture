@@ -19,6 +19,7 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
 import { PostComponent, PostsComponent } from './components';
 import { SearchTitlePipe } from './pipes';
+import { RouterModule } from '@angular/router';
 
 const matModules = [
   MatSliderModule,
@@ -42,6 +43,7 @@ const matModules = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule,
     ...matModules
   ],
   declarations: [
@@ -57,6 +59,7 @@ const matModules = [
     PostComponent,
     PostsComponent,
     SearchTitlePipe,
+    RouterModule,
     ...matModules
   ]
  })

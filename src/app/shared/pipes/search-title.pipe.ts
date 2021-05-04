@@ -1,9 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Post } from '../types';
 
-@Pipe({
-  name: 'searchPosts'
-})
+@Pipe({ name: 'searchTitle' })
 export class SearchTitlePipe implements PipeTransform {
   transform(posts: Post[], search = ''): Post[] {
     if (!search.trim()) {
