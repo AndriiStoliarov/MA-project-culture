@@ -15,7 +15,7 @@
 
   <div class="flex-container">
     <app-post
-      *ngFor="let post of posts | searchPosts:searchStr"
+      *ngFor="let post of paginationPosts | searchTitle:searchStr"
       [post]="post"
     ></app-post>
   </div>

@@ -18,7 +18,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
 import { PostComponent, PostsComponent } from './components';
-import { SearchPipe } from './pipes';
+import { SearchTitlePipe } from './pipes';
+import { RouterModule } from '@angular/router';
 
 const matModules = [
   MatSliderModule,
@@ -42,12 +43,13 @@ const matModules = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule,
     ...matModules
   ],
   declarations: [
     PostComponent,
     PostsComponent,
-    SearchPipe
+    SearchTitlePipe
   ],
   exports: [
     CommonModule,
@@ -56,7 +58,8 @@ const matModules = [
     HttpClientModule,
     PostComponent,
     PostsComponent,
-    SearchPipe,
+    SearchTitlePipe,
+    RouterModule,
     ...matModules
   ]
  })
