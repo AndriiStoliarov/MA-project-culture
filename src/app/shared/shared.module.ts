@@ -20,6 +20,7 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { PostComponent, PostsComponent } from './components';
 import { SearchTitlePipe } from './pipes';
 import { RouterModule } from '@angular/router';
+import { NeedComponent } from './components/need/need.component';
 
 const matModules = [
   MatSliderModule,
@@ -47,9 +48,11 @@ const matModules = [
     ...matModules
   ],
   declarations: [
+    NeedComponent,
     PostComponent,
     PostsComponent,
-    SearchTitlePipe
+    SearchTitlePipe,
+    NeedComponent
   ],
   exports: [
     CommonModule,
@@ -60,6 +63,7 @@ const matModules = [
     PostsComponent,
     SearchTitlePipe,
     RouterModule,
+    NeedComponent,
     ...matModules
   ]
  })

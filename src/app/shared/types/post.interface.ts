@@ -1,3 +1,5 @@
+import { Requirement } from './requirement.interface';
+
 export interface Post {
   id: number;
   title: string;
@@ -6,14 +8,5 @@ export interface Post {
   location?: string;
   category_id: number;
   image_url?: string;
-  requests: [
-    {
-      id: number,
-      description: string
-    },
-    {
-      id: number,
-      description: string
-    }
-  ];
+  requests: Array<Requirement>;
 }
