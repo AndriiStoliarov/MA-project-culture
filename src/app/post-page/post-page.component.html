@@ -44,16 +44,12 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card class="flex-card margin-card">
-      <!-- <span>Поміняти напрямок руху дороги в центрі.</span> -->
-      <!-- <span>{{ post.requests[0].description }}</span> -->
-      <span>{{ post.requests }}</span>
-      <button
-        mat-flat-button
-        (click)="openDialog()"
-        color="primary"
-      >Запропонувати</button>
-    </mat-card>
+      <app-need
+        *ngFor="let requirement of post.requests"
+
+        [requirement]="requirement"
+    ></app-need>
+
   </div>
 
   <mat-card class="margin-card">
