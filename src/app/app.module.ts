@@ -10,9 +10,7 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { MainLayoutComponent } from './shared/components';
 import { RegistrationPageComponent } from './shared/components';
-import { NeedFormComponent } from './shared/components';
 import { SharedModule } from './shared';
-import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,11 +20,9 @@ import { CommonModule } from '@angular/common';
     PosterPageComponent,
     AboutPageComponent,
     PostPageComponent,
-    RegistrationPageComponent,
-    NeedFormComponent
+    RegistrationPageComponent
   ],
   imports: [
-    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { EventService } from '../../services';
 import { Category } from '../../types';
+// import { Requirement } from '../../../../user/shared';
 
 @Component({
   selector: 'app-event-form',
@@ -11,6 +13,7 @@ import { Category } from '../../types';
 export class EventFormComponent implements OnInit {
 
   eventForm: any;
+  image: string | ArrayBuffer = '';
   categories: Category[] = [
     {value: 1, viewValue: 'Виставка'},
     {value: 2, viewValue: 'Концерт'},
@@ -42,7 +45,9 @@ export class EventFormComponent implements OnInit {
       ),
       location: new FormControl(''),
       requests_attributes: this.fb.array([]),
-      image: new FormControl('')
+      image: this.fb.group ({
+        data: new FormControl('')
+      })
     });
   }
 
@@ -50,8 +55,11 @@ export class EventFormComponent implements OnInit {
     return this.eventForm.get('requests_attributes') as FormArray;
   }
 
-  newRequirement(): FormControl {
-    return new FormControl('');
+  newRequirement(): FormGroup {
+    // return new FormControl('');
+    return new FormGroup ({
+      description: new FormControl('')
+    });
   }
 
   addRequirement(): void {
@@ -76,6 +84,31 @@ export class EventFormComponent implements OnInit {
     return null;
   }
 
+  onFileSelected(event): void {
+    const file: File = event.target.files[0];
+    const reader: FileReader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onloadend = () => {
+      // this.eventForm.get('image').patchValue(reader.result);
+      this.eventForm
+        .get('image')
+        .get('data')
+        .patchValue(reader.result);
+
+        // .replace("data:", "")
+        // .replace(/^.+,/, "");
+        // log to console
+        // logs wL2dvYWwgbW9yZ...
+      // this.image = base64String;
+
+      // this.eventForm.value.image = this.image;
+      // console.log(this.image);
+      // console.log(base64String);
+    };
+  }
+
   submit(): void {
     if (this.eventForm.invalid) {
       return;
@@ -83,6 +116,8 @@ export class EventFormComponent implements OnInit {
     console.log('sending...');
 
     console.log(this.eventForm.value);
+
+    // const tempPost = this.eventForm
 
     // tslint:disable-next-line: deprecation
     this.eventService.postData(this.eventForm.value).subscribe(

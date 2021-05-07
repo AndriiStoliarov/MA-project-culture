@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -17,10 +18,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
-import { PostComponent, PostsComponent } from './components';
+import { NeedComponent, NeedFormComponent, PostComponent, PostsComponent } from './components';
 import { SearchTitlePipe } from './pipes';
-import { RouterModule } from '@angular/router';
-import { NeedComponent } from './components/need/need.component';
 
 const matModules = [
   MatSliderModule,
@@ -48,11 +47,12 @@ const matModules = [
     ...matModules
   ],
   declarations: [
+    NeedFormComponent,
     NeedComponent,
     PostComponent,
     PostsComponent,
     SearchTitlePipe,
-    NeedComponent
+    NeedComponent,
   ],
   exports: [
     CommonModule,
@@ -64,6 +64,7 @@ const matModules = [
     SearchTitlePipe,
     RouterModule,
     NeedComponent,
+    NeedFormComponent,
     ...matModules
   ]
  })
