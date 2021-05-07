@@ -1,9 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { EventService } from '../../services';
 import { Category } from '../../types';
-// import { Requirement } from '../../../../user/shared';
 
 @Component({
   selector: 'app-event-form',
@@ -56,7 +54,6 @@ export class EventFormComponent implements OnInit {
   }
 
   newRequirement(): FormGroup {
-    // return new FormControl('');
     return new FormGroup ({
       description: new FormControl('')
     });
@@ -91,21 +88,10 @@ export class EventFormComponent implements OnInit {
     reader.readAsDataURL(file);
 
     reader.onloadend = () => {
-      // this.eventForm.get('image').patchValue(reader.result);
       this.eventForm
         .get('image')
         .get('data')
         .patchValue(reader.result);
-
-        // .replace("data:", "")
-        // .replace(/^.+,/, "");
-        // log to console
-        // logs wL2dvYWwgbW9yZ...
-      // this.image = base64String;
-
-      // this.eventForm.value.image = this.image;
-      // console.log(this.image);
-      // console.log(base64String);
     };
   }
 
@@ -116,8 +102,6 @@ export class EventFormComponent implements OnInit {
     console.log('sending...');
 
     console.log(this.eventForm.value);
-
-    // const tempPost = this.eventForm
 
     // tslint:disable-next-line: deprecation
     this.eventService.postData(this.eventForm.value).subscribe(
