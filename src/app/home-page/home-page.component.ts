@@ -11,17 +11,22 @@ import { Post } from '../shared/types';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
 
+
   // posts: Post[] = [];
   // private subscription: Subscription = new Subscription();
   // searchStr = ''; [(ngModel)]="searchStr"
 
   // constructor(private postsService: PostsService) { }
-  constructor() { }
+
+
+  // ngOnInit(): void {
+  //   this.subscription.add(this.postsService.getPosts().subscribe(posts => {
+  //     this.posts = posts;
+  //   }));
+  // }
 
   ngOnInit(): void {
-    // this.subscription.add(this.postsService.getPosts().subscribe(posts => {
-    //   this.posts = posts;
-    // }));
+
   }
 
   ngOnDestroy(): void {

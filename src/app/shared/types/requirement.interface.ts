@@ -1,4 +1,4 @@
 export interface Requirement {
-    id: number;
+    id?: number;
     description: string;
 }

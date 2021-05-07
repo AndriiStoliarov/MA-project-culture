@@ -93,8 +93,9 @@
 
       <div formArrayName="requests_attributes">
         <button
-          mat-raised-button
+          mat-stroked-button
           (click)="addRequirement()"
+          color="primary"
         >
         Додати потребу
         </button>
@@ -108,7 +109,7 @@
           <mat-label>Потреба</mat-label>
           <input
             matInput
-            [formControl]="requirement"
+            [formControl]="requirement.get('description')"
           >
         </mat-form-field>
           <button
@@ -121,11 +122,21 @@
         </div>
       </div>
 
-      <mat-form-field appearance="legacy">
+      <!-- <mat-form-field appearance="legacy">
         <mat-label>Додайте ілюстрацію</mat-label>
-        <ngx-mat-file-input formControlName="image">
+        <ngx-mat-file-input
+          formControlName="image"
+          (change)="onFileSelected($event)"
+        >
         </ngx-mat-file-input>
-      </mat-form-field>
+      </mat-form-field> -->
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+      >
+      <!-- [value]="image" -->
+      <!-- [(ngModel)]="image" -->
+      <!-- formControlName="image"    -->
     </form>
 
     <mat-card-actions class="flex-button">
