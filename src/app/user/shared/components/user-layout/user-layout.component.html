@@ -39,7 +39,9 @@
     mat-fab
     color="primary"
     routerLink="event"
+    routerLinkActive #rla="routerLinkActive"
     aria-label="add new event"
+    [disabled]="rla.isActive"
   >
     <mat-icon>add</mat-icon>
   </a>

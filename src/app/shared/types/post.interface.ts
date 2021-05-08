@@ -4,7 +4,7 @@ export interface Post {
   id: number;
   title: string;
   body: string;
-  starts_at?: number;
+  starts_at: number;
   location?: string;
   category_id: number;
   image_url?: string;
