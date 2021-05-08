@@ -16,7 +16,7 @@ export class EventService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        // Authorization: 'my-auth-token'
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0fQ.5rkd4zXemzKWHF9i-VylcjH_ll306bU7wDVrFk52BRA'
       })
     };
 

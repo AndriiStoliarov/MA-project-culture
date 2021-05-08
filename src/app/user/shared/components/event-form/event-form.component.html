@@ -100,43 +100,42 @@
         Додати потребу
         </button>
         <div
-          *ngFor="let requirement of requests_attributes().controls; let i=index"
-          [formGroupName]="i"
-        >
-        <mat-form-field
-          appearance="legacy"
-        >
-          <mat-label>Потреба</mat-label>
-          <input
-            matInput
-            [formControl]="requirement.get('description')"
+            *ngFor="let requirement of requests_attributes().controls; let i=index"
+            [formGroupName]="i"
           >
-        </mat-form-field>
-          <button
-            mat-button
-            color="warn"
-            (click)="removeRequirement(i)"
+          <mat-form-field
+            appearance="legacy"
           >
-          Видалити
-          </button>
+            <mat-label>Потреба</mat-label>
+            <input
+              matInput
+              [formControl]="requirement.get('description')"
+            >
+          </mat-form-field>
+            <button
+              mat-button
+              color="warn"
+              (click)="removeRequirement(i)"
+            >
+            Видалити
+            </button>
         </div>
       </div>
 
       <!-- <mat-form-field appearance="legacy">
         <mat-label>Додайте ілюстрацію</mat-label>
         <ngx-mat-file-input
-          formControlName="image"
+          type="file"
           (change)="onFileSelected($event)"
         >
         </ngx-mat-file-input>
       </mat-form-field> -->
-      <input
-        type="file"
-        (change)="onFileSelected($event)"
-      >
-      <!-- [value]="image" -->
-      <!-- [(ngModel)]="image" -->
-      <!-- formControlName="image"    -->
+
+        <input
+          type="file"
+          class="mat-form-field"
+          (change)="onFileSelected($event)"
+        >
     </form>
 
     <mat-card-actions class="flex-button">
@@ -151,6 +150,7 @@
         mat-flat-button
         color="primary"
         (click)="submit()"
+        (click)="form.reset()"
         [disabled]="eventForm.invalid"
       >
       Створити

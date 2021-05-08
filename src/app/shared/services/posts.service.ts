@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../types';
 import { Records } from '../types';
 import { delay, map } from 'rxjs/operators';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class PostsService {
 
   ROOT_URL = 'http://52.57.253.240:3000/api/events';
@@ -21,7 +21,7 @@ export class PostsService {
 
   getPosts(): Observable<Records> {
     return this.http.get<Records>(this.ROOT_URL).pipe(
-      map(( response ) => response),
+      map((response) => response),
       delay(500)
     );
   }
@@ -39,7 +39,15 @@ export class PostsService {
   // }
 
   getById(id: number): Observable<Post> {
-    return this.http.get<Post>(`http://52.57.253.240:3000/api/events/${id}.json`).pipe(
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+       'Content-Type':  'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0fQ.5rkd4zXemzKWHF9i-VylcjH_ll306bU7wDVrFk52BRA'
+      })
+    };
+
+    return this.http.get<Post>(`http://52.57.253.240:3000/api/events/${id}.json`, httpOptions).pipe(
       map((post: Post) => post),
       delay(500)
     );

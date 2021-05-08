@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Post } from '../../../../shared/types';
 import { EventService } from '../../services';
 import { Category } from '../../types';
 
@@ -105,7 +106,7 @@ export class EventFormComponent implements OnInit {
 
     // tslint:disable-next-line: deprecation
     this.eventService.postData(this.eventForm.value).subscribe(
-      (response: any) => {
+      (response: Post) => {
       console.log('created Event', response);
     });
   }

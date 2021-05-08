@@ -2,17 +2,16 @@
   <mat-card-header>
     <div mat-card-avatar></div>
     <mat-card-title>{{ post.title }}</mat-card-title>
-    <!-- <mat-card-subtitle><span>ID: </span>{{ post.id }}</mat-card-subtitle> -->
   </mat-card-header>
-  <img mat-card-image src="../../../../assets/images/post-placeholder.jpg" alt="Photo of a event">
-  <!-- <img mat-card-image src="{{ post.image_url }}" alt="Photo of a event"> -->
-  <!-- <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
-  </mat-card-content> -->
+
+  <div *ngIf="post.image_url; else placeholder">
+    <img
+      mat-card-image
+      [src]="post.image_url"
+      alt="Photo of a event"
+    >
+  </div>
+
   <mat-card-actions class="flex-button">
     <button
       mat-button
@@ -29,7 +28,7 @@
         <ng-container *ngSwitchDefault>Категорія не вказана</ng-container>
       </ng-container>
     </button>
-    <!-- <button mat-button [routerLink]="['/post', post.id]">Детальніше</button> -->
+
     <button
       mat-flat-button
       [routerLink]="['/post', post.id]"
@@ -37,3 +36,11 @@
     >Детальніше</button>
   </mat-card-actions>
 </mat-card>
+
+<ng-template #placeholder>
+  <img
+      mat-card-image
+      src="../../../../assets/images/post-placeholder.jpg"
+      alt="Photo of a event"
+    >
+</ng-template>
