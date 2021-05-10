@@ -51,9 +51,9 @@
         >
           <mat-option
             *ngFor="let category of categories"
-            [value]="category.value"
+            [value]="category.id"
           >
-          {{ category.viewValue }}
+          {{ category.name }}
           </mat-option>
         </mat-select>
         <mat-error
