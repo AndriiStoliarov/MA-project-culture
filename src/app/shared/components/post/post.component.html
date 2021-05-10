@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <mat-card-actions class="flex-button">
+  <!-- <mat-card-actions class="flex-button">
     <button
       mat-button
       color="primary"
@@ -46,6 +46,14 @@
         <ng-container *ngSwitchCase="7">Інше</ng-container>
         <ng-container *ngSwitchDefault>Категорія не вказана</ng-container>
       </ng-container>
+    </button> -->
+
+    <mat-card-actions class="flex-button">
+    <button
+      mat-button
+      color="primary"
+    >
+      {{ categoryName }}
     </button>
 
     <button
