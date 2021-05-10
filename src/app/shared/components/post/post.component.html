@@ -1,15 +1,34 @@
 <mat-card class="card">
   <mat-card-header>
     <div mat-card-avatar></div>
-    <mat-card-title>{{ post.title }}</mat-card-title>
+    <mat-card-title class="title-height">{{ post.title }}</mat-card-title>
   </mat-card-header>
 
-  <div *ngIf="post.image_url; else placeholder">
-    <img
-      mat-card-image
-      [src]="post.image_url"
-      alt="Photo of a event"
+  <!-- <div *ngIf="post.image_url; else placeholder">
+    <div
+      *ngIf="loader; else loading"
+      class="image-height"
     >
+      <img
+        mat-card-image
+        class="image-height"
+        [src]="post.image_url"
+        [class.hide-img]="loaded"
+        (load)="loader()"
+        alt="Photo of a event"
+      >
+    </div>
+  </div> -->
+
+  <div *ngIf="post.image_url; else placeholder">
+    <div class="image-height">
+      <img
+        mat-card-image
+        class="image-height"
+        [src]="post.image_url"
+        alt="Photo of a event"
+      >
+    </div>
   </div>
 
   <mat-card-actions class="flex-button">
@@ -43,4 +62,8 @@
       src="../../../../assets/images/post-placeholder.jpg"
       alt="Photo of a event"
     >
+</ng-template>
+
+<ng-template #loading>
+  <mat-spinner class="center-margin"></mat-spinner>
 </ng-template>
