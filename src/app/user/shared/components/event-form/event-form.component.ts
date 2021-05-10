@@ -14,13 +14,13 @@ export class EventFormComponent implements OnInit {
   eventForm: any;
   image: string | ArrayBuffer = '';
   categories: Category[] = [
-    {value: 1, viewValue: 'Виставка'},
-    {value: 2, viewValue: 'Концерт'},
-    {value: 3, viewValue: 'Вистава'},
-    {value: 4, viewValue: 'Навчання'},
-    {value: 5, viewValue: 'Зустріч'},
-    {value: 6, viewValue: 'Свято'},
-    {value: 7, viewValue: 'Інше'}
+    {id: 1, name: 'Виставка'},
+    {id: 2, name: 'Концерт'},
+    {id: 3, name: 'Вистава'},
+    {id: 4, name: 'Навчання'},
+    {id: 5, name: 'Зустріч'},
+    {id: 6, name: 'Свято'},
+    {id: 7, name: 'Інше'}
   ];
 
   constructor(
