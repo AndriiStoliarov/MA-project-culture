@@ -12,6 +12,10 @@ import { MainLayoutComponent } from './shared/components';
 import { RegistrationPageComponent } from './shared/components';
 import { SharedModule } from './shared';
 
+// import { registerLocaleData } from '@angular/common';
+// import localeUa from '@angular/common/locales/ru-UA';
+// registerLocaleData(localeUa, 'ua');
+
 @NgModule({
   declarations: [
     AppComponent,
