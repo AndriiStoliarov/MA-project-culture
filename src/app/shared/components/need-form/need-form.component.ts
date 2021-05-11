@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogData } from '../need/need.component';
 
 @Component({
   selector: 'app-need-form',
@@ -11,7 +13,9 @@ export class NeedFormComponent implements OnInit {
   needForm: any;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public dialogRef: MatDialogRef<NeedFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) { }
 
   ngOnInit(): void {

@@ -3,6 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { Requirement } from '../../types';
 import { NeedFormComponent } from '../need-form/need-form.component';
 
+export interface DialogData {
+  description: string;
+}
+
 @Component({
   selector: 'app-need',
   templateUrl: './need.component.html',
@@ -17,7 +21,9 @@ export class NeedComponent implements OnInit {
   ngOnInit(): void { }
 
   openDialog(): void {
-    this.dialog.open(NeedFormComponent);
+    this.dialog.open(NeedFormComponent, {
+      data: { description: this.requirement.description }
+    });
   }
 
 }
