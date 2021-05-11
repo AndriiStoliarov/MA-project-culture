@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Post } from '../../../../shared/types';
 import { EventService } from '../../services';
 import { Category } from '../../types';
+
 
 @Component({
   selector: 'app-event-form',
@@ -24,6 +26,7 @@ export class EventFormComponent implements OnInit {
   ];
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private eventService: EventService
   ) { }
@@ -45,7 +48,7 @@ export class EventFormComponent implements OnInit {
       location: new FormControl(''),
       requests_attributes: this.fb.array([]),
       image: this.fb.group ({
-        data: new FormControl('')
+        data: new FormControl(null)
       })
     });
   }
@@ -100,15 +103,19 @@ export class EventFormComponent implements OnInit {
     if (this.eventForm.invalid) {
       return;
     }
-    console.log('sending...');
+    const jsonData = this.eventForm.value;
 
-    console.log(this.eventForm.value);
+    if (!this.eventForm.get('image').get('data').value) {
+      delete jsonData['image']
+    }
 
-    // tslint:disable-next-line: deprecation
-    this.eventService.postData(this.eventForm.value).subscribe(
-      (response: Post) => {
-      console.log('created Event', response);
+    console.info('Create an event form');
+    console.info('data:', jsonData);
+
+    this.eventService.postData(jsonData).subscribe((response: Post) => {
+      console.info('created Event', response);
+
+      this.router.navigate(['/posts', response.id]);
     });
   }
-
 }
