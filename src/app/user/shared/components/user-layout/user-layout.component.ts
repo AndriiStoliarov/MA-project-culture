@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserAuthService } from '../../services/user-auth.sarvice';
 
 @Component({
   selector: 'app-user-layout',
@@ -10,7 +11,10 @@ export class UserLayoutComponent implements OnInit {
 
   hiding = false;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private userAuthService: UserAuthService
+  ) {
     // tslint:disable-next-line: deprecation
     this.router.events.subscribe(() => {
       this.hiding = this.router.url !== '/user/login';
@@ -18,4 +22,9 @@ export class UserLayoutComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
+  logout(): void {
+    this.userAuthService.logout();
+    this.router.navigate(['/user', 'login']);
+  }
 }
