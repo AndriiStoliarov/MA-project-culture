@@ -16,7 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+// import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
 import { NeedComponent, NeedFormComponent, PostComponent, PostsComponent } from './components';
 import { SearchTitlePipe } from './pipes';
@@ -34,7 +34,7 @@ const matModules = [
   MatPaginatorModule,
   MatProgressSpinnerModule,
   MatSelectModule,
-  NgxMatFileInputModule
+  // NgxMatFileInputModule
 ];
 
 @NgModule({

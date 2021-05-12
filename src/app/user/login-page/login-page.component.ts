@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserAuthService } from '../shared/services/user-auth.sarvice';
+import { UserLogin } from '../shared/types';
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +15,9 @@ export class LoginPageComponent implements OnInit {
   hide = true;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userAuthService: UserAuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +53,18 @@ export class LoginPageComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
+
+    const userLogin: UserLogin = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password
+    };
+
+    this.userAuthService.login(userLogin).subscribe(() => {
+      console.log('!!!');
+      this.loginForm.reset();
+      this.router.navigate(['/user', 'posts']);
+    });
+
   }
 
 }

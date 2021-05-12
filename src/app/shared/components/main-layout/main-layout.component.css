@@ -19,3 +19,11 @@
   text-decoration: none;
   color: whitesmoke
 }
+
+.button-container {
+  right: 5%;
+  bottom: 10%;
+  left: auto;
+  position: fixed;
+  z-index: 1;
+}

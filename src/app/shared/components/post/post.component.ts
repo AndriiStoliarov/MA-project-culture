@@ -31,9 +31,9 @@ export class PostComponent implements OnInit, OnDestroy{
         .filter((item) => item.id === this.post.category_id)
         .find((item) => item.name).name;
 
-      console.log(this.categories);
-      console.log(this.post);
-      console.log(this.categoryName);
+      // console.log(this.categories);
+      // console.log(this.post);
+      // console.log(this.categoryName);
     });
   }
 
