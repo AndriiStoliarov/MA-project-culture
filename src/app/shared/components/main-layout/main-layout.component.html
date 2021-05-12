@@ -40,6 +40,17 @@
   </mat-toolbar>
 </header>
 
+<div class="button-container">
+  <a
+    mat-fab
+    color="primary"
+    aria-label="add new event"
+    (click)="openDialog()"
+  >
+    <mat-icon>add</mat-icon>
+  </a>
+</div>
+
 <div class="wrapper">
   <router-outlet></router-outlet>
 </div>
