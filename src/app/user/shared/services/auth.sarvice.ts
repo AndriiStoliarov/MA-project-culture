@@ -30,9 +30,12 @@ export class AuthService {
   }
 
   private setToken(response: AuthResponse | null): void {
+    // console.log();
     console.log(response);
     if (response) {
       localStorage.setItem('token', response.token);
+      localStorage.setItem('firstName', response.user.first_name);
+      localStorage.setItem('lastName', response.user.last_name);
     } else {
       localStorage.clear();
     }
