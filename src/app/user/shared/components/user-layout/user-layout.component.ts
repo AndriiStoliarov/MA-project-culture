@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserAuthService } from '../../services/user-auth.sarvice';
+import { AuthService } from '../../services';
 
 @Component({
   selector: 'app-user-layout',
@@ -13,7 +13,7 @@ export class UserLayoutComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userAuthService: UserAuthService
+    private authService: AuthService
   ) {
     // tslint:disable-next-line: deprecation
     this.router.events.subscribe(() => {
@@ -24,7 +24,7 @@ export class UserLayoutComponent implements OnInit {
   ngOnInit(): void { }
 
   logout(): void {
-    this.userAuthService.logout();
+    this.authService.logout();
     this.router.navigate(['/user', 'login']);
   }
 }

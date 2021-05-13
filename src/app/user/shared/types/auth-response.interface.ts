@@ -1,4 +1,4 @@
-export interface UserAuthResponse {
+export interface AuthResponse {
   token: string;
   user: {
     first_name: string;

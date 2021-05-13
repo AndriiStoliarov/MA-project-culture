@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserAuthService } from '../shared/services/user-auth.sarvice';
-import { UserLogin } from '../shared/types';
+import { AuthService } from '../../user/shared/services';
+import { Login } from '../shared/types';
 
 @Component({
   selector: 'app-login-page',
@@ -16,7 +16,7 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private userAuthService: UserAuthService,
+    private authService: AuthService,
     private router: Router
   ) { }
 
@@ -54,13 +54,12 @@ export class LoginPageComponent implements OnInit {
       return;
     }
 
-    const userLogin: UserLogin = {
+    const userLogin: Login = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password
     };
 
-    this.userAuthService.login(userLogin).subscribe(() => {
-      console.log('!!!');
+    this.authService.login(userLogin).subscribe(() => {
       this.loginForm.reset();
       this.router.navigate(['/user', 'posts']);
     });
