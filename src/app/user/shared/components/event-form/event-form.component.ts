@@ -103,6 +103,7 @@ export class EventFormComponent implements OnInit {
     if (this.eventForm.invalid) {
       return;
     }
+
     const jsonData = this.eventForm.value;
 
     if (!this.eventForm.get('image').get('data').value) {
