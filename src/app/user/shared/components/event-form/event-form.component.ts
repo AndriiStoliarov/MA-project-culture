@@ -103,17 +103,19 @@ export class EventFormComponent implements OnInit {
     if (this.eventForm.invalid) {
       return;
     }
+
     const jsonData = this.eventForm.value;
 
     if (!this.eventForm.get('image').get('data').value) {
-      delete jsonData['image']
+      // delete jsonData['image'];
+      delete jsonData.image;
     }
 
-    console.info('Create an event form');
-    console.info('data:', jsonData);
+    console.log('Create an event form');
+    console.log('data:', jsonData);
 
     this.eventService.postData(jsonData).subscribe((response: Post) => {
-      console.info('created Event', response);
+      console.log('created Event', response);
 
       this.router.navigate(['/posts', response.id]);
     });

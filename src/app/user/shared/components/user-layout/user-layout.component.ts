@@ -10,6 +10,8 @@ import { AuthService } from '../../services';
 export class UserLayoutComponent implements OnInit {
 
   hiding = false;
+  firstName = '';
+  lastName = '';
 
   constructor(
     private router: Router,
@@ -18,6 +20,8 @@ export class UserLayoutComponent implements OnInit {
     // tslint:disable-next-line: deprecation
     this.router.events.subscribe(() => {
       this.hiding = this.router.url !== '/user/login';
+      this.firstName = localStorage.getItem('firstName');
+      this.lastName = localStorage.getItem('lastName');
     });
   }
 
