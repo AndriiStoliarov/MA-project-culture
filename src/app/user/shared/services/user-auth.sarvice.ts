@@ -11,9 +11,9 @@ export class UserAuthService {
 
   constructor(private http: HttpClient) { }
 
-  get token(): string {
-    return '';
-  }
+  // get token(): string {
+  //   return localStorage.getItem('token');
+  // }
 
   login(userLogin: UserLogin): Observable<UserAuthResponse> {
     return this.http.post(this.AUTH_URL, userLogin).pipe(
@@ -22,14 +22,20 @@ export class UserAuthService {
   }
 
   logout(): void {
-
+    this.setToken(null);
   }
 
-  isAuthenticated(): boolean {
-    return !!this.token;
-  }
+  // isAuthenticated(): boolean {
+  //   return !!this.token;
+  // }
 
-  private setToken(response: UserAuthResponse): void {
+  private setToken(response: UserAuthResponse | null): void {
     console.log(response);
+    if (response) {
+      localStorage.setItem('token', response.token);
+    } else {
+      localStorage.clear();
+    }
+
   }
 }
