@@ -9,4 +9,9 @@ export interface Post {
   category_id: number;
   image_url?: string;
   requests: Array<Requirement>;
+  user_id?: number;
+  status?: string;
 }
+
+
+

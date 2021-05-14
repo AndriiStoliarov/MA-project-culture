@@ -1,1 +1,12 @@
-<app-posts></app-posts>
+<div class="wrapper" *ngIf="loading; else loader">
+  <div class="flex-container">
+    <app-post
+      *ngFor="let post of userPosts"
+      [post]="post"
+    ></app-post>
+  </div>
+</div>
+
+<ng-template #loader>
+  <mat-spinner class="center-margin"></mat-spinner>
+</ng-template>

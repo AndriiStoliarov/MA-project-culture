@@ -1,9 +1,6 @@
+import { UserResponse } from './user-response.interface';
+
 export interface AuthResponse {
   token: string;
-  user: {
-    first_name: string;
-    last_name: string;
-    email: string;
-    id: number;
-  };
+  user: UserResponse;
 }

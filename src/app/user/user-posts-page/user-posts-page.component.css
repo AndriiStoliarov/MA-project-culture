@@ -1,0 +1,23 @@
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.left-margin {
+  margin-left: .5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.center-margin {
+  margin: 0 auto;
+}
