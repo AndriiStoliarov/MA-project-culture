@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router, RoutesRecognized } from '@angular/router';
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { filter, pairwise, switchMap } from 'rxjs/operators';
 import { PostsService } from '../shared/services';
 import { Post } from '../shared/types';
 
@@ -13,10 +13,13 @@ import { Post } from '../shared/types';
 export class PostPageComponent implements OnInit {
 
   post$: Observable<Post>;
+  // previousUrl = '';
+  // currentUrl = '';
 
   constructor(
     private route: ActivatedRoute,
-    private postsService: PostsService
+    private postsService: PostsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +28,20 @@ export class PostPageComponent implements OnInit {
         return this.postsService.getById(params.params.id);
       })
     );
+
+    // this.router.events.pipe(
+    //   filter((event) => event instanceof RoutesRecognized),
+    //   pairwise()
+    //   ).subscribe((event: any[]) => {
+    //   console.log(event[0].urlAfterRedirects);
+    //   console.log(event[1].urlAfterRedirects);
+    //   this.previousUrl = event[0].urlAfterRedirects;
+    //   this.currentUrl = event[1].urlAfterRedirects;
+    // });
   }
+
+  // url(): string {
+  //     return this.currentUrl;
+  // }
 
 }
