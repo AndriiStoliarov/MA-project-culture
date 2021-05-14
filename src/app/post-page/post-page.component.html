@@ -4,15 +4,18 @@
       <mat-card-header class="flex-card">
         <mat-card-title>{{ post.title }}</mat-card-title>
 
-        <mat-card-actions>
-          <button
-            mat-stroked-button
-            routerLink="/"
-            color="primary"
-          >
-          Назад
-        </button>
-        </mat-card-actions>
+        <div *ngIf="hiding; else button">
+          <mat-card-actions>
+            <button
+              mat-stroked-button
+              routerLink="/"
+              color="primary"
+            >
+            Назад
+          </button>
+          </mat-card-actions>
+        </div>
+
       </mat-card-header>
 
       <div *ngIf="post.image_url; else placeholder">
@@ -77,4 +80,16 @@
       src="../../../../assets/images/post-placeholder.jpg"
       alt="Photo of a event"
     >
+</ng-template>
+
+<ng-template #button>
+  <mat-card-actions>
+    <button
+      mat-stroked-button
+      routerLink="/user/posts"
+      color="primary"
+    >
+    Назад
+  </button>
+  </mat-card-actions>
 </ng-template>
