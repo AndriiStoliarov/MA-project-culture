@@ -13,8 +13,8 @@ import { Post } from '../shared/types';
 export class PostPageComponent implements OnInit {
 
   post$: Observable<Post>;
-  // previousUrl = '';
-  // currentUrl = '';
+  hiding = true;
+  previousUrl = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -29,19 +29,15 @@ export class PostPageComponent implements OnInit {
       })
     );
 
-    // this.router.events.pipe(
-    //   filter((event) => event instanceof RoutesRecognized),
-    //   pairwise()
-    //   ).subscribe((event: any[]) => {
-    //   console.log(event[0].urlAfterRedirects);
-    //   console.log(event[1].urlAfterRedirects);
-    //   this.previousUrl = event[0].urlAfterRedirects;
-    //   this.currentUrl = event[1].urlAfterRedirects;
-    // });
+    this.router.events.pipe(
+      filter((event) => event instanceof RoutesRecognized),
+      pairwise()
+      ).subscribe((event: any[]) => {
+      console.log(event[0].urlAfterRedirects);
+      this.previousUrl = event[0].urlAfterRedirects;
+      this.hiding = this.previousUrl === '/home' ? true : false;
+      console.log(this.hiding);
+    });
   }
-
-  // url(): string {
-  //     return this.currentUrl;
-  // }
 
 }
