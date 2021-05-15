@@ -22,7 +22,10 @@ export class NeedComponent implements OnInit {
 
   openDialog(): void {
     this.dialog.open(NeedFormComponent, {
-      data: { description: this.requirement.description }
+      data: {
+        description: this.requirement.description,
+        id: this.requirement.id
+      }
     });
   }
 
