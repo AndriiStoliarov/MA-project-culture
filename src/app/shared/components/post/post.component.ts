@@ -1,8 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Category } from '../../../user/shared/types';
+import { Category, Post } from '../../types';
 import { CategoriesService } from '../../services';
-import { Post } from '../../types';
 
 @Component({
   selector: 'app-post',

@@ -21,7 +21,7 @@
         *ngIf="isControlInvalid('message')"
         class="validation"
       >
-      {{ getContolError('message') }}
+      {{ getControlError('message') }}
       </mat-error>
     </mat-form-field>
 
@@ -41,7 +41,7 @@
         required
         pattern
       >
-      {{ getContolError('price') }}
+      {{ getControlError('price') }}
       </mat-error>
     </mat-form-field>
 
@@ -59,7 +59,7 @@
         *ngIf="isControlInvalid('phone')"
         class="validation"
       >
-      {{ getContolError('phone') }}
+      {{ getControlError('phone') }}
       </mat-error>
     </mat-form-field>
   </form>

@@ -3,6 +3,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
 import { Records, Post } from '../../types';
 import { PostsService } from '../../services';
+import { AuthService } from '../../../user/shared/services';
 
 @Component({
   selector: 'app-posts',
@@ -24,14 +25,16 @@ export class PostsComponent implements OnInit, OnDestroy{
   public searchStr = '';
   public paginationPosts: Post[] = [];
 
-  constructor(private postsService: PostsService) { }
+  constructor(
+    private authService: AuthService,
+    private postsService: PostsService
+  ) { }
 
   ngOnInit(): void {
     this.subscription.add(this.getPosts());
   }
 
   private getPosts(): Subscription {
-    // tslint:disable-next-line: deprecation
     return this.postsService.getPosts().subscribe((record: Records) => {
       this.records.push(record);
       this.posts = this.records[0].records;
@@ -61,4 +64,7 @@ export class PostsComponent implements OnInit, OnDestroy{
     this.subscription.unsubscribe();
   }
 
+  handleCreateEvent() {
+    this.authService.isAuthenticated();
+  }
 }

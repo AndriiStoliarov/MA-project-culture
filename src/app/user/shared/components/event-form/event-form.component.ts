@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Post } from '../../../../shared/types';
+import { Post, Category } from '../../../../shared/types';
 import { EventService } from '../../services';
-import { Category } from '../../types';
-
 
 @Component({
   selector: 'app-event-form',
@@ -77,7 +75,7 @@ export class EventFormComponent implements OnInit {
       || this.eventForm.get(fieldName).touched));
   }
 
-  getContolError(controlName: string): string | null {
+  getControlError(controlName: string): string | null {
     const control = this.eventForm.get(controlName);
     if (control.errors.required) {
       return 'Поле не може бути порожнім';
@@ -107,7 +105,6 @@ export class EventFormComponent implements OnInit {
     const jsonData = this.eventForm.value;
 
     if (!this.eventForm.get('image').get('data').value) {
-      // delete jsonData['image'];
       delete jsonData.image;
     }
 

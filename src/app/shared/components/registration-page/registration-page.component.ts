@@ -41,7 +41,7 @@ export class RegistrationPageComponent implements OnInit {
       || this.registrationForm.get(fieldName).touched));
   }
 
-  getContolError(controlName: string): string | null {
+  getControlError(controlName: string): string | null {
     const control = this.registrationForm.get(controlName);
     if (control.errors.required) {
       return 'Поле не може бути порожнім';

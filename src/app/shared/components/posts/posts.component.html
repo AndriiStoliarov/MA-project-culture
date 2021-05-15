@@ -29,6 +29,19 @@
   </mat-paginator>
 </div>
 
+<div class="button-container create-event">
+  <a
+    mat-fab
+    color="primary"
+    (click)="handleCreateEvent()"
+    aria-label="add new event"
+  >
+    <mat-icon>add</mat-icon>
+  </a>
+</div>
+
 <ng-template #loader>
   <mat-spinner class="center-margin"></mat-spinner>
 </ng-template>
+
+

@@ -38,7 +38,7 @@ export class NeedFormComponent implements OnInit {
       || this.needForm.get(fieldName).touched));
   }
 
-  getContolError(controlName: string): string | null {
+  getControlError(controlName: string): string | null {
     const control = this.needForm.get(controlName);
     if (control.errors.required) {
       return 'Поле не може бути порожнім';

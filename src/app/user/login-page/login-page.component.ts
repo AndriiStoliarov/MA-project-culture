@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../user/shared/services';
-import { Login } from '../shared/types';
+import { AuthService } from '../shared/services';
+import { LoginParams } from '../../shared/types';
 
 @Component({
   selector: 'app-login-page',
@@ -38,7 +38,7 @@ export class LoginPageComponent implements OnInit {
       || this.loginForm.get(fieldName).touched));
   }
 
-  getContolError(controlName: string): string | null {
+  getControlError(controlName: string): string | null {
     const control = this.loginForm.get(controlName);
     if (control.errors.required) {
       return 'Поле не може бути порожнім';
@@ -54,16 +54,14 @@ export class LoginPageComponent implements OnInit {
       return;
     }
 
-    const userLogin: Login = {
+    const userLoginParams: LoginParams = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password
     };
 
-    this.authService.login(userLogin).subscribe(() => {
+    this.authService.login(userLoginParams).subscribe(() => {
       this.loginForm.reset();
       this.router.navigate(['/user', 'posts']);
     });
-
   }
-
 }

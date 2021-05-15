@@ -1,4 +1,5 @@
-export { Post } from './post.interface';
-export { User } from './user.interface';
-export { Records } from './records.interface';
-export { Requirement } from './requirement.interface';
+export { Post, User, Event, Requirement, Category  } from './entities';
+export { Records } from './params/records.interface';
+export { LoginParams } from './params/loginParams.interface';
+export { AuthResponse } from './responses/auth-response.interface';
+export { UserResponse } from './responses/user-response.interface';
