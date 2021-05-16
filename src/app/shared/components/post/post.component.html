@@ -21,14 +21,12 @@
   </div> -->
 
   <div *ngIf="post.image_url; else placeholder">
-    <div class="image-height">
       <img
         mat-card-image
         class="image-height"
         [src]="post.image_url"
         alt="Photo of a event"
       >
-    </div>
   </div>
 
   <!-- <mat-card-actions class="flex-button">
@@ -65,11 +63,14 @@
 </mat-card>
 
 <ng-template #placeholder>
-  <img
+  <div>
+    <img
       mat-card-image
+      class="image-height"
       src="../../../../assets/images/post-placeholder.jpg"
       alt="Photo of a event"
     >
+  </div>
 </ng-template>
 
 <ng-template #loading>
