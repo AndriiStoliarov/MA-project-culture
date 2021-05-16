@@ -16,6 +16,7 @@
     <app-post
       *ngFor="let post of paginationPosts | searchTitle:searchStr"
       [post]="post"
+      [categories]="categories"
     ></app-post>
   </div>
 
