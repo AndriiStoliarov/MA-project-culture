@@ -37,10 +37,6 @@ export class PostComponent implements OnInit, OnDestroy{
     });
   }
 
-  public getCategoryName(): void {
-
-  }
-
   // loader(): void {
   //   console.log('123');
   //   this.loaded = false;

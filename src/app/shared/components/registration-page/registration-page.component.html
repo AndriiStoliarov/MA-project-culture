@@ -15,15 +15,31 @@
       <mat-label>Iм’я</mat-label>
       <input
         matInput
-        formControlName="name"
+        formControlName="first_name"
         required
       >
       <mat-icon matSuffix>face</mat-icon>
       <mat-error
-        *ngIf="isControlInvalid('name')"
+        *ngIf="isControlInvalid('first_name')"
         class="validation"
       >
-      {{ getContolError('name') }}
+      {{ getContolError('first_name') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Прізвище</mat-label>
+      <input
+        matInput
+        formControlName="last_name"
+        required
+      >
+      <mat-icon matSuffix>face</mat-icon>
+      <mat-error
+        *ngIf="isControlInvalid('last_name')"
+        class="validation"
+      >
+      {{ getContolError('last_name') }}
       </mat-error>
     </mat-form-field>
 
@@ -91,7 +107,7 @@
     <button
       mat-flat-button
       color="primary"
-      (click)="registrationForm.submit()"
+      (click)="submit()"
       [disabled]="registrationForm.invalid"
     >
     Надіслати

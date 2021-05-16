@@ -65,8 +65,6 @@ export class NeedFormComponent implements OnInit {
     this.needService.postData(jsonData).subscribe((response: Proposal) => {
       console.log('created Need', response);
       this.dialogRef.close();
-
-      // this.router.navigate(['/posts', response.id]);
     });
 
 
