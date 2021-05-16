@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { RegistrationService } from '../../services';
 import { User } from '../../types';
@@ -15,14 +16,17 @@ export class RegistrationPageComponent implements OnInit {
   hide = true;
 
   constructor(
-    // private registrationService: RegistrationService,
+    private registrationService: RegistrationService,
     private fb: FormBuilder,
-    private router: Router
+    public dialogRef: MatDialogRef<RegistrationPageComponent>
   ) { }
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group ({
-      name: new FormControl('', [
+      first_name: new FormControl('', [
+        Validators.required
+      ]),
+      last_name: new FormControl('', [
         Validators.required
       ]),
       email: new FormControl('', [
@@ -31,7 +35,7 @@ export class RegistrationPageComponent implements OnInit {
       ]),
       password: new FormControl('', [
         Validators.required
-      ]),
+      ])
     });
   }
 
@@ -57,19 +61,18 @@ export class RegistrationPageComponent implements OnInit {
       return;
     }
 
-    // const data: User = {
-    //   name: this.registrationForm.value.name,
-    //   phone: this.registrationForm.value.phone,
-    //   email: this.registrationForm.value.email,
-    //   password: this.registrationForm.value.password
-    // };
+    const data: User = {
+      first_name: this.registrationForm.value.first_name,
+      last_name: this.registrationForm.value.last_name,
+      email: this.registrationForm.value.email,
+      password: this.registrationForm.value.password
+    };
 
-    // // tslint:disable-next-line: deprecation
-    // this.registrationService.createUser(data).subscribe(() => {
-    //   console.log('Registration successfully.');
-    //   this.registrationForm.reset();
-    //   this.router.navigate(['/home']);
-    // });
+    // tslint:disable-next-line: deprecation
+    this.registrationService.createUser(data).subscribe(() => {
+      console.log('Registration successfully.');
+      this.dialogRef.close();
+    });
   }
 
 }
