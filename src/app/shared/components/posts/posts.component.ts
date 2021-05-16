@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit} from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
 import { Records, Post } from '../../types';
-import { PostsService } from '../../services';
+import { CategoriesService, PostsService } from '../../services';
+import { Category } from '../../../user/shared/types';
 
 @Component({
   selector: 'app-posts',
@@ -23,11 +24,17 @@ export class PostsComponent implements OnInit, OnDestroy{
   public loading = false;
   public searchStr = '';
   public paginationPosts: Post[] = [];
+  public categories: Category[];
 
-  constructor(private postsService: PostsService) { }
+  constructor(
+    private postsService: PostsService,
+    private categoriesService: CategoriesService
+  ) { }
 
   ngOnInit(): void {
-    this.subscription.add(this.getPosts());
+    this.subscription
+      .add(this.getPosts())
+      .add(this.getCategories());
   }
 
   private getPosts(): Subscription {
@@ -38,8 +45,15 @@ export class PostsComponent implements OnInit, OnDestroy{
       this.paginationPosts = this.posts.slice(0, this.pageSize);
       this.length = this.posts.length;
       this.loading = true;
-  });
-}
+    });
+  }
+
+  private getCategories(): Subscription {
+    // tslint:disable-next-line: deprecation
+    return this.categoriesService.getCategories().subscribe((categories: Category[]) => {
+      this.categories = categories;
+    });
+  }
 
   public handlePageEvent(event: PageEvent): void {
     this.length = event.length;

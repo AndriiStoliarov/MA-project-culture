@@ -1,7 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 import { Category } from '../../../user/shared/types';
-import { CategoriesService } from '../../services';
 import { Post } from '../../types';
 
 @Component({
@@ -9,32 +7,19 @@ import { Post } from '../../types';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
-export class PostComponent implements OnInit, OnDestroy{
+export class PostComponent implements OnInit {
 
   @Input() post: Post;
-  public categories: Category[];
+  @Input() categories: Category[];
   public categoryName = '';
-  private subscription: Subscription = new Subscription();
   // loaded = true;
 
-  constructor(private categoriesService: CategoriesService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.subscription.add(this.getCategories());
-  }
-
-  private getCategories(): Subscription {
-    // tslint:disable-next-line: deprecation
-    return this.categoriesService.getCategories().subscribe((categories: Category[]) => {
-      this.categories = categories;
-      this.categoryName = this.categories
-        .filter((item) => item.id === this.post.category_id)
-        .find((item) => item.name).name;
-
-      // console.log(this.categories);
-      // console.log(this.post);
-      // console.log(this.categoryName);
-    });
+    this.categoryName = this.categories
+      .filter((item) => item.id === this.post.category_id)
+      .find((item) => item.name).name;
   }
 
   // loader(): void {
@@ -42,7 +27,4 @@ export class PostComponent implements OnInit, OnDestroy{
   //   this.loaded = false;
   // }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
 }
