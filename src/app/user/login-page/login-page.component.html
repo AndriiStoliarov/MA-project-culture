@@ -3,11 +3,16 @@
     <h1 class="align-center">Вхід в особистий кабінет</h1>
     <hr>
 
+  <!-- <mat-hint>номер для зворотнього зв'зку</mat-hint> -->
     <form
       [formGroup]="loginForm"
       class="flex-form"
       #form
     >
+
+
+
+
       <mat-form-field appearance="legacy">
         <mat-label>Електронна пошта</mat-label>
         <input
@@ -51,6 +56,7 @@
       </mat-form-field>
     </form>
 
+
     <mat-card-actions class="flex-button">
       <button
         mat-button
@@ -69,4 +75,11 @@
       </button>
     </mat-card-actions>
   </mat-card>
+
+  <mat-error
+    *ngIf="authService.error$ | async as error"
+    class="validation mat-form-field padding-left"
+  >
+  {{ error }}
+  </mat-error>
 </div>

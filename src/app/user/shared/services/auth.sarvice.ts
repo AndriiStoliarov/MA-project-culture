@@ -1,11 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, Subject, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { AuthResponse, Login } from '../types';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
+
+  public error$: Subject<string> = new Subject<string>();
 
   AUTH_URL = 'http://52.57.253.240:3000/api/auth';
 
@@ -17,7 +19,8 @@ export class AuthService {
 
   login(login: Login): Observable<AuthResponse> {
     return this.http.post(this.AUTH_URL, login).pipe(
-      tap(this.setToken)
+      tap(this.setToken),
+      catchError(this.handleError.bind(this))
     );
   }
 
@@ -27,6 +30,20 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return !!this.token;
+  }
+
+  private handleError(error: HttpErrorResponse): Observable<any> {
+    const message = error.error.error;
+
+    console.log(message);
+
+    switch (message) {
+      case 'Invalid email or password.':
+        this.error$.next('Невірна адреса електронної пошти або пароль.');
+        break;
+    }
+
+    return throwError(error);
   }
 
   private setToken(response: AuthResponse | null): void {
