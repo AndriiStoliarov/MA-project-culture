@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Records, Post } from '../../shared/types';
-import { PostsService } from '../../shared/services';
+import { CategoriesService, PostsService } from '../../shared/services';
+import { Category } from '../shared/types';
 
 @Component({
   selector: 'app-user-posts-page',
@@ -13,14 +14,20 @@ export class UserPostsPageComponent implements OnInit, OnDestroy {
   private posts: Post[] = [];
   public userPosts: Post[] = [];
   private records: Records[] = [];
+  public categories: Category[];
   private subscription: Subscription = new Subscription();
   public loading = false;
   private currentUserId = localStorage.getItem('currentUserId');
 
-  constructor(private postsService: PostsService) { }
+  constructor(
+    private postsService: PostsService,
+    private categoriesService: CategoriesService
+  ) { }
 
   ngOnInit(): void {
-    this.subscription.add(this.getPosts());
+    this.subscription
+      .add(this.getPosts())
+      .add(this.getCategories());
   }
 
   private getPosts(): Subscription {
@@ -30,8 +37,15 @@ export class UserPostsPageComponent implements OnInit, OnDestroy {
       this.posts = this.records[0].records;
       this.userPosts = this.posts.filter((item) => item.user_id.toString() === this.currentUserId);
       this.loading = true;
-  });
-}
+    });
+  }
+
+  private getCategories(): Subscription {
+    // tslint:disable-next-line: deprecation
+    return this.categoriesService.getCategories().subscribe((categories: Category[]) => {
+      this.categories = categories;
+    });
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

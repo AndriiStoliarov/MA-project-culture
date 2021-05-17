@@ -60,15 +60,13 @@ export class NeedFormComponent implements OnInit {
     }
 
     this.needForm.controls.request_id.setValue(this.data.id);
+
     const jsonData = this.needForm.value;
 
     this.needService.postData(jsonData).subscribe((response: Proposal) => {
       console.log('created Need', response);
       this.dialogRef.close();
     });
-
-
-
   }
 
 }

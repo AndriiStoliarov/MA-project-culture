@@ -6,6 +6,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { UserPostsPageComponent } from './user-posts-page/user-posts-page.component';
 import { EventFormComponent, UserLayoutComponent } from './shared/components';
 import { SharedModule } from '../shared';
+import { ProposalComponent } from './shared/components/proposal/proposal.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SharedModule } from '../shared';
     LoginPageComponent,
     UserPostsPageComponent,
     EventFormComponent,
-    UserPostsPageComponent
+    UserPostsPageComponent,
+    ProposalComponent
   ],
   imports: [
     SharedModule,

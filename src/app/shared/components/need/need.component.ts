@@ -3,10 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Requirement } from '../../types';
 import { NeedFormComponent } from '../need-form/need-form.component';
 
-// export interface DialogData {
-//   description: string;
-// }
-
 @Component({
   selector: 'app-need',
   templateUrl: './need.component.html',
