@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { RegistrationService } from '../../services';
 import { User } from '../../types';
+import { MessageSnackBarComponent } from '../message-snack-bar/message-snack-bar.component';
 
 @Component({
   selector: 'app-registration-page',
@@ -14,11 +16,15 @@ export class RegistrationPageComponent implements OnInit {
 
   registrationForm: any;
   hide = true;
+  durationInSeconds = 5;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   constructor(
     private registrationService: RegistrationService,
     private fb: FormBuilder,
-    public dialogRef: MatDialogRef<RegistrationPageComponent>
+    public dialogRef: MatDialogRef<RegistrationPageComponent>,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -72,6 +78,11 @@ export class RegistrationPageComponent implements OnInit {
     this.registrationService.createUser(data).subscribe(() => {
       console.log('Registration successfully.');
       this.dialogRef.close();
+      this.snackBar.openFromComponent(MessageSnackBarComponent, {
+        duration: this.durationInSeconds * 1000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      });
     });
   }
 
