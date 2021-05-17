@@ -22,6 +22,7 @@ export class PostComponent implements OnInit {
       .find((item) => item.name).name;
   }
 
+
   // loader(): void {
   //   console.log('123');
   //   this.loaded = false;
