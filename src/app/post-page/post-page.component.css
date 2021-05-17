@@ -1,16 +1,23 @@
 .wrapper {
-  max-width: 1024px;
+  max-width: 1280px;
   padding: 1rem;
   margin: 0 auto;
 }
 
-.flex-card {
+.flex-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.margin-card {
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.bottom-margin {
   margin-bottom: 7px;
 }
 
@@ -24,3 +31,13 @@
 .center-margin {
   margin: 0 auto;
 }
+
+.width-card {
+  max-width: 584px;
+}
+
+/* .left-margin {
+  margin-left: .5rem;
+  margin-left: 7px;
+} */
+
