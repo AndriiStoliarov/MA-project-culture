@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AuthService } from '../../user/shared/services';
 import { Login } from '../shared/types';
 
@@ -17,7 +17,8 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -53,6 +54,12 @@ export class LoginPageComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
+
+    // this.route.queryParams.subscribe((params: Params) => {
+    //   if (!params.loginAgain) {
+    //     this.router.navigate(['/user', 'posts']);
+    //   }
+    // });
 
     const userLogin: Login = {
       email: this.loginForm.value.email,

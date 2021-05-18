@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { PostsService } from '../shared/services';
 import { Post } from '../shared/types';
+import { AuthService } from '../user/shared/services';
 
 @Component({
   selector: 'app-post-page',
@@ -13,11 +14,12 @@ import { Post } from '../shared/types';
 export class PostPageComponent implements OnInit {
 
   post$: Observable<Post>;
-  hiding = true;
 
   constructor(
     private route: ActivatedRoute,
-    private postsService: PostsService
+    private postsService: PostsService,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +28,14 @@ export class PostPageComponent implements OnInit {
         return this.postsService.getById(params.params.id);
       })
     );
+  }
+
+  isNavigate(): void {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/user', 'posts']);
+    } else {
+      this.router.navigate(['/home']);
+    }
   }
 
 }
