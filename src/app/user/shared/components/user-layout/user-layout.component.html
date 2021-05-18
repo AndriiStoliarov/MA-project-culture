@@ -1,6 +1,6 @@
 <header>
   <mat-toolbar color="primary">
-    <button mat-button *ngIf="!hiding" [matMenuTriggerFor]="menu">
+    <button mat-button [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
     </button>
 
@@ -10,11 +10,25 @@
       <a mat-menu-item routerLink="/about">О нас</a>
     </mat-menu>
 
-    <span *ngIf="!hiding">Чівент</span>
+    <span>Чівент</span>
+
+    <span class="spacer"></span>
 
     <span *ngIf="hiding">{{ firstName }} {{ lastName }}</span>
 
-    <span class="spacer"></span>
+    <mat-list *ngIf="hiding">
+      <mat-list-item>
+        <a
+          mat-icon-button
+          class="navigation-link"
+          routerLink="/user/posts"
+          routerLinkActive #rla="routerLinkActive"
+          [disabled]="rla.isActive"
+        >
+          <mat-icon>home</mat-icon>
+        </a>
+      </mat-list-item>
+    </mat-list>
 
     <mat-list *ngIf="hiding">
       <mat-list-item>
@@ -39,9 +53,9 @@
     mat-fab
     color="primary"
     routerLink="event"
-    routerLinkActive #rla="routerLinkActive"
+
     aria-label="add new event"
-    [disabled]="rla.isActive"
+    routerLinkActive="hide"
   >
     <mat-icon>add</mat-icon>
   </a>

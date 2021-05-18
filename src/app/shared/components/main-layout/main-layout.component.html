@@ -15,7 +15,36 @@
 
     <span class="spacer"></span>
 
-    <mat-list>
+    <span class="spacer"></span>
+
+    <span *ngIf="hiding">{{ firstName }} {{ lastName }}</span>
+
+    <mat-list *ngIf="hiding">
+      <mat-list-item>
+        <a
+          mat-icon-button
+          class="navigation-link"
+          routerLink="/user/posts"
+        >
+          <mat-icon>home</mat-icon>
+        </a>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-list *ngIf="hiding">
+      <mat-list-item>
+        <a
+          mat-icon-button
+          class="navigation-link"
+          (click)="logout()"
+          aria-label="exit-to-app"
+        >
+          <mat-icon>logout</mat-icon>
+        </a>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-list *ngIf="!hiding">
       <mat-list-item>
         <a
           mat-icon-button
@@ -26,7 +55,7 @@
           <mat-icon>login</mat-icon>
         </a>
       </mat-list-item>
-      <mat-list-item>
+      <mat-list-item *ngIf="!hiding">
         <a
           mat-icon-button
           aria-label="person-add"
