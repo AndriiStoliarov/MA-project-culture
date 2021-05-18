@@ -6,7 +6,8 @@
           <mat-card-actions>
             <button
               mat-stroked-button
-              routerLink="/"
+              routerLink='/home'
+              (click)='isNavigate()'
               color="primary"
             >
             Назад
@@ -42,7 +43,6 @@
     </mat-card>
   </div>
 </div>
-
 
 <ng-template #loader>
   <mat-spinner class="center-margin"></mat-spinner>

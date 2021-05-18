@@ -8,7 +8,6 @@ import { EventFormComponent, UserLayoutComponent } from './shared/components';
 import { SharedModule } from '../shared';
 import { ProposalComponent } from './shared/components/proposal/proposal.component';
 
-
 @NgModule({
   declarations: [
     UserLayoutComponent,
