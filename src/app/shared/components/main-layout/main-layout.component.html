@@ -6,14 +6,12 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <a mat-menu-item routerLink="/">Головна</a>
+      <!-- <a mat-menu-item routerLink="/">Головна</a> -->
       <a mat-menu-item routerLink="/poster">Афіша</a>
       <a mat-menu-item routerLink="/about">О нас</a>
     </mat-menu>
 
     <a href="/" class="header-title">Чівент</a>
-
-    <span class="spacer"></span>
 
     <span class="spacer"></span>
 
@@ -26,7 +24,7 @@
           class="navigation-link"
           routerLink="/user/posts"
         >
-          <mat-icon>home</mat-icon>
+          <mat-icon>person</mat-icon>
         </a>
       </mat-list-item>
     </mat-list>
@@ -73,7 +71,7 @@
   <a
     mat-fab
     color="primary"
-    (click)="openDialog()"
+    (click)="isNavigate()"
     aria-label="add new event"
   >
     <mat-icon>add</mat-icon>

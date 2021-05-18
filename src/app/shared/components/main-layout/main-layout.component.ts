@@ -38,4 +38,12 @@ export class MainLayoutComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/user', 'login']);
   }
+
+  isNavigate(): void {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/user', 'event']);
+    } else {
+      this.openDialog();
+    }
+  }
 }

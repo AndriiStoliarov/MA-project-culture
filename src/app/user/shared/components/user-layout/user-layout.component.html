@@ -5,12 +5,12 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <a mat-menu-item routerLink="/">Головна</a>
+      <!-- <a mat-menu-item routerLink="/">Головна</a> -->
       <a mat-menu-item routerLink="/poster">Афіша</a>
       <a mat-menu-item routerLink="/about">О нас</a>
     </mat-menu>
 
-    <span>Чівент</span>
+    <a href="/" class="header-title">Чівент</a>
 
     <span class="spacer"></span>
 
@@ -25,7 +25,7 @@
           routerLinkActive #rla="routerLinkActive"
           [disabled]="rla.isActive"
         >
-          <mat-icon>home</mat-icon>
+          <mat-icon>person</mat-icon>
         </a>
       </mat-list-item>
     </mat-list>
@@ -53,7 +53,6 @@
     mat-fab
     color="primary"
     routerLink="event"
-
     aria-label="add new event"
     routerLinkActive="hide"
   >
