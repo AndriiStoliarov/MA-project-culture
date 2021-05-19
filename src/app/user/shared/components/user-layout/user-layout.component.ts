@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { AuthService } from '../../services';
 
 @Component({
   selector: 'app-user-layout',
   templateUrl: './user-layout.component.html',
-  styleUrls: ['./user-layout.component.css']
+  styleUrls: ['./user-layout.component.css'],
 })
 export class UserLayoutComponent implements OnInit {
 
@@ -15,14 +16,14 @@ export class UserLayoutComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
     // tslint:disable-next-line: deprecation
     this.router.events.subscribe(() => {
       // this.hiding = this.router.url !== '/user/login';
       this.hiding = this.authService.isAuthenticated();
-      this.firstName = localStorage.getItem('firstName');
-      this.lastName = localStorage.getItem('lastName');
+      this.firstName = this.authService.user?.first_name;
+      this.lastName = this.authService.user?.last_name;
     });
   }
 

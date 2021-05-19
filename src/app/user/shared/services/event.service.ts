@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { Event } from '../../../shared/types';
 
 @Injectable({ providedIn: 'root' })
@@ -10,18 +11,9 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   postData(data: Event): Observable<any> {
-    const token = localStorage.getItem('token');
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        Authorization: `Bearer ${token}`
-      })
-    };
-
     const body = JSON.stringify(data);
 
-    return this.http.post<Event>(this.ROOT_URL, body, httpOptions);
+    return this.http.post<Event>(this.ROOT_URL, body);
   }
 
 }

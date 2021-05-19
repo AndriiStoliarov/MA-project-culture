@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Post, Category } from '../../../../shared/types';
+import { Router } from '@angular/router';
+
+import { Category, Post } from '../../../../shared/types';
 import { EventService } from '../../services';
 
 @Component({
   selector: 'app-event-form',
   templateUrl: './event-form.component.html',
-  styleUrls: ['./event-form.component.css']
+  styleUrls: ['./event-form.component.css'],
 })
 export class EventFormComponent implements OnInit {
 
@@ -20,34 +21,34 @@ export class EventFormComponent implements OnInit {
     {id: 4, name: 'Навчання'},
     {id: 5, name: 'Зустріч'},
     {id: 6, name: 'Свято'},
-    {id: 7, name: 'Інше'}
+    {id: 7, name: 'Інше'},
   ];
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private eventService: EventService
+    private eventService: EventService,
   ) { }
 
   ngOnInit(): void {
     this.eventForm = this.fb.group ({
       title: new FormControl('',
-        [Validators.required]
+        [Validators.required],
       ),
       body: new FormControl('',
-        [Validators.required]
+        [Validators.required],
       ),
       category_id: new FormControl('',
-        [Validators.required]
+        [Validators.required],
       ),
       starts_at: new FormControl('',
-        [Validators.required]
+        [Validators.required],
       ),
       location: new FormControl(''),
       requests_attributes: this.fb.array([]),
       image: this.fb.group ({
-        data: new FormControl(null)
-      })
+        data: new FormControl(null),
+      }),
     });
   }
 
@@ -57,7 +58,7 @@ export class EventFormComponent implements OnInit {
 
   newRequirement(): FormGroup {
     return new FormGroup ({
-      description: new FormControl('')
+      description: new FormControl(''),
     });
   }
 

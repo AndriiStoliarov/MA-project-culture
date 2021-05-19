@@ -1,17 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Post ,Category } from '../../types';
+
+import { Category, Post } from '../../types';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
 
   @Input() post: Post;
   @Input() categories: Category[];
   public categoryName = '';
-  // loaded = true;
 
   constructor() { }
 
@@ -20,11 +20,4 @@ export class PostComponent implements OnInit {
       .filter((item) => item.id === this.post.category_id)
       .find((item) => item.name).name;
   }
-
-
-  // loader(): void {
-  //   console.log('123');
-  //   this.loaded = false;
-  // }
-
 }

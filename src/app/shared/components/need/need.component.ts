@@ -1,14 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from 'src/app/user/shared/services';
+
+import { MatDialog } from '@angular/material/dialog';
+
 import { Requirement } from '../../types';
 import { NeedFormComponent } from '../need-form/need-form.component';
 
 @Component({
   selector: 'app-need',
   templateUrl: './need.component.html',
-  styleUrls: ['./need.component.css']
+  styleUrls: ['./need.component.css'],
 })
 export class NeedComponent implements OnInit {
 
@@ -33,7 +35,7 @@ export class NeedComponent implements OnInit {
         description: this.requirement.description,
         id: this.requirement.id,
         postId: this.postId,
-      }
+      },
     });
   }
 }
