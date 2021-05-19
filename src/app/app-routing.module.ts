@@ -5,10 +5,14 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { PosterPageComponent } from './poster-page/poster-page.component';
 import { MainLayoutComponent } from './shared/components';
+import { UserResolverService } from './shared/services';
 
 const routes: Routes = [
   {
-    path: '', component: MainLayoutComponent, children: [
+    path: '',
+    component: MainLayoutComponent,
+    resolve: { user: UserResolverService },
+    children: [
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'home', component: HomePageComponent},
       {path: 'posts/:id', component: PostPageComponent},
@@ -19,6 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'user',
+    resolve: { user: UserResolverService },
     loadChildren: () => import('./user').then(m => m.UserModule)
   }
 ];

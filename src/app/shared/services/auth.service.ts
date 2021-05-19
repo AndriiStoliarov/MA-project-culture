@@ -1,8 +1,8 @@
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
-import { catchError, tap, map } from 'rxjs/operators';
-import {AuthResponse, LoginParams, User, UserResponse} from '../../../shared/types';
+import { catchError, tap } from 'rxjs/operators';
+import { AuthResponse, LoginParams, User, UserResponse } from '../types';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +18,9 @@ export class AuthService {
 
   private response: AuthResponse;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.authToken = this.tokenFromLocalStorage;
+  }
 
   get tokenFromLocalStorage() {
     return localStorage.getItem(this.LOCAL_STORAGE_TOKEN_KEY);
@@ -36,6 +38,9 @@ export class AuthService {
 
   logout(): void {
     localStorage.clear();
+    this.user = null;
+    this.response = null;
+    this.authToken = null;
   }
 
   isAuthenticated(): boolean {

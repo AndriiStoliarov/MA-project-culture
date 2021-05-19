@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Records, Post } from '../../shared/types';
-import { CategoriesService, PostsService } from '../../shared/services';
-import { Category } from '../../shared/types';
+import { Records, Post, Category } from '../../shared/types';
+import { AuthService, CategoriesService, PostsService } from '../../shared/services';
 
 @Component({
   selector: 'app-user-posts-page',
@@ -11,7 +10,7 @@ import { Category } from '../../shared/types';
 })
 export class UserPostsPageComponent implements OnInit, OnDestroy {
 
-  private currentUserId = localStorage.getItem('currentUserId');
+  private currentUserId = this.authService.user.id;
   private posts: Post[] = [];
   private records: Records[] = [];
   private subscription: Subscription = new Subscription();
@@ -20,8 +19,9 @@ export class UserPostsPageComponent implements OnInit, OnDestroy {
   public userPosts: Post[] = [];
 
   constructor(
+    private authService: AuthService,
+    private categoriesService: CategoriesService,
     private postsService: PostsService,
-    private categoriesService: CategoriesService
   ) { }
 
   ngOnInit(): void {
@@ -35,7 +35,7 @@ export class UserPostsPageComponent implements OnInit, OnDestroy {
     return this.postsService.getPosts().subscribe((record: Records) => {
       this.records.push(record);
       this.posts = this.records[0].records;
-      this.userPosts = this.posts.filter((item) => item.user_id.toString() === this.currentUserId);
+      this.userPosts = this.posts.filter((item) => item.user_id.toString() === this.currentUserId.toString());
       this.loading = true;
     });
   }
