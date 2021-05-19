@@ -11,13 +11,13 @@ import { Category } from '../../shared/types';
 })
 export class UserPostsPageComponent implements OnInit, OnDestroy {
 
-  private posts: Post[] = [];
-  public userPosts: Post[] = [];
-  private records: Records[] = [];
-  public categories: Category[];
-  private subscription: Subscription = new Subscription();
-  public loading = false;
   private currentUserId = localStorage.getItem('currentUserId');
+  private posts: Post[] = [];
+  private records: Records[] = [];
+  private subscription: Subscription = new Subscription();
+  public categories: Category[];
+  public loading = false;
+  public userPosts: Post[] = [];
 
   constructor(
     private postsService: PostsService,

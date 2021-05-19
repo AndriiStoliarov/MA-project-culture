@@ -11,19 +11,9 @@ export class NeedService {
   constructor(private http: HttpClient) { }
 
   postData(data: Proposal): Observable<any> {
-    // const token = localStorage.getItem('token');
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0fQ.5rkd4zXemzKWHF9i-VylcjH_ll306bU7wDVrFk52BRA'
-        // Authorization: `Bearer ${token}`
-      })
-    };
-
     const body = JSON.stringify(data);
 
-    return this.http.post<Proposal>(this.ROOT_URL, body, httpOptions);
+    return this.http.post<Proposal>(this.ROOT_URL, body);
   }
 
 }

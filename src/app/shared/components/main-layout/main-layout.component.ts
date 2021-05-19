@@ -23,8 +23,8 @@ export class MainLayoutComponent implements OnInit {
     // tslint:disable-next-line: deprecation
     this.router.events.subscribe(() => {
       this.hiding = this.authService.isAuthenticated();
-      this.firstName = localStorage.getItem('firstName');
-      this.lastName = localStorage.getItem('lastName');
+      this.firstName = this.authService.user?.first_name;
+      this.lastName = this.authService.user?.last_name;
     });
   }
 

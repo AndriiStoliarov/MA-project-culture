@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { MatSliderModule } from '@angular/material/slider';
@@ -27,6 +27,7 @@ import {
   ProposalComponent
 } from './components';
 import { SearchTitlePipe } from './pipes';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 const matModules = [
   MatSliderModule,
@@ -61,7 +62,7 @@ const matModules = [
     PostsComponent,
     SearchTitlePipe,
     NeedComponent,
-    ProposalComponent
+    ProposalComponent,
   ],
   exports: [
     CommonModule,

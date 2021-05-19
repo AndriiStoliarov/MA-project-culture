@@ -11,16 +11,7 @@ export class ProposalService {
   constructor(private http: HttpClient) {}
 
   getProposalById(id: number): Observable<Proposal> {
-    const token = localStorage.getItem('token');
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-       'Content-Type':  'application/json',
-        Authorization: `Bearer ${token}`
-      })
-    };
-
-    return this.http.get<Proposal>(`http://52.57.253.240:3000/api/proposals/${id}.json`, httpOptions).pipe(
+    return this.http.get<Proposal>(`http://52.57.253.240:3000/api/proposals/${id}.json`).pipe(
       map((proposal: Proposal) => proposal),
       // delay(500)
       delay(500)

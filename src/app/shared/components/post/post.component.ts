@@ -11,7 +11,6 @@ export class PostComponent implements OnInit {
   @Input() post: Post;
   @Input() categories: Category[];
   public categoryName = '';
-  // loaded = true;
 
   constructor() { }
 
@@ -20,11 +19,4 @@ export class PostComponent implements OnInit {
       .filter((item) => item.id === this.post.category_id)
       .find((item) => item.name).name;
   }
-
-
-  // loader(): void {
-  //   console.log('123');
-  //   this.loaded = false;
-  // }
-
 }

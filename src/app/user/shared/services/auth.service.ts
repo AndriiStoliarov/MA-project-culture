@@ -1,14 +1,14 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import {AuthResponse, LoginParams, User, UserResponse} from '../../../shared/types';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class AuthService {
   HOST = 'http://52.57.253.240:3000';
   AUTH_URL = '/api/auth';
-  USER_URL = '/api/users';
+  USER_URL = '/api/me';
   LOCAL_STORAGE_TOKEN_KEY = 'token';
 
   public error$: Subject<string> = new Subject<string>();
@@ -22,15 +22,6 @@ export class AuthService {
 
   get tokenFromLocalStorage() {
     return localStorage.getItem(this.LOCAL_STORAGE_TOKEN_KEY);
-  }
-
-  get authHttpOptions() {
-    return {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.tokenFromLocalStorage}`
-      })
-    };
   }
 
   login(params: LoginParams): Observable<AuthResponse> {
@@ -52,10 +43,11 @@ export class AuthService {
   }
 
   getUserByToken() {
-    return this.http.get<UserResponse>(`${this.HOST}${this.USER_URL}`, this.authHttpOptions)
-      .pipe(map((response) => {
+    return this.http.get<UserResponse>(`${this.HOST}${this.USER_URL}`).pipe(
+      tap((response) => {
         this.user = response.user;
-      }));
+      }),
+    );
   }
 
   private handleError(error: HttpErrorResponse): Observable<any> {
@@ -72,18 +64,15 @@ export class AuthService {
   }
 
   private setToken(response: AuthResponse | null): void {
-    console.log(response);
+    console.log('setToken', response);
     if (response) {
       localStorage.setItem(this.LOCAL_STORAGE_TOKEN_KEY, response.token);
-      localStorage.setItem('firstName', response.user.first_name);
-      localStorage.setItem('lastName', response.user.last_name);
-      localStorage.setItem('currentUserId', response.user.id.toString());
     } else {
       localStorage.clear();
     }
 
     this.response = response;
-    this.user = response.user;
-    this.authToken = response.token;
+    this.user = response?.user;
+    this.authToken = response?.token;
   }
 }

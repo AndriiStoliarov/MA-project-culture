@@ -11,6 +11,9 @@ import { PostPageComponent } from './post-page/post-page.component';
 import { MainLayoutComponent } from './shared/components';
 import { RegistrationPageComponent } from './shared/components';
 import { SharedModule } from './shared';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/services/auth.interceptor';
+import { AuthService } from './user/shared/services';
 
 // import { registerLocaleData } from '@angular/common';
 // import localeUa from '@angular/common/locales/ru-UA';
@@ -33,7 +36,10 @@ import { SharedModule } from './shared';
     SharedModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
