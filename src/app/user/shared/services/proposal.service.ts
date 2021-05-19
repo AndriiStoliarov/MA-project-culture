@@ -1,28 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { ProposalsResponse } from '../types';
+import { delay, map } from 'rxjs/operators';
+import { ProposalResponse } from '../types';
 
 @Injectable({ providedIn: 'root' })
-export class ProposalsService {
+export class ProposalService {
 
   ROOT_URL = 'http://52.57.253.240:3000/api/proposals';
 
   constructor(private http: HttpClient) {}
 
-  getCategories(): Observable<ProposalsResponse[]> {
+  getProposalById(id: number): Observable<ProposalResponse> {
     const token = localStorage.getItem('token');
 
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
+       'Content-Type':  'application/json',
         Authorization: `Bearer ${token}`
       })
     };
 
-    return this.http.get<ProposalsResponse[]>(this.ROOT_URL, httpOptions).pipe(
-      map((response) => response)
+    return this.http.get<ProposalResponse>(`http://52.57.253.240:3000/api/proposals/${id}.json`, httpOptions).pipe(
+      map((proposal: ProposalResponse) => proposal),
+      // delay(500)
+      delay(500)
     );
   }
 

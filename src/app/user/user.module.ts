@@ -6,8 +6,6 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { UserPostsPageComponent } from './user-posts-page/user-posts-page.component';
 import { EventFormComponent, UserLayoutComponent } from './shared/components';
 import { SharedModule } from '../shared';
-import { ProposalComponent } from './shared/components/proposal/proposal.component';
-import { ProposalsComponent } from './shared/components/proposals/proposals.component';
 
 @NgModule({
   declarations: [
@@ -15,9 +13,7 @@ import { ProposalsComponent } from './shared/components/proposals/proposals.comp
     LoginPageComponent,
     UserPostsPageComponent,
     EventFormComponent,
-    UserPostsPageComponent,
-    ProposalComponent,
-    ProposalsComponent
+    UserPostsPageComponent
   ],
   imports: [
     SharedModule,

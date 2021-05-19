@@ -1,4 +1,4 @@
-export interface ProposalsResponse {
+export interface ProposalResponse {
   description: string;
   id: number;
   phone_number: string;

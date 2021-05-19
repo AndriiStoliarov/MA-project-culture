@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { NeedService } from '../../services';
+import { NeedService, PostsService } from '../../services';
 import { Proposal, Requirement } from '../../types';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-need-form',
@@ -16,8 +17,10 @@ export class NeedFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<NeedFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Requirement,
-    private needService: NeedService
+    @Inject(MAT_DIALOG_DATA) public data: Requirement & { postId: number },
+    private route: ActivatedRoute,
+    private needService: NeedService,
+    private postsService: PostsService,
   ) { }
 
   ngOnInit(): void {
@@ -65,6 +68,7 @@ export class NeedFormComponent implements OnInit {
 
     this.needService.postData(jsonData).subscribe((response: Proposal) => {
       console.log('created Need', response);
+      this.postsService.getById(this.data.postId).subscribe();
       this.dialogRef.close();
     });
   }

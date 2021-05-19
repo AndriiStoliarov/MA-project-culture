@@ -19,7 +19,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 // import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
-import { NeedComponent, NeedFormComponent, PostComponent, PostsComponent } from './components';
+import {
+  NeedComponent,
+  NeedFormComponent,
+  PostComponent,
+  PostsComponent,
+  ProposalComponent
+} from './components';
 import { SearchTitlePipe } from './pipes';
 
 const matModules = [
@@ -54,7 +60,8 @@ const matModules = [
     PostComponent,
     PostsComponent,
     SearchTitlePipe,
-    NeedComponent
+    NeedComponent,
+    ProposalComponent
   ],
   exports: [
     CommonModule,
@@ -67,6 +74,7 @@ const matModules = [
     RouterModule,
     NeedComponent,
     NeedFormComponent,
+    ProposalComponent,
     ...matModules
   ]
  })
