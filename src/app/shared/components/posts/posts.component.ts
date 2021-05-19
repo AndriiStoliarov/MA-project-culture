@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
-import { Records, Post } from '../../types';
 import { CategoriesService, PostsService } from '../../services';
-import { Category } from '../../../user/shared/types';
+import { Records, Post, Category } from '../../types';
+import { AuthService } from '../../../user/shared/services';
 
 @Component({
   selector: 'app-posts',
@@ -27,7 +27,9 @@ export class PostsComponent implements OnInit, OnDestroy{
   public categories: Category[];
 
   constructor(
-    private postsService: PostsService,
+    private authService: AuthService,
+    private postsService: PostsService
+  ,
     private categoriesService: CategoriesService
   ) { }
 
@@ -38,7 +40,6 @@ export class PostsComponent implements OnInit, OnDestroy{
   }
 
   private getPosts(): Subscription {
-    // tslint:disable-next-line: deprecation
     return this.postsService.getPosts().subscribe((record: Records) => {
       this.records.push(record);
       this.posts = this.records[0].records;
@@ -75,4 +76,7 @@ export class PostsComponent implements OnInit, OnDestroy{
     this.subscription.unsubscribe();
   }
 
+  handleCreateEvent() {
+    this.authService.isAuthenticated();
+  }
 }

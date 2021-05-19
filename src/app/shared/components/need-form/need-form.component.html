@@ -22,7 +22,7 @@
         *ngIf="isControlInvalid('description')"
         class="validation"
       >
-      {{ getContolError('description') }}
+      {{ getControlError('description') }}
       </mat-error>
     </mat-form-field>
 
@@ -42,7 +42,7 @@
         required
         pattern
       >
-      {{ getContolError('price_cents') }}
+      {{ getControlError('price_cents') }}
       </mat-error>
     </mat-form-field>
 
@@ -60,7 +60,7 @@
         *ngIf="isControlInvalid('phone_number')"
         class="validation"
       >
-      {{ getContolError('phone_number') }}
+      {{ getControlError('phone_number') }}
       </mat-error>
     </mat-form-field>
   </form>

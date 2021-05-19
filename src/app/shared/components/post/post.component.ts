@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Category } from '../../../user/shared/types';
-import { Post } from '../../types';
+import { Post ,Category } from '../../types';
 
 @Component({
   selector: 'app-post',

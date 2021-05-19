@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { RegistrationService } from '../../services';
-import { User } from '../../types';
 import { MessageSnackBarComponent } from '../message-snack-bar/message-snack-bar.component';
+import { SignUpParams } from '../../types/params/signUpParams.interface';
 
 @Component({
   selector: 'app-registration-page',
@@ -51,7 +50,7 @@ export class RegistrationPageComponent implements OnInit {
       || this.registrationForm.get(fieldName).touched));
   }
 
-  getContolError(controlName: string): string | null {
+  getControlError(controlName: string): string | null {
     const control = this.registrationForm.get(controlName);
     if (control.errors.required) {
       return 'Поле не може бути порожнім';
@@ -67,7 +66,7 @@ export class RegistrationPageComponent implements OnInit {
       return;
     }
 
-    const data: User = {
+    const data: SignUpParams = {
       first_name: this.registrationForm.value.first_name,
       last_name: this.registrationForm.value.last_name,
       email: this.registrationForm.value.email,
