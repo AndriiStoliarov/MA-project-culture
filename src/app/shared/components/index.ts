@@ -4,3 +4,5 @@ export { RegistrationPageComponent } from './registration-page/registration-page
 export { PostsComponent } from './posts/posts.component';
 export { NeedFormComponent } from './need-form/need-form.component';
 export { NeedComponent } from './need/need.component';
+export { MessageSnackBarComponent } from './message-snack-bar/message-snack-bar.component';
+export { ProposalComponent } from './proposal/proposal.component';

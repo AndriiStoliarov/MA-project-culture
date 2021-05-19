@@ -1,73 +1,47 @@
 <div class="wrapper">
   <div *ngIf="post$ | async as post; else loader">
-    <mat-card class="margin-card">
-      <mat-card-header class="flex-card">
+    <mat-card class="bottom-margin">
+      <mat-card-header class="flex-card-header">
         <mat-card-title>{{ post.title }}</mat-card-title>
-
-        <div *ngIf="hiding; else button">
           <mat-card-actions>
             <button
               mat-stroked-button
-              routerLink="/"
+              routerLink='/home'
+              (click)='isNavigate()'
               color="primary"
             >
             Назад
-          </button>
+            </button>
           </mat-card-actions>
-        </div>
-
       </mat-card-header>
 
-      <div *ngIf="post.image_url; else placeholder">
-        <img
-          mat-card-image
-          [src]="post.image_url"
-          alt="Photo of a event"
-        >
+      <div class="flex-container">
+        <mat-card class="width-card bottom-margin">
+          <div *ngIf="post.image_url; else placeholder">
+            <img
+              mat-card-image
+              [src]="post.image_url"
+              alt="Photo of a event"
+            >
+          </div>
+        </mat-card>
+
+        <mat-card class="left-margin width-card bottom-margin">
+          <mat-card-subtitle>{{ post.starts_at | date: 'MMMM dd, yyyy, hh:mm.' }}</mat-card-subtitle>
+          <mat-card-subtitle>{{ post.location }}</mat-card-subtitle>
+          <mat-card-content>
+            <p>{{ post.body }}</p>
+          </mat-card-content>
+        </mat-card>
       </div>
-
-      <mat-card-subtitle>{{ post.starts_at | date: 'MMMM dd, yyyy, hh:mm.' }}</mat-card-subtitle>
-      <mat-card-subtitle>{{ post.location }}</mat-card-subtitle>
-
-      <mat-card-content>
-        <p>
-          {{ post.body }}
-        </p>
-      </mat-card-content>
-    </mat-card>
 
       <app-need
         *ngFor="let requirement of post.requests"
         [requirement]="requirement"
-    ></app-need>
-  </div>
-
-  <!-- <mat-card class="margin-card">
-    <span>Поміняти напрямок руху дороги в центрі.</span>
-
-    <mat-card class="flex-card">
-      <span>Можу вирішити юридичний аспект за 2000$.</span>
-      <mat-card-actions class="flex-button">
-        <a
-          mat-button
-          href="tel:+3096-444-44444"
-          color="primary"
-        >Подзвонити</a>
-        <button
-          mat-flat-button
-          color="primary"
-        >
-        Підтвердити
-        </button>
-        <button
-          mat-button
-          color="warn"
-        >
-        Відхилити
-        </button>
-      </mat-card-actions>
+      >
+      </app-need>
     </mat-card>
-  </mat-card> -->
+  </div>
 </div>
 
 <ng-template #loader>
@@ -76,20 +50,8 @@
 
 <ng-template #placeholder>
   <img
-      mat-card-image
-      src="assets/images/post-placeholder.jpg"
-      alt="Photo of a event"
-    >
-</ng-template>
-
-<ng-template #button>
-  <mat-card-actions>
-    <button
-      mat-stroked-button
-      routerLink="/user/posts"
-      color="primary"
-    >
-    Назад
-  </button>
-  </mat-card-actions>
+    mat-card-image
+    src="assets/images/post-placeholder.jpg"
+    alt="Photo of a event"
+  >
 </ng-template>

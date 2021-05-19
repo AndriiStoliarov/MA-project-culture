@@ -21,34 +21,15 @@
   </div> -->
 
   <div *ngIf="post.image_url; else placeholder">
-    <div class="image-height">
       <img
         mat-card-image
         class="image-height"
         [src]="post.image_url"
         alt="Photo of a event"
       >
-    </div>
   </div>
 
-  <!-- <mat-card-actions class="flex-button">
-    <button
-      mat-button
-      color="primary"
-    >
-      <ng-container [ngSwitch]="post.category_id">
-        <ng-container *ngSwitchCase="1">Виставка</ng-container>
-        <ng-container *ngSwitchCase="2">Концерт</ng-container>
-        <ng-container *ngSwitchCase="3">Навчання</ng-container>
-        <ng-container *ngSwitchCase="4">Навчання</ng-container>
-        <ng-container *ngSwitchCase="5">Зустріч</ng-container>
-        <ng-container *ngSwitchCase="6">Свято</ng-container>
-        <ng-container *ngSwitchCase="7">Інше</ng-container>
-        <ng-container *ngSwitchDefault>Категорія не вказана</ng-container>
-      </ng-container>
-    </button> -->
-
-    <mat-card-actions class="flex-button">
+  <mat-card-actions class="flex-button">
     <button
       mat-button
       color="primary"
@@ -65,11 +46,14 @@
 </mat-card>
 
 <ng-template #placeholder>
-  <img
+  <div>
+    <img
       mat-card-image
+      class="image-height"
       src="../../../../assets/images/post-placeholder.jpg"
       alt="Photo of a event"
     >
+  </div>
 </ng-template>
 
 <ng-template #loading>

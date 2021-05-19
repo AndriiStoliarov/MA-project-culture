@@ -16,9 +16,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 // import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
-import { NeedComponent, NeedFormComponent, PostComponent, PostsComponent } from './components';
+import {
+  NeedComponent,
+  NeedFormComponent,
+  PostComponent,
+  PostsComponent,
+  ProposalComponent
+} from './components';
 import { SearchTitlePipe } from './pipes';
 
 const matModules = [
@@ -34,6 +41,7 @@ const matModules = [
   MatPaginatorModule,
   MatProgressSpinnerModule,
   MatSelectModule,
+  MatSnackBarModule
   // NgxMatFileInputModule
 ];
 
@@ -53,6 +61,7 @@ const matModules = [
     PostsComponent,
     SearchTitlePipe,
     NeedComponent,
+    ProposalComponent
   ],
   exports: [
     CommonModule,
@@ -65,6 +74,7 @@ const matModules = [
     RouterModule,
     NeedComponent,
     NeedFormComponent,
+    ProposalComponent,
     ...matModules
   ]
  })

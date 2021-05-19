@@ -7,7 +7,6 @@ import { UserPostsPageComponent } from './user-posts-page/user-posts-page.compon
 import { EventFormComponent, UserLayoutComponent } from './shared/components';
 import { SharedModule } from '../shared';
 
-
 @NgModule({
   declarations: [
     UserLayoutComponent,

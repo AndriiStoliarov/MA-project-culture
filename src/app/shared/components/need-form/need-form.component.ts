@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Requirement } from '../../types';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NeedService, PostsService } from '../../services';
+import { Proposal, Requirement } from '../../types';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-need-form',
@@ -14,18 +16,23 @@ export class NeedFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: Requirement
+    public dialogRef: MatDialogRef<NeedFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Requirement & { postId: number },
+    private route: ActivatedRoute,
+    private needService: NeedService,
+    private postsService: PostsService,
   ) { }
 
   ngOnInit(): void {
     this.needForm = this.fb.group ({
-      message: new FormControl('', [
+      request_id: new FormControl(''),
+      description: new FormControl('', [
         Validators.required
       ]),
-      price: new FormControl('', [
+      price_cents: new FormControl('', [
         Validators.required
       ]),
-      phone: new FormControl('', [
+      phone_number: new FormControl('', [
         Validators.required,
         Validators.pattern(/^\d{10}$/)
       ])
@@ -54,6 +61,16 @@ export class NeedFormComponent implements OnInit {
     if (this.needForm.invalid) {
       return;
     }
+
+    this.needForm.controls.request_id.setValue(this.data.id);
+
+    const jsonData = this.needForm.value;
+
+    this.needService.postData(jsonData).subscribe((response: Proposal) => {
+      console.log('created Need', response);
+      this.postsService.getById(this.data.postId).subscribe();
+      this.dialogRef.close();
+    });
   }
 
 }

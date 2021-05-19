@@ -6,6 +6,7 @@
     class="flex-form"
     #form
   >
+
     <mat-form-field
       class="width-field"
       appearance="legacy"
@@ -13,15 +14,15 @@
       <mat-label>Опишіть вашу пропозицію</mat-label>
       <input
         matInput
-        formControlName="message"
+        formControlName="description"
         required
       >
       <mat-icon matSuffix>mode_edit</mat-icon>
       <mat-error
-        *ngIf="isControlInvalid('message')"
+        *ngIf="isControlInvalid('description')"
         class="validation"
       >
-      {{ getControlError('message') }}
+      {{ getControlError('description') }}
       </mat-error>
     </mat-form-field>
 
@@ -30,18 +31,18 @@
       <input
         matInput
         type="number"
-        formControlName="price"
+        formControlName="price_cents"
         required
       >
       <span matPrefix>₴&nbsp;</span>
       <mat-icon matSuffix>money</mat-icon>
       <mat-error
-        *ngIf="isControlInvalid('price')"
+        *ngIf="isControlInvalid('price_cents')"
         class="validation"
         required
         pattern
       >
-      {{ getControlError('price') }}
+      {{ getControlError('price_cents') }}
       </mat-error>
     </mat-form-field>
 
@@ -49,17 +50,17 @@
       <mat-label>№ мобільного телефону</mat-label>
       <input
         matInput
-        formControlName="phone"
+        formControlName="phone_number"
         required
         pattern
       >
       <mat-hint>номер для зворотнього зв'зку</mat-hint>
       <mat-icon matSuffix>phone_iphone</mat-icon>
       <mat-error
-        *ngIf="isControlInvalid('phone')"
+        *ngIf="isControlInvalid('phone_number')"
         class="validation"
       >
-      {{ getControlError('phone') }}
+      {{ getControlError('phone_number') }}
       </mat-error>
     </mat-form-field>
   </form>
@@ -72,6 +73,8 @@
       mat-button
       color="primary"
       mat-dialog-close
+      (click)="form.clo"
+
     >
     Закрити
     </button>
@@ -85,7 +88,7 @@
     <button
       mat-flat-button
       color="primary"
-      (click)="needForm.submit()"
+      (click)="submit()"
       [disabled]="needForm.invalid"
     >
     Надіслати

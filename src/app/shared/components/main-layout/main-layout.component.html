@@ -6,7 +6,7 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <a mat-menu-item routerLink="/">Головна</a>
+      <!-- <a mat-menu-item routerLink="/">Головна</a> -->
       <a mat-menu-item routerLink="/poster">Афіша</a>
       <a mat-menu-item routerLink="/about">О нас</a>
     </mat-menu>
@@ -15,7 +15,34 @@
 
     <span class="spacer"></span>
 
-    <mat-list>
+    <span *ngIf="hiding">{{ firstName }} {{ lastName }}</span>
+
+    <mat-list *ngIf="hiding">
+      <mat-list-item>
+        <a
+          mat-icon-button
+          class="navigation-link"
+          routerLink="/user/posts"
+        >
+          <mat-icon>person</mat-icon>
+        </a>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-list *ngIf="hiding">
+      <mat-list-item>
+        <a
+          mat-icon-button
+          class="navigation-link"
+          (click)="logout()"
+          aria-label="exit-to-app"
+        >
+          <mat-icon>logout</mat-icon>
+        </a>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-list *ngIf="!hiding">
       <mat-list-item>
         <a
           mat-icon-button
@@ -26,7 +53,7 @@
           <mat-icon>login</mat-icon>
         </a>
       </mat-list-item>
-      <mat-list-item>
+      <mat-list-item *ngIf="!hiding">
         <a
           mat-icon-button
           aria-label="person-add"
@@ -39,6 +66,17 @@
 
   </mat-toolbar>
 </header>
+
+<div class="button-container">
+  <a
+    mat-fab
+    color="primary"
+    (click)="isNavigate()"
+    aria-label="add new event"
+  >
+    <mat-icon>add</mat-icon>
+  </a>
+</div>
 
 <div class="wrapper">
   <router-outlet></router-outlet>

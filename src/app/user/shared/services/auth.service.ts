@@ -1,7 +1,7 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import { Observable, Subject, throwError } from 'rxjs';
+import { catchError, tap, map } from 'rxjs/operators';
 import {AuthResponse, LoginParams, User, UserResponse} from '../../../shared/types';
 
 @Injectable({ providedIn: 'root' })
@@ -10,6 +10,8 @@ export class AuthService {
   AUTH_URL = '/api/auth';
   USER_URL = '/api/users';
   LOCAL_STORAGE_TOKEN_KEY = 'token';
+
+  public error$: Subject<string> = new Subject<string>();
 
   public authToken: string;
   public user: User;
@@ -33,9 +35,12 @@ export class AuthService {
 
   login(params: LoginParams): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.HOST}${this.AUTH_URL}`, params)
-      .pipe(tap((response) => {
+      .pipe(
+        tap((response) => {
         this.setToken(response);
-      }));
+        },
+        catchError(this.handleError.bind(this))
+      ));
   }
 
   logout(): void {
@@ -53,8 +58,29 @@ export class AuthService {
       }));
   }
 
+  private handleError(error: HttpErrorResponse): Observable<any> {
+    const message = error.error.error;
+    console.log(message);
+
+    switch (message) {
+      case 'Invalid email or password.':
+        this.error$.next('Невірна адреса електронної пошти або пароль.');
+        break;
+    }
+
+    return throwError(error);
+  }
+
   private setToken(response: AuthResponse | null): void {
-    localStorage.setItem(this.LOCAL_STORAGE_TOKEN_KEY, response.token);
+    console.log(response);
+    if (response) {
+      localStorage.setItem(this.LOCAL_STORAGE_TOKEN_KEY, response.token);
+      localStorage.setItem('firstName', response.user.first_name);
+      localStorage.setItem('lastName', response.user.last_name);
+      localStorage.setItem('currentUserId', response.user.id.toString());
+    } else {
+      localStorage.clear();
+    }
 
     this.response = response;
     this.user = response.user;

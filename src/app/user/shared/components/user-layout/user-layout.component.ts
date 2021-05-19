@@ -19,7 +19,8 @@ export class UserLayoutComponent implements OnInit {
   ) {
     // tslint:disable-next-line: deprecation
     this.router.events.subscribe(() => {
-      this.hiding = this.router.url !== '/user/login';
+      // this.hiding = this.router.url !== '/user/login';
+      this.hiding = this.authService.isAuthenticated();
       this.firstName = localStorage.getItem('firstName');
       this.lastName = localStorage.getItem('lastName');
     });
