@@ -12,7 +12,9 @@
     *ngIf="isAuthenticated"
     class=""
   >
-    <app-proposal [proposal$] = "proposal$"></app-proposal>
+    <app-proposal *ngFor="let userProposal of requirement.proposals"
+                  [userProposal]="userProposal">
+    </app-proposal>
   </div>
 
 

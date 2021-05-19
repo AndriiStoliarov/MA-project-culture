@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { ProposalResponse } from 'src/app/user/shared/types';
 
 @Component({
@@ -8,8 +7,7 @@ import { ProposalResponse } from 'src/app/user/shared/types';
   styleUrls: ['./proposal.component.css']
 })
 export class ProposalComponent implements OnInit {
-
-  @Input() proposal$: Observable<ProposalResponse>;
+  @Input() userProposal: ProposalResponse;
 
   constructor() { }
 
