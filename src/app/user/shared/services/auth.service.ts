@@ -34,7 +34,6 @@ export class AuthService {
 
   private handleError(error: HttpErrorResponse): Observable<any> {
     const message = error.error.error;
-    // console.log(message);
     console.log(message);
 
     switch (message) {
@@ -47,7 +46,6 @@ export class AuthService {
   }
 
   private setToken(response: AuthResponse | null): void {
-    // console.log();
     console.log(response);
     if (response) {
       localStorage.setItem('token', response.token);

@@ -16,39 +16,26 @@ import { NeedFormComponent } from '../need-form/need-form.component';
 export class NeedComponent implements OnInit {
 
   @Input() requirement: Requirement;
-  proposal$: Observable<ProposalResponse>;
-  // proposal: ProposalResponse;
+  private postId: number = null;
   isAuthenticated = false;
 
   constructor(
+    private authService: AuthService,
     private dialog: MatDialog,
     private route: ActivatedRoute,
-    private proposalService: ProposalService,
-    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    // this.proposalService.getProposalById(8).subscribe((proposal: ProposalResponse) => {
-    //   this.proposal = proposal;
-    //   console.log(this.proposal);
-    //   console.log(this.requirement.id);
-    // });
-
-
+    this.postId = +this.route.snapshot.params.id;
     this.isAuthenticated = this.authService.isAuthenticated();
-
-    this.proposal$ = this.route.paramMap.pipe(
-      switchMap(() => {
-        return this.proposalService.getProposalById(8);
-      })
-    );
   }
 
   openDialog(): void {
     this.dialog.open(NeedFormComponent, {
       data: {
         description: this.requirement.description,
-        id: this.requirement.id
+        id: this.requirement.id,
+        postId: this.postId,
       }
     });
   }

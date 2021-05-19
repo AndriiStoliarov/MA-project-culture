@@ -8,15 +8,10 @@
   Запропонувати
   </button>
 
-  <div
-    *ngIf="isAuthenticated"
-    class=""
-  >
+  <ng-container *ngIf="isAuthenticated">
     <app-proposal *ngFor="let userProposal of requirement.proposals"
                   [userProposal]="userProposal">
     </app-proposal>
-  </div>
-
-
+  </ng-container>
 
 </mat-card>

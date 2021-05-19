@@ -22,11 +22,9 @@ export class PostPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.post$ = this.route.paramMap.pipe(
-      switchMap((params: Params) => {
-        return this.postsService.getById(params.params.id);
-      })
-    );
+    const postId = +this.route.snapshot.params.id;
+    this.post$ = this.postsService.post$;
+    this.postsService.getById(postId).subscribe();
   }
 
   isNavigate(): void {
