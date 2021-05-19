@@ -7,6 +7,7 @@ import { UserPostsPageComponent } from './user-posts-page/user-posts-page.compon
 import { EventFormComponent, UserLayoutComponent } from './shared/components';
 import { SharedModule } from '../shared';
 import { ProposalComponent } from './shared/components/proposal/proposal.component';
+import { ProposalsComponent } from './shared/components/proposals/proposals.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ProposalComponent } from './shared/components/proposal/proposal.compone
     UserPostsPageComponent,
     EventFormComponent,
     UserPostsPageComponent,
-    ProposalComponent
+    ProposalComponent,
+    ProposalsComponent
   ],
   imports: [
     SharedModule,

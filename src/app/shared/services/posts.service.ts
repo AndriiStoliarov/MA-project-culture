@@ -21,6 +21,7 @@ export class PostsService {
   getPosts(): Observable<Records> {
     return this.http.get<Records>(this.ROOT_URL).pipe(
       map((response) => response),
+      // delay(500)
       delay(500)
     );
   }
@@ -48,6 +49,7 @@ export class PostsService {
 
     return this.http.get<Post>(`http://52.57.253.240:3000/api/events/${id}.json`, httpOptions).pipe(
       map((post: Post) => post),
+      // delay(500)
       delay(500)
     );
   }
