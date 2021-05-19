@@ -25,7 +25,7 @@ const routes: Routes = [
   {
     path: 'user',
     resolve: { user: UserResolverService },
-    loadChildren: () => import('./user').then(m => m.UserModule),
+    loadChildren: () => import('./user').then((m) => m.UserModule),
   },
 ];
 

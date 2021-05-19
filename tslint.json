@@ -38,6 +38,27 @@
     "prefer-arrow-callback": true,
     "array-type": [true, "array"],
     "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+    "member-access": [true, "no-public"],
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "static-field",
+          "instance-field",
+          "static-method",
+          "instance-method"
+        ]
+      }
+    ],
+
+    "object-literal-key-quotes": [true, "as-needed"],
+    "object-literal-shorthand": true,
+    "space-before-function-paren": false,
+    "only-arrow-functions": [true, "allow-named-functions"],
+    "arrow-parens": true,
+    "no-duplicate-imports": true,
+    "no-restricted-globals": [true, "name", "length", "event", "isNaN", "isFinite"],
+    "jsdoc-format": false,
 
     "align": {
       "options": [
@@ -66,17 +87,6 @@
       true,
       140
     ],
-    "member-ordering": [
-      true,
-      {
-        "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
-        ]
-      }
-    ],
     "no-console": [
       true,
       "debug",
@@ -94,10 +104,6 @@
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
-    "object-literal-key-quotes": [
-      true,
-      "as-needed"
-    ],
     "quotemark": [
       true,
       "single"
@@ -106,15 +112,6 @@
       "options": [
         "always"
       ]
-    },
-    "space-before-function-paren": {
-      "options": {
-        "anonymous": "never",
-        "asyncArrow": "always",
-        "constructor": "never",
-        "method": "never",
-        "named": "never"
-      }
     },
     "typedef": [
       true,

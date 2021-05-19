@@ -15,9 +15,9 @@ export class UserPostsPageComponent implements OnInit, OnDestroy {
   private posts: Post[] = [];
   private records: Records[] = [];
   private subscription: Subscription = new Subscription();
-  public categories: Category[];
-  public loading = false;
-  public userPosts: Post[] = [];
+  categories: Category[];
+  loading = false;
+  userPosts: Post[] = [];
 
   constructor(
     private authService: AuthService,

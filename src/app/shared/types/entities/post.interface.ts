@@ -1,3 +1,4 @@
+import { Category } from './category.interface';
 import { Requirement } from './requirement.interface';
 
 export interface Post {
@@ -7,6 +8,7 @@ export interface Post {
   starts_at: number;
   location?: string;
   category_id: number;
+  category: Category;
   image_url?: string;
   requests: Requirement[];
   user_id?: number;

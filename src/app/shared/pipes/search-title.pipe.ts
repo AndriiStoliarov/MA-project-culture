@@ -9,7 +9,7 @@ export class SearchTitlePipe implements PipeTransform {
       return posts;
     }
 
-    return posts.filter(post => {
+    return posts.filter((post) => {
       return post.title.toLowerCase().includes(search.toLowerCase());
     });
   }

@@ -3,8 +3,8 @@ import { Subscription } from 'rxjs';
 
 import { PageEvent } from '@angular/material/paginator';
 
-import { AuthService, CategoriesService, PostsService } from '../../services';
-import { Category, Post, Records } from '../../types';
+import { AuthService, PostsService } from '../../services';
+import { Post, Records } from '../../types';
 
 @Component({
   selector: 'app-posts',
@@ -13,31 +13,28 @@ import { Category, Post, Records } from '../../types';
 })
 export class PostsComponent implements OnInit, OnDestroy{
 
-  public length = 0;
-  public pageSize = 6;
-  public pageIndex = 0;
-  public pageSizeOptions = [3, 6, 12, 48];
-  public showFirstLastButtons = true;
+  length = 0;
+  pageSize = 6;
+  pageIndex = 0;
+  pageSizeOptions = [3, 6, 12, 48];
+  showFirstLastButtons = true;
 
-  public posts: Post[] = [];
+  posts: Post[] = [];
+  loading = false;
+  searchStr = '';
+  paginationPosts: Post[] = [];
+
   private records: Records[] = [];
   private subscription: Subscription = new Subscription();
-  public loading = false;
-  public searchStr = '';
-  public paginationPosts: Post[] = [];
-  public categories: Category[];
 
   constructor(
     private authService: AuthService,
-    private postsService: PostsService
-  ,
-    private categoriesService: CategoriesService,
+    private postsService: PostsService,
   ) { }
 
   ngOnInit(): void {
     this.subscription
-      .add(this.getPosts())
-      .add(this.getCategories());
+      .add(this.getPosts());
   }
 
   private getPosts(): Subscription {
@@ -50,14 +47,7 @@ export class PostsComponent implements OnInit, OnDestroy{
     });
   }
 
-  private getCategories(): Subscription {
-    // tslint:disable-next-line: deprecation
-    return this.categoriesService.getCategories().subscribe((categories: Category[]) => {
-      this.categories = categories;
-    });
-  }
-
-  public handlePageEvent(event: PageEvent): void {
+  handlePageEvent(event: PageEvent): void {
     this.length = event.length;
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;

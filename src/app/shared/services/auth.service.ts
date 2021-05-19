@@ -12,10 +12,10 @@ export class AuthService {
   USER_URL = '/api/me';
   LOCAL_STORAGE_TOKEN_KEY = 'token';
 
-  public error$: Subject<string> = new Subject<string>();
+  error$: Subject<string> = new Subject<string>();
 
-  public authToken: string;
-  public user: User;
+  authToken: string;
+  user: User;
 
   private response: AuthResponse;
 
