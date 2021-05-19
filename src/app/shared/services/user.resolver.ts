@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { AuthService } from './auth.service';
+
 import { UserResponse } from '../types';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class UserResolverService implements Resolve<any> {

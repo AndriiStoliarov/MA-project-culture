@@ -4,13 +4,47 @@
     "codelyzer"
   ],
   "rules": {
+    "ordered-imports": {
+      "options": {
+        "grouped-imports": true,
+        "groups": [
+          {
+            "name": "angular material imports",
+            "match": "^@angular\/material",
+            "order": 10
+          },
+          {
+            "name": "angular imports",
+            "match": "^@angular",
+            "order": 0
+          },
+          {
+            "name": "relative imports",
+            "match": "^\\.",
+            "order": 20
+          },
+          {
+            "name": "other imports",
+            "match": "",
+            "order": 0
+          }
+        ]
+      }
+    },
+
+    "object-shorthand": ["error", "always"],
+    "quote-props": ["error", "as-needed"],
+    "space-before-blocks": true,
+    "prefer-arrow-callback": true,
+    "array-type": [true, "array"],
+    "trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+
     "align": {
       "options": [
         "parameters",
         "statements"
       ]
     },
-    "array-type": false,
     "arrow-return-shorthand": true,
     "curly": true,
     "deprecation": {

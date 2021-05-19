@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Records, Post, Category } from '../../shared/types';
+
 import { AuthService, CategoriesService, PostsService } from '../../shared/services';
+import { Category, Post, Records } from '../../shared/types';
 
 @Component({
   selector: 'app-user-posts-page',
   templateUrl: './user-posts-page.component.html',
-  styleUrls: ['./user-posts-page.component.css']
+  styleUrls: ['./user-posts-page.component.css'],
 })
 export class UserPostsPageComponent implements OnInit, OnDestroy {
 

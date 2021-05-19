@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
 import { AboutPageComponent } from './about-page/about-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
@@ -19,17 +20,17 @@ const routes: Routes = [
       // {path: 'poster', component: PosterPageComponent},
       // {path: 'about', component: AboutPageComponent}
       // {path: '**', redirectTo: 'home'}
-    ]
+    ],
   },
   {
     path: 'user',
     resolve: { user: UserResolverService },
-    loadChildren: () => import('./user').then(m => m.UserModule)
-  }
+    loadChildren: () => import('./user').then(m => m.UserModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

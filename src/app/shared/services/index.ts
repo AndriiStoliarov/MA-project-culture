@@ -1,6 +1,7 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthService } from './auth.service';
+
 import { AuthInterceptor } from './auth.interceptor';
+import { AuthService } from './auth.service';
 import { UserResolverService } from './user.resolver';
 
 export const mainServices = [

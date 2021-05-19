@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+
 import { AuthResponse, LoginParams, User, UserResponse } from '../types';
 
 @Injectable()
@@ -32,7 +33,7 @@ export class AuthService {
         tap((response) => {
         this.setToken(response);
         },
-        catchError(this.handleError.bind(this))
+        catchError(this.handleError.bind(this)),
       ));
   }
 

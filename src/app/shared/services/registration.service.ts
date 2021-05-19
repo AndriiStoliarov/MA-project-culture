@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { User } from '../types';
 import { SignUpParams } from '../types/params/signUpParams.interface';
 
@@ -13,8 +14,8 @@ export class RegistrationService {
   createUser(data: SignUpParams): Observable<User> {
     const httpOptions = {
       headers: new HttpHeaders({
-       'Content-Type':  'application/json'
-      })
+       'Content-Type':  'application/json',
+      }),
     };
 
     const body = JSON.stringify(data);

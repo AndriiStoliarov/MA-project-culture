@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+
 import { RegistrationService } from '../../services';
-import { MessageSnackBarComponent } from '../message-snack-bar/message-snack-bar.component';
 import { SignUpParams } from '../../types/params/signUpParams.interface';
+import { MessageSnackBarComponent } from '../message-snack-bar/message-snack-bar.component';
 
 @Component({
   selector: 'app-registration-page',
   templateUrl: './registration-page.component.html',
-  styleUrls: ['./registration-page.component.css']
+  styleUrls: ['./registration-page.component.css'],
 })
 export class RegistrationPageComponent implements OnInit {
 
@@ -23,24 +25,24 @@ export class RegistrationPageComponent implements OnInit {
     private registrationService: RegistrationService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<RegistrationPageComponent>,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group ({
       first_name: new FormControl('', [
-        Validators.required
+        Validators.required,
       ]),
       last_name: new FormControl('', [
-        Validators.required
+        Validators.required,
       ]),
       email: new FormControl('', [
         Validators.required,
-        Validators.email
+        Validators.email,
       ]),
       password: new FormControl('', [
-        Validators.required
-      ])
+        Validators.required,
+      ]),
     });
   }
 
@@ -70,7 +72,7 @@ export class RegistrationPageComponent implements OnInit {
       first_name: this.registrationForm.value.first_name,
       last_name: this.registrationForm.value.last_name,
       email: this.registrationForm.value.email,
-      password: this.registrationForm.value.password
+      password: this.registrationForm.value.password,
     };
 
     // tslint:disable-next-line: deprecation

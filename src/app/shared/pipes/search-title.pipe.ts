@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { Post } from '../types';
 
 @Pipe({ name: 'searchTitle' })

@@ -1,14 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 import { NeedService, PostsService } from '../../services';
 import { Proposal, Requirement } from '../../types';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-need-form',
   templateUrl: './need-form.component.html',
-  styleUrls: ['./need-form.component.css']
+  styleUrls: ['./need-form.component.css'],
 })
 export class NeedFormComponent implements OnInit {
 
@@ -27,15 +29,15 @@ export class NeedFormComponent implements OnInit {
     this.needForm = this.fb.group ({
       request_id: new FormControl(''),
       description: new FormControl('', [
-        Validators.required
+        Validators.required,
       ]),
       price_cents: new FormControl('', [
-        Validators.required
+        Validators.required,
       ]),
       phone_number: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^\d{10}$/)
-      ])
+        Validators.pattern(/^\d{10}$/),
+      ]),
     });
   }
 

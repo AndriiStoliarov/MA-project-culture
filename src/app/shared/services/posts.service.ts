@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Post, Records } from '../types';
 import { delay, map, tap } from 'rxjs/operators';
+
+import { Post, Records } from '../types';
 
 @Injectable({ providedIn: 'root' })
 export class PostsService {
@@ -16,7 +17,7 @@ export class PostsService {
     return this.http.get<Records>(this.ROOT_URL).pipe(
       map((response) => response),
       // delay(500)
-      delay(500)
+      delay(500),
     );
   }
 
@@ -25,7 +26,7 @@ export class PostsService {
       map((post: Post) => post),
       tap((post: Post) => this.post$.next(post)),
       // delay(500)
-      delay(500)
+      delay(500),
     );
   }
 

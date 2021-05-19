@@ -1,14 +1,15 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
-import { CategoriesService, PostsService } from '../../services';
-import { Records, Post, Category } from '../../types';
-import { AuthService } from '../../../user/shared/services';
+
+import { PageEvent } from '@angular/material/paginator';
+
+import { AuthService, CategoriesService, PostsService } from '../../services';
+import { Category, Post, Records } from '../../types';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit, OnDestroy{
 
@@ -30,7 +31,7 @@ export class PostsComponent implements OnInit, OnDestroy{
     private authService: AuthService,
     private postsService: PostsService
   ,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
   ) { }
 
   ngOnInit(): void {
