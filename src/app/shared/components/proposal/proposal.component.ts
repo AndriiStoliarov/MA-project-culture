@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProposalResponse } from 'src/app/user/shared/types';
+import { Proposal } from '../../types';
 
 @Component({
   selector: 'app-proposal',
@@ -7,7 +7,7 @@ import { ProposalResponse } from 'src/app/user/shared/types';
   styleUrls: ['./proposal.component.css']
 })
 export class ProposalComponent implements OnInit {
-  @Input() userProposal: ProposalResponse;
+  @Input() userProposal: Proposal;
 
   constructor() { }
 

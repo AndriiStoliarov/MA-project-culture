@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Records, Post } from '../../shared/types';
 import { CategoriesService, PostsService } from '../../shared/services';
-import { Category } from '../shared/types';
+import { Category } from '../../shared/types';
 
 @Component({
   selector: 'app-user-posts-page',

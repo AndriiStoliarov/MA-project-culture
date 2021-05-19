@@ -1,10 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { AuthService, ProposalService } from 'src/app/user/shared/services';
-import { ProposalResponse } from 'src/app/user/shared/types';
+import { AuthService } from 'src/app/user/shared/services';
 import { Requirement } from '../../types';
 import { NeedFormComponent } from '../need-form/need-form.component';
 
@@ -39,5 +36,4 @@ export class NeedComponent implements OnInit {
       }
     });
   }
-
 }
