@@ -7,4 +7,14 @@
   >
   Запропонувати
   </button>
+
+  <div
+    *ngIf="isAuthenticated"
+    class=""
+  >
+    <app-proposal [proposal$] = "proposal$"></app-proposal>
+  </div>
+
+
+
 </mat-card>

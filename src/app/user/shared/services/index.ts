@@ -1,3 +1,3 @@
 export { EventService } from './event.service';
 export { AuthService } from './auth.service';
-export { ProposalsService } from './proposals.service';
+export { ProposalService } from './proposal.service';

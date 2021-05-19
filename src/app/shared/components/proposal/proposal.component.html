@@ -1,8 +1,9 @@
-<mat-card class="bottom-margin">
-    <span>Поміняти напрямок руху дороги в центрі.</span>
-
+<div *ngIf="proposal$ | async as proposal">
+  <mat-card class="bottom-margin">
     <mat-card class="bottom-margin">
-      <span>Можу вирішити юридичний аспект за 2000$.</span>
+      <span>{{ proposal.description }}</span>
+      <span>{{ proposal.price_cents }}</span>
+      <span>{{ proposal.phone_number }}</span>
       <mat-card-actions class="flex-button">
         <a
           mat-button
@@ -24,4 +25,4 @@
       </mat-card-actions>
     </mat-card>
   </mat-card>
-
+</div>
