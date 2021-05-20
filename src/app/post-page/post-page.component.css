@@ -24,8 +24,6 @@
 .flex-button {
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center; */
 }
 
 .center-margin {
@@ -35,9 +33,3 @@
 .width-card {
   max-width: 584px;
 }
-
-/* .left-margin {
-  margin-left: .5rem;
-  margin-left: 7px;
-} */
-

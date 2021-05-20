@@ -18,18 +18,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import {
-  NeedComponent,
-  NeedFormComponent,
-  PostComponent,
-  PostsComponent,
-  ProposalComponent,
-} from './components';
+import { NeedComponent, NeedFormComponent, PostComponent, PostsComponent, ProposalComponent } from './components';
 import { SearchTitlePipe } from './pipes';
-import { AuthInterceptor } from './services/auth.interceptor';
-import { ProposalMessageComponent } from './components/proposal-message/proposal-message.component';
-// import { NgxMatFileInputModule } from '@angular-material-components/file-input';
-
 
 const matModules = [
   MatSliderModule,
@@ -45,7 +35,6 @@ const matModules = [
   MatProgressSpinnerModule,
   MatSelectModule,
   MatSnackBarModule,
-  // NgxMatFileInputModule
 ];
 
 @NgModule({
@@ -65,7 +54,6 @@ const matModules = [
     SearchTitlePipe,
     NeedComponent,
     ProposalComponent,
-    ProposalMessageComponent,
   ],
   exports: [
     CommonModule,

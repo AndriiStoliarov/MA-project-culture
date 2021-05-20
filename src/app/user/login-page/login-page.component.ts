@@ -56,12 +56,6 @@ export class LoginPageComponent implements OnInit {
       return;
     }
 
-    // this.route.queryParams.subscribe((params: Params) => {
-    //   if (!params.loginAgain) {
-    //     this.router.navigate(['/user', 'posts']);
-    //   }
-    // });
-
     const userLoginParams: LoginParams = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
@@ -72,4 +66,5 @@ export class LoginPageComponent implements OnInit {
       this.router.navigate(['/user', 'posts']);
     });
   }
+
 }

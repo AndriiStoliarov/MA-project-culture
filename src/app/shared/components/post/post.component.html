@@ -4,22 +4,6 @@
     <mat-card-title class="title-height">{{ post.title }}</mat-card-title>
   </mat-card-header>
 
-  <!-- <div *ngIf="post.image_url; else placeholder">
-    <div
-      *ngIf="loader; else loading"
-      class="image-height"
-    >
-      <img
-        mat-card-image
-        class="image-height"
-        [src]="post.image_url"
-        [class.hide-img]="loaded"
-        (load)="loader()"
-        alt="Photo of a event"
-      >
-    </div>
-  </div> -->
-
   <div *ngIf="post.image_url; else placeholder">
       <img
         mat-card-image

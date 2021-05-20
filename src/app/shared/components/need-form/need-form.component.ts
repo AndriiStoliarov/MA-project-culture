@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-// import { ActivatedRoute } from '@angular/router';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
@@ -25,7 +24,6 @@ export class NeedFormComponent implements OnInit {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<NeedFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Requirement & { postId: number },
-    // private route: ActivatedRoute,
     private needService: NeedService,
     private postsService: PostsService,
     private matSnackBar: MatSnackBar,
@@ -75,7 +73,6 @@ export class NeedFormComponent implements OnInit {
     const jsonData = this.needForm.value;
 
     this.needService.postData(jsonData).subscribe((response: Proposal) => {
-      console.log('created Need', response);
       this.postsService.getById(this.data.postId).subscribe();
       this.dialogRef.close();
       this.matSnackBar.openFromComponent(ProposalMessageComponent, {

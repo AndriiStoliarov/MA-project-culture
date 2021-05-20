@@ -1,20 +1,24 @@
 <mat-card class="margin-card">
   <div class="flex-card">
     <span>{{ requirement.description }}</span>
-    <button
-      mat-flat-button
-      (click)="isNavigate()"
-      color="primary"
-    >
-    Запропонувати
-    </button>
+
+      <button
+        *ngIf="!isUser"
+        mat-flat-button
+        (click)="isNavigate()"
+        color="primary"
+      >
+      Запропонувати
+      </button>
   </div>
 
-  <ng-container *ngIf="isAuthenticated">
-    <app-proposal
-      *ngFor="let userProposal of requirement.proposals"
-      [userProposal]="userProposal"
-    >
-    </app-proposal>
+  <ng-container *ngIf="isUser">
+    <ng-container *ngIf="isAuthenticated">
+      <app-proposal
+        *ngFor="let userProposal of requirement.proposals"
+        [userProposal]="userProposal"
+      >
+      </app-proposal>
+    </ng-container>
   </ng-container>
 </mat-card>

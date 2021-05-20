@@ -109,13 +109,9 @@ export class EventFormComponent implements OnInit {
       delete jsonData.image;
     }
 
-    console.log('Create an event form');
-    console.log('data:', jsonData);
-
     this.eventService.postData(jsonData).subscribe((response: Post) => {
-      console.log('created Event', response);
-
       this.router.navigate(['/posts', response.id]);
     });
   }
+
 }

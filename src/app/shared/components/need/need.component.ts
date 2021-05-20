@@ -16,8 +16,10 @@ import { RegistrationPageComponent } from '../registration-page/registration-pag
 export class NeedComponent implements OnInit {
 
   @Input() requirement: Requirement;
+  @Input() postUserId: number;
   private postId: number = null;
   isAuthenticated = false;
+  isUser = false;
 
   constructor(
     private authService: AuthService,
@@ -28,6 +30,7 @@ export class NeedComponent implements OnInit {
   ngOnInit(): void {
     this.postId = +this.route.snapshot.params.id;
     this.isAuthenticated = this.authService.isAuthenticated();
+    this.isUser = this.postUserId === this.authService.isUserId();
   }
 
   openDialog(): void {

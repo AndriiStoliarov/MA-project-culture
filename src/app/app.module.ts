@@ -9,13 +9,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { PosterPageComponent } from './poster-page/poster-page.component';
 import { SharedModule } from './shared';
-import { MainLayoutComponent } from './shared/components';
-import { RegistrationPageComponent } from './shared/components';
+import { MainLayoutComponent, RegistrationPageComponent } from './shared/components';
 import { mainServices } from './shared/services';
-
-// import { registerLocaleData } from '@angular/common';
-// import localeUa from '@angular/common/locales/ru-UA';
-// registerLocaleData(localeUa, 'ua');
 
 @NgModule({
   declarations: [
