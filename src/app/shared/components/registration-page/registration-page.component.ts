@@ -6,7 +6,7 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 
 import { RegistrationService } from '../../services';
 import { SignUpParams } from '../../types/params/signUpParams.interface';
-import { MessageSnackBarComponent } from '../message-snack-bar/message-snack-bar.component';
+import { RegistrationMessageComponent } from '../registration-message/registration-message.component';
 
 @Component({
   selector: 'app-registration-page',
@@ -79,7 +79,7 @@ export class RegistrationPageComponent implements OnInit {
     this.registrationService.createUser(data).subscribe(() => {
       console.log('Registration successfully.');
       this.dialogRef.close();
-      this.snackBar.openFromComponent(MessageSnackBarComponent, {
+      this.snackBar.openFromComponent(RegistrationMessageComponent, {
         duration: this.durationInSeconds * 1000,
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,

@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/user/shared/services';
 
 import { MatDialog } from '@angular/material/dialog';
 
 import { Requirement } from '../../types';
 import { NeedFormComponent } from '../need-form/need-form.component';
+import { RegistrationPageComponent } from '../registration-page/registration-page.component';
 
 @Component({
   selector: 'app-need',
@@ -37,5 +38,13 @@ export class NeedComponent implements OnInit {
         postId: this.postId,
       },
     });
+  }
+
+  isNavigate(): void {
+    if (this.isAuthenticated) {
+      this.openDialog();
+    } else {
+      this.dialog.open(RegistrationPageComponent);
+    }
   }
 }

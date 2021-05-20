@@ -1,11 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+// import { ActivatedRoute } from '@angular/router';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 import { NeedService, PostsService } from '../../services';
 import { Proposal, Requirement } from '../../types';
+import { ProposalMessageComponent } from '../proposal-message/proposal-message.component';
 
 @Component({
   selector: 'app-need-form',
@@ -15,14 +17,18 @@ import { Proposal, Requirement } from '../../types';
 export class NeedFormComponent implements OnInit {
 
   needForm: any;
+  durationInSeconds = 5;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<NeedFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Requirement & { postId: number },
-    private route: ActivatedRoute,
+    // private route: ActivatedRoute,
     private needService: NeedService,
     private postsService: PostsService,
+    private matSnackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -72,6 +78,11 @@ export class NeedFormComponent implements OnInit {
       console.log('created Need', response);
       this.postsService.getById(this.data.postId).subscribe();
       this.dialogRef.close();
+      this.matSnackBar.openFromComponent(ProposalMessageComponent, {
+        duration: this.durationInSeconds * 1000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      });
     });
   }
 

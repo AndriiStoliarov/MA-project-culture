@@ -34,13 +34,12 @@
           </mat-card-content>
         </mat-card>
       </div>
-
-      <app-need
-        *ngFor="let requirement of post.requests"
-        [requirement]="requirement"
-      >
-      </app-need>
     </mat-card>
+    <app-need
+      *ngFor="let requirement of post.requests"
+      [requirement]="requirement"
+    >
+    </app-need>
   </div>
 </div>
 

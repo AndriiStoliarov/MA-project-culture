@@ -1,28 +1,29 @@
 <div *ngIf="userProposal">
-  <mat-card class="bottom-margin">
-    <mat-card class="bottom-margin">
-      <span>{{ userProposal.description }}</span>
-      <span>{{ userProposal.price_cents }}</span>
-      <span>{{ userProposal.phone_number }}</span>
-      <mat-card-actions class="flex-button">
-        <a
-          mat-button
-          href="tel:+3096-444-44444"
-          color="primary"
-        >Подзвонити</a>
-        <button
-          mat-flat-button
-          color="primary"
-        >
-        Підтвердити
-        </button>
-        <button
-          mat-button
-          color="warn"
-        >
-        Відхилити
-        </button>
-      </mat-card-actions>
-    </mat-card>
+  <mat-card class="flex-container bottom-margin">
+    <p>
+      {{ userProposal.description }} {{ userProposal.price_cents }} <span>грн.</span>
+    </p>
+
+    <div class="flex-button">
+      <a
+        mat-button
+        href="tel:+3{{ userProposal.phone_number }}"
+        color="primary"
+      >Подзвонити
+      </a>
+      <button
+        class="bottom-margin"
+        mat-flat-button
+        color="primary"
+      >
+      Підтвердити
+      </button>
+      <button
+        mat-button
+        color="warn"
+      >
+      Відхилити
+      </button>
+    </div>
   </mat-card>
 </div>
