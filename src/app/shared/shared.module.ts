@@ -27,6 +27,7 @@ import {
 } from './components';
 import { SearchTitlePipe } from './pipes';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { ProposalMessageComponent } from './components/proposal-message/proposal-message.component';
 // import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
 
@@ -64,6 +65,7 @@ const matModules = [
     SearchTitlePipe,
     NeedComponent,
     ProposalComponent,
+    ProposalMessageComponent,
   ],
   exports: [
     CommonModule,
