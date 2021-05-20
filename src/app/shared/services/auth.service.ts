@@ -23,7 +23,7 @@ export class AuthService {
     this.authToken = this.tokenFromLocalStorage;
   }
 
-  get tokenFromLocalStorage() {
+  get tokenFromLocalStorage(): string {
     return localStorage.getItem(this.LOCAL_STORAGE_TOKEN_KEY);
   }
 
@@ -48,7 +48,7 @@ export class AuthService {
     return !!this.authToken;
   }
 
-  getUserByToken() {
+  getUserByToken(): Observable<UserResponse> {
     return this.http.get<UserResponse>(`${this.HOST}${this.USER_URL}`).pipe(
       tap((response) => {
         this.user = response.user;
@@ -58,7 +58,6 @@ export class AuthService {
 
   private handleError(error: HttpErrorResponse): Observable<any> {
     const message = error.error.error;
-    console.log(message);
 
     switch (message) {
       case 'Invalid email or password.':
@@ -70,7 +69,6 @@ export class AuthService {
   }
 
   private setToken(response: AuthResponse | null): void {
-    console.log('setToken', response);
     if (response) {
       localStorage.setItem(this.LOCAL_STORAGE_TOKEN_KEY, response.token);
     } else {
@@ -80,5 +78,13 @@ export class AuthService {
     this.response = response;
     this.user = response?.user;
     this.authToken = response?.token;
+  }
+
+  isUserId(): number {
+    if (this.user) {
+      return this.user.id;
+    } else {
+      return 0;
+    }
   }
 }

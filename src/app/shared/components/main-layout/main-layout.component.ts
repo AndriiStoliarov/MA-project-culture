@@ -48,4 +48,5 @@ export class MainLayoutComponent implements OnInit {
       this.openDialog();
     }
   }
+
 }

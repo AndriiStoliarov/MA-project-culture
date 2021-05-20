@@ -77,7 +77,6 @@ export class RegistrationPageComponent implements OnInit {
 
     // tslint:disable-next-line: deprecation
     this.registrationService.createUser(data).subscribe(() => {
-      console.log('Registration successfully.');
       this.dialogRef.close();
       this.snackBar.openFromComponent(RegistrationMessageComponent, {
         duration: this.durationInSeconds * 1000,

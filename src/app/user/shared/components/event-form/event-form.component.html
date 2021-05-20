@@ -1,6 +1,7 @@
 <div class="wrapper">
   <mat-card class="card">
     <h1 class="align-center">Створення події</h1>
+
     <hr>
 
     <form
@@ -122,20 +123,11 @@
         </div>
       </div>
 
-      <!-- <mat-form-field appearance="legacy">
-        <mat-label>Додайте ілюстрацію</mat-label>
-        <ngx-mat-file-input
-          type="file"
-          (change)="onFileSelected($event)"
-        >
-        </ngx-mat-file-input>
-      </mat-form-field> -->
-
-        <input
-          type="file"
-          class="mat-form-field"
-          (change)="onFileSelected($event)"
-        >
+      <input
+        type="file"
+        class="mat-form-field"
+        (change)="onFileSelected($event)"
+      >
     </form>
 
     <mat-card-actions class="flex-button">
@@ -158,5 +150,3 @@
     </mat-card-actions>
   </mat-card>
 </div>
-
-<!-- routerLink="/user/posts" -->

@@ -38,6 +38,7 @@
     <app-need
       *ngFor="let requirement of post.requests"
       [requirement]="requirement"
+      [postUserId]="post.user_id"
     >
     </app-need>
   </div>

@@ -67,7 +67,7 @@ export class PostsComponent implements OnInit, OnDestroy{
     this.subscription.unsubscribe();
   }
 
-  handleCreateEvent() {
+  handleCreateEvent(): void {
     this.authService.isAuthenticated();
   }
 }
