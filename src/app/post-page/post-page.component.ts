@@ -12,14 +12,13 @@ import { Post } from '../shared/types';
   styleUrls: ['./post-page.component.css'],
 })
 export class PostPageComponent implements OnInit {
-
   post$: Observable<Post>;
 
   constructor(
     private route: ActivatedRoute,
     private postsService: PostsService,
     private location: Location,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     const postId = +this.route.snapshot.params.id;
@@ -30,5 +29,4 @@ export class PostPageComponent implements OnInit {
   isNavigate(): void {
     this.location.back();
   }
-
 }

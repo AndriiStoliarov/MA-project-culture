@@ -28,17 +28,18 @@ export class AuthService {
   }
 
   login(params: LoginParams): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.HOST}${this.AUTH_URL}`, params)
+    return this.http
+      .post<AuthResponse>(`${this.HOST}${this.AUTH_URL}`, params)
       .pipe(
         tap((response) => {
-        this.setToken(response);
-        },
+          this.setToken(response);
+        }),
         catchError(this.handleError.bind(this)),
-      ));
+      );
   }
 
   logout(): void {
-    localStorage.clear();
+    localStorage.removeItem(this.LOCAL_STORAGE_TOKEN_KEY);
     this.user = null;
     this.response = null;
     this.authToken = null;
@@ -56,12 +57,18 @@ export class AuthService {
     );
   }
 
-  private handleError(error: HttpErrorResponse): Observable<any> {
-    const message = error.error.error;
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    const message =
+      typeof error?.error === 'string'
+        ? error.error
+        : error?.error?.message || error?.error?.error || '';
 
     switch (message) {
       case 'Invalid email or password.':
         this.error$.next('Невірна адреса електронної пошти або пароль.');
+        break;
+      default:
+        this.error$.next('Помилка входу. Перевірте дані та спробуйте ще раз.');
         break;
     }
 

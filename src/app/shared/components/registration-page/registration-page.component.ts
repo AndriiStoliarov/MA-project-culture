@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 import { RegistrationService } from '../../services';
 import { SignUpParams } from '../../types/params/signUpParams.interface';
@@ -14,7 +18,6 @@ import { RegistrationMessageComponent } from '../registration-message/registrati
   styleUrls: ['./registration-page.component.css'],
 })
 export class RegistrationPageComponent implements OnInit {
-
   registrationForm: any;
   hide = true;
   durationInSeconds = 5;
@@ -26,30 +29,23 @@ export class RegistrationPageComponent implements OnInit {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<RegistrationPageComponent>,
     private snackBar: MatSnackBar,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.registrationForm = this.fb.group ({
-      first_name: new FormControl('', [
-        Validators.required,
-      ]),
-      last_name: new FormControl('', [
-        Validators.required,
-      ]),
-      email: new FormControl('', [
-        Validators.required,
-        Validators.email,
-      ]),
-      password: new FormControl('', [
-        Validators.required,
-      ]),
+    this.registrationForm = this.fb.group({
+      first_name: new FormControl('', [Validators.required]),
+      last_name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
     });
   }
 
   isControlInvalid(fieldName: string): boolean {
-    return (this.registrationForm.get(fieldName).invalid
-      && (this.registrationForm.get(fieldName).dirty
-      || this.registrationForm.get(fieldName).touched));
+    return (
+      this.registrationForm.get(fieldName).invalid &&
+      (this.registrationForm.get(fieldName).dirty ||
+        this.registrationForm.get(fieldName).touched)
+    );
   }
 
   getControlError(controlName: string): string | null {
@@ -76,14 +72,26 @@ export class RegistrationPageComponent implements OnInit {
     };
 
     // tslint:disable-next-line: deprecation
-    this.registrationService.createUser(data).subscribe(() => {
-      this.dialogRef.close();
-      this.snackBar.openFromComponent(RegistrationMessageComponent, {
-        duration: this.durationInSeconds * 1000,
-        horizontalPosition: this.horizontalPosition,
-        verticalPosition: this.verticalPosition,
-      });
-    });
+    this.registrationService.createUser(data).subscribe(
+      () => {
+        this.dialogRef.close();
+        this.snackBar.openFromComponent(RegistrationMessageComponent, {
+          duration: this.durationInSeconds * 1000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        });
+      },
+      (err) => {
+        const msg =
+          err?.error?.message === 'User with this email already exists.'
+            ? 'Користувач з такою ел. адресою вже існує.'
+            : 'Не вдалося зареєструватися. Спробуйте ще раз.';
+        this.snackBar.open(msg, 'Закрити', {
+          duration: 4000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        });
+      },
+    );
   }
-
 }

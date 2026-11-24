@@ -1,4 +1,5 @@
 import {
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
@@ -6,10 +7,14 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 import { AuthResponse, Category, Post, Records, User } from '../types';
+
+interface StoredUser extends User {
+  password?: string;
+}
 
 const STORAGE_KEYS = {
   POSTS: 'mock_culture_posts_v1',
@@ -24,12 +29,13 @@ const DEFAULT_CATEGORIES: Category[] = [
   { id: 4, name: 'Волонтерство та події' },
 ];
 
-const DEFAULT_USERS: User[] = [
+const DEFAULT_USERS: StoredUser[] = [
   {
     id: 1,
     first_name: 'Олена',
     last_name: 'Коваленко',
     email: 'demo@culture.local',
+    password: 'demo',
   },
 ];
 
@@ -114,7 +120,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
     const body =
       typeof req.body === 'string' ? this.safeParseJson(req.body) : req.body;
 
-    // 1. Події / пости: список и детали по id
+    // 1. Події / пости: список і деталі по id
     if (req.method === 'GET' && cleanPath === '/api/events') {
       const records: Records = { records: this.getPosts() };
       return this.respond(records);
@@ -136,34 +142,63 @@ export class MockBackendInterceptor implements HttpInterceptor {
     // 3. Авторизація та поточний користувач
     if (req.method === 'POST' && cleanPath === '/api/auth') {
       const users = this.getUsers();
-      const email = body?.email || users[0].email;
-      const foundUser = users.find((u) => u.email === email) || users[0];
+      const email = (body?.email || '').trim().toLowerCase();
+      const password = body?.password || '';
+
+      const foundUser = users.find(
+        (u) => u.email.trim().toLowerCase() === email,
+      );
+
+      if (
+        !foundUser ||
+        (foundUser.password && foundUser.password !== password)
+      ) {
+        return this.respondError(401, 'Invalid email or password.');
+      }
+
+      const publicUser = this.toPublicUser(foundUser);
       const authResponse: AuthResponse = {
-        token: `mock-jwt-token-${foundUser.id}`,
-        user: foundUser,
+        token: `mock-jwt-token-${publicUser.id}`,
+        user: publicUser,
       };
       return this.respond(authResponse);
     }
 
     if (req.method === 'GET' && cleanPath === '/api/me') {
       const users = this.getUsers();
-      const currentUser = this.resolveUserFromToken(users) || users[0];
-      return this.respond({ user: currentUser });
+      const currentUser = this.resolveUserFromToken(users);
+      if (!currentUser) {
+        return this.respondError(401, 'Unauthorized');
+      }
+      return this.respond({ user: this.toPublicUser(currentUser) });
     }
 
     // 4. Реєстрація користувача
     if (req.method === 'POST' && cleanPath === '/api/users') {
       const users = this.getUsers();
+      const email = (body?.email || '').trim().toLowerCase();
+
+      if (!email) {
+        return this.respondError(400, 'Email is required.');
+      }
+
+      const exists = users.some((u) => u.email.trim().toLowerCase() === email);
+      if (exists) {
+        return this.respondError(400, 'User with this email already exists.');
+      }
+
       const nextId = users.reduce((max, u) => Math.max(max, u.id), 0) + 1;
-      const newUser: User = {
+      const newUser: StoredUser = {
         id: nextId,
-        first_name: body?.first_name || 'Гість',
-        last_name: body?.last_name || 'Порталу',
-        email: body?.email || `user${nextId}@culture.local`,
+        first_name: (body?.first_name || '').trim() || 'Користувач',
+        last_name: (body?.last_name || '').trim() || `#${nextId}`,
+        email,
+        password: body?.password || '',
       };
+
       users.push(newUser);
       localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
-      return this.respond(newUser, 201);
+      return this.respond(this.toPublicUser(newUser), 201);
     }
 
     // 5. Відгуки / пропозиції до потреб (/api/proposals)
@@ -214,6 +249,21 @@ export class MockBackendInterceptor implements HttpInterceptor {
     return of(new HttpResponse<T>({ status, body: payload })).pipe(delay(150));
   }
 
+  private respondError(status: number, message: string): Observable<never> {
+    return throwError(
+      new HttpErrorResponse({
+        status,
+        statusText: message,
+        error: { message },
+      }),
+    );
+  }
+
+  private toPublicUser(user: StoredUser): User {
+    const { password, ...publicUser } = user;
+    return publicUser;
+  }
+
   private ensureSeedData(): void {
     if (!localStorage.getItem(STORAGE_KEYS.POSTS)) {
       localStorage.setItem(STORAGE_KEYS.POSTS, JSON.stringify(DEFAULT_POSTS));
@@ -239,12 +289,12 @@ export class MockBackendInterceptor implements HttpInterceptor {
     return JSON.parse(localStorage.getItem(STORAGE_KEYS.CATEGORIES) || '[]');
   }
 
-  private getUsers(): User[] {
+  private getUsers(): StoredUser[] {
     this.ensureSeedData();
     return JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || '[]');
   }
 
-  private resolveUserFromToken(users: User[]): User | undefined {
+  private resolveUserFromToken(users: StoredUser[]): StoredUser | undefined {
     const token = localStorage.getItem('token') || '';
     const match = token.match(/mock-jwt-token-(\d+)/);
     if (!match) {
