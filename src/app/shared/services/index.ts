@@ -10,6 +10,7 @@ export const mainServices = [
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 ];
 
+export * from './mock-backend.interceptor';
 export * from './auth.service';
 export * from './auth.interceptor';
 export * from './categories.service';
