@@ -10,7 +10,14 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
-import { AuthResponse, Category, Post, Records, User } from '../types';
+import {
+  AuthResponse,
+  Category,
+  Post,
+  Proposal,
+  Records,
+  User,
+} from '../types';
 
 interface StoredUser extends User {
   password?: string;
@@ -56,7 +63,14 @@ const DEFAULT_POSTS: Post[] = [
       {
         id: 101,
         description: 'Потрібна допомога з підготовкою етикеток та навігації',
-        proposals: ['Можу допомогти з друком і монтажем'],
+        proposals: [
+          {
+            request_id: '101',
+            description: 'Можу допомогти з друком і монтажем',
+            price_cents: 1500,
+            phone_number: '0501234567',
+          },
+        ],
       },
     ],
   },
@@ -93,6 +107,120 @@ const DEFAULT_POSTS: Post[] = [
     user_id: 1,
     status: 'active',
     requests: [],
+  },
+  {
+    id: 4,
+    title: 'Благодійний маркет локальних ремісників',
+    body: 'Ярмарок кераміки, текстилю та авторських листівок на підтримку міських культурних ініціатив.',
+    starts_at: Date.now() + 86400000 * 5,
+    location: 'Міський сквер біля фонтану',
+    category_id: 4,
+    category: { id: 4, name: 'Волонтерство та події' },
+    image_url:
+      'https://images.unsplash.com/photo-1459908676235-d5f02a50184b?auto=format&fit=crop&w=900&q=80',
+    user_id: 1,
+    status: 'active',
+    requests: [
+      {
+        id: 103,
+        description: 'Потрібні волонтери для координації учасників на локації',
+        proposals: [],
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: 'Експозиція плівкової міської фотографії',
+    body: 'Серія чорно-білих та кольорових знімків про повсякденну архітектуру та світло ранкового міста.',
+    starts_at: Date.now() + 86400000 * 12,
+    location: 'Фотопростір «Кадр»',
+    category_id: 1,
+    category: { id: 1, name: 'Виставки та арт' },
+    image_url:
+      'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=80',
+    user_id: 1,
+    status: 'active',
+    requests: [
+      {
+        id: 104,
+        description: 'Шукаємо рамки формату А3 на тимчасову експозицію',
+        proposals: [],
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: 'Вечір камерного джазу при свічках',
+    body: 'Імпровізаційна програма фортепіано, контрабаса та саксофона у затишній залі з живою акустикою.',
+    starts_at: Date.now() + 86400000 * 14,
+    location: 'Мала філармонійна зала',
+    category_id: 2,
+    category: { id: 2, name: 'Музика та концерти' },
+    image_url:
+      'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=900&q=80',
+    user_id: 1,
+    status: 'active',
+    requests: [],
+  },
+  {
+    id: 7,
+    title: 'Пластичний перформанс «Ритм простору»',
+    body: 'Експериментальна постановка на межі сучасного танцю та візуальної інсталяції.',
+    starts_at: Date.now() + 86400000 * 16,
+    location: 'Арт-кластер «Цех»',
+    category_id: 3,
+    category: { id: 3, name: 'Театр та перформанс' },
+    image_url:
+      'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=900&q=80',
+    user_id: 1,
+    status: 'active',
+    requests: [
+      {
+        id: 105,
+        description: 'Потрібен світлооператор з досвідом роботи на сцені',
+        proposals: [],
+      },
+    ],
+  },
+  {
+    id: 8,
+    title: 'Толока та оновлення відкритої бібліотеки',
+    body: 'Спільне впорядкування вуличних книжкових полиць, фарбування лавок та сортування подарованих видань.',
+    starts_at: Date.now() + 86400000 * 18,
+    location: 'Парк культури, головна алея',
+    category_id: 4,
+    category: { id: 4, name: 'Волонтерство та події' },
+    image_url:
+      'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80',
+    user_id: 1,
+    status: 'active',
+    requests: [
+      {
+        id: 106,
+        description: 'Потрібні пензлі, фарба по дереву та робочі рукавички',
+        proposals: [],
+      },
+    ],
+  },
+  {
+    id: 9,
+    title: 'Відкрита майстерня з ліногравюри',
+    body: 'Практичний воркшоп для початківців: від ескізу на лінолеумі до першого відбитка на папері.',
+    starts_at: Date.now() + 86400000 * 21,
+    location: 'Майстерня «Відбиток»',
+    category_id: 1,
+    category: { id: 1, name: 'Виставки та арт' },
+    image_url:
+      'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80',
+    user_id: 1,
+    status: 'active',
+    requests: [
+      {
+        id: 107,
+        description: 'Шукаємо друкарський валик та бавовняний папір',
+        proposals: [],
+      },
+    ],
   },
 ];
 
@@ -205,11 +333,19 @@ export class MockBackendInterceptor implements HttpInterceptor {
     if (req.method === 'POST' && cleanPath === '/api/proposals') {
       const posts = this.getPosts();
       const requirementId = Number(body?.requirement_id ?? body?.request_id);
-      const proposalText =
-        body?.description ||
-        body?.body ||
-        body?.proposal ||
-        'Відгук на потребу';
+      const newProposal: Proposal = {
+        request_id:
+          body?.request_id !== undefined && body?.request_id !== null
+            ? String(body.request_id)
+            : undefined,
+        description:
+          body?.description ||
+          body?.body ||
+          body?.proposal ||
+          'Відгук на потребу',
+        price_cents: Number(body?.price_cents ?? 0),
+        phone_number: String(body?.phone_number || ''),
+      };
 
       let updated = false;
       for (const post of posts) {
@@ -219,7 +355,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
         const targetReq = post.requests.find((r) => r.id === requirementId);
         if (targetReq) {
           targetReq.proposals = targetReq.proposals || [];
-          targetReq.proposals.push(proposalText);
+          targetReq.proposals.push(newProposal);
           updated = true;
           break;
         }
@@ -235,11 +371,11 @@ export class MockBackendInterceptor implements HttpInterceptor {
           });
         }
         posts[0].requests[0].proposals = posts[0].requests[0].proposals || [];
-        posts[0].requests[0].proposals.push(proposalText);
+        posts[0].requests[0].proposals.push(newProposal);
       }
 
       localStorage.setItem(STORAGE_KEYS.POSTS, JSON.stringify(posts));
-      return this.respond({ ok: true, proposal: proposalText }, 201);
+      return this.respond({ ok: true, proposal: newProposal }, 201);
     }
 
     return next.handle(req);

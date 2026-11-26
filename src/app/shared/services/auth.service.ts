@@ -11,6 +11,7 @@ export class AuthService {
   AUTH_URL = '/api/auth';
   USER_URL = '/api/me';
   LOCAL_STORAGE_TOKEN_KEY = 'token';
+  LOCAL_STORAGE_USER_KEY = 'user';
 
   error$: Subject<string> = new Subject<string>();
 
@@ -21,10 +22,23 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     this.authToken = this.tokenFromLocalStorage;
+    this.user = this.userFromLocalStorage;
   }
 
   get tokenFromLocalStorage(): string {
     return localStorage.getItem(this.LOCAL_STORAGE_TOKEN_KEY);
+  }
+
+  get userFromLocalStorage(): User | null {
+    const raw = localStorage.getItem(this.LOCAL_STORAGE_USER_KEY);
+    if (!raw) {
+      return null;
+    }
+    try {
+      return JSON.parse(raw) as User;
+    } catch {
+      return null;
+    }
   }
 
   login(params: LoginParams): Observable<AuthResponse> {
@@ -40,6 +54,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(this.LOCAL_STORAGE_TOKEN_KEY);
+    localStorage.removeItem(this.LOCAL_STORAGE_USER_KEY);
     this.user = null;
     this.response = null;
     this.authToken = null;
@@ -53,6 +68,12 @@ export class AuthService {
     return this.http.get<UserResponse>(`${this.HOST}${this.USER_URL}`).pipe(
       tap((response) => {
         this.user = response.user;
+        if (response.user) {
+          localStorage.setItem(
+            this.LOCAL_STORAGE_USER_KEY,
+            JSON.stringify(response.user),
+          );
+        }
       }),
     );
   }
@@ -78,8 +99,15 @@ export class AuthService {
   private setToken(response: AuthResponse | null): void {
     if (response) {
       localStorage.setItem(this.LOCAL_STORAGE_TOKEN_KEY, response.token);
+      if (response.user) {
+        localStorage.setItem(
+          this.LOCAL_STORAGE_USER_KEY,
+          JSON.stringify(response.user),
+        );
+      }
     } else {
-      localStorage.clear();
+      localStorage.removeItem(this.LOCAL_STORAGE_TOKEN_KEY);
+      localStorage.removeItem(this.LOCAL_STORAGE_USER_KEY);
     }
 
     this.response = response;
