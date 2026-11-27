@@ -30,10 +30,13 @@ const STORAGE_KEYS = {
 };
 
 const DEFAULT_CATEGORIES: Category[] = [
-  { id: 1, name: 'Виставки та арт' },
-  { id: 2, name: 'Музика та концерти' },
-  { id: 3, name: 'Театр та перформанс' },
-  { id: 4, name: 'Волонтерство та події' },
+  { id: 1, name: 'Виставка' },
+  { id: 2, name: 'Концерт' },
+  { id: 3, name: 'Вистава' },
+  { id: 4, name: 'Навчання' },
+  { id: 5, name: 'Зустріч' },
+  { id: 6, name: 'Свято' },
+  { id: 7, name: 'Інше' },
 ];
 
 const DEFAULT_USERS: StoredUser[] = [
@@ -327,6 +330,68 @@ export class MockBackendInterceptor implements HttpInterceptor {
       users.push(newUser);
       localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
       return this.respond(this.toPublicUser(newUser), 201);
+    }
+
+    if (req.method === 'POST' && cleanPath === '/api/events') {
+      const posts = this.getPosts();
+      const categories = this.getCategories();
+      const currentUser = this.resolveUserFromToken(this.getUsers());
+
+      const nextPostId =
+        posts.reduce((max, p) => Math.max(max, Number(p.id) || 0), 0) + 1;
+
+      const maxReqId = posts.reduce((max, p) => {
+        const reqMax = (p.requests || []).reduce(
+          (rMax, r) => Math.max(rMax, Number(r.id) || 0),
+          100,
+        );
+        return Math.max(max, reqMax);
+      }, 100);
+
+      const categoryId = Number(body?.category_id) || 7;
+      const matchedCategory = categories.find((c) => c.id === categoryId) ||
+        categories[categories.length - 1] || { id: categoryId, name: 'Інше' };
+
+      const rawRequirements = Array.isArray(body?.requests_attributes)
+        ? body.requests_attributes
+        : [];
+      const requests = rawRequirements
+        .map((item: any, idx: number) => ({
+          id: maxReqId + idx + 1,
+          description: (item?.description || '').trim(),
+          proposals: [] as Proposal[],
+        }))
+        .filter((reqItem: any) => reqItem.description.length > 0);
+
+      const uploadedImage =
+        typeof body?.image?.data === 'string' && body.image.data.length > 0
+          ? body.image.data
+          : '';
+
+      const parsedDate =
+        typeof body?.starts_at === 'number'
+          ? body.starts_at
+          : Date.parse(body?.starts_at) || Date.now() + 86400000 * 7;
+
+      const newPost: Post = {
+        id: nextPostId,
+        title: (body?.title || '').trim() || `Подія #${nextPostId}`,
+        body: (body?.body || '').trim(),
+        starts_at: parsedDate,
+        location: (body?.location || '').trim(),
+        category_id: categoryId,
+        category: matchedCategory,
+        image_url:
+          uploadedImage ||
+          'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=80',
+        user_id: currentUser ? currentUser.id : 1,
+        status: 'active',
+        requests,
+      };
+
+      posts.unshift(newPost);
+      localStorage.setItem(STORAGE_KEYS.POSTS, JSON.stringify(posts));
+      return this.respond(newPost, 201);
     }
 
     // 5. Відгуки / пропозиції до потреб (/api/proposals)
